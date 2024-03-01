@@ -4,7 +4,7 @@ import { Button, Text, NativeBaseProvider } from "native-base";
 import globalStyles from "../styles/global";
 import { useNavigation } from "@react-navigation/native";
 import { BlurView } from "expo-blur";
-import background from "../assets/background1.jpeg";
+import background from "../assets/fotos/background1.jpeg";
 
 import * as Animatable from "react-native-animatable";
 

@@ -1,12 +1,17 @@
 import React, { useContext, useEffect } from "react";
-import { StyleSheet, Alert } from "react-native";
+
+import { StyleSheet, Alert, ImageBackground } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
 import PedidosContext from "../context/firebase/pedidos/pedidosContext";
 
 import globalStyles from "../styles/global";
-import Ionicons from "react-native-vector-icons/Ionicons";
+
+import AntDesing from "react-native-vector-icons/AntDesign";
+
+import background from "../assets/fotos/verdurasfotos.png";
+
 import {
   NativeBaseProvider,
   Text,
@@ -20,9 +25,8 @@ import {
   ScrollView,
   Image,
   Pressable,
-  IconButton,
 } from "native-base";
-import Icon from "react-native-vector-icons/Ionicons";
+
 import firebase from "../firebase";
 
 const ResumenPedido = () => {
@@ -68,15 +72,13 @@ const ResumenPedido = () => {
               const pedido = await firebase.db
                 .collection("ordenes")
                 .add(pedidoObj);
-                pedidoRealizado(pedido.id);
+              pedidoRealizado(pedido.id);
 
               //redireccionar a progreso
               navigation.navigate("ProgresoPedido");
             } catch (error) {
               console.log(error);
             }
-
-           
           },
         },
         { text: "Revisar", style: "cancel" },
@@ -113,28 +115,50 @@ const ResumenPedido = () => {
         </View>
 
         <View marginTop={3}>
-          {pedido.map((platillo, i) => {
-            const { cantidad, nombre, imagen, id, precio } = platillo;
+          <ImageBackground
+            source={background}
+            resizeMode="cover"
+            style={styles.imagen4}
+            imageStyle={styles.image}
+          >
+            {pedido.map((platillo, i) => {
+              const { cantidad, nombre, imagen, id, precio } = platillo;
 
-            return (
-              <VStack key={id + i}>
-                <List style={{ flexDirection: "row", alignItems: "center" }}>
-                  <View mx={5}>
-                    <Image
-                      source={{ uri: imagen }}
-                      alt="desde firebase"
-                      // para que quede cuadrada la imagen
-                      //size="lg"
-                      size={70}
-                    />
-                  </View>
-                  <View>
-                    <Text>{nombre} </Text>
-                    <Text>Cantidad: {cantidad}</Text>
-                    <Text>Precio: $ {precio} </Text>
-                  </View>
+              return (
+                <VStack key={id + i}>
+                  <List style={{ flexDirection: "row", alignItems: "center" }}>
+                    <View mx={5}>
+                      <Image
+                        source={{ uri: imagen }}
+                        alt="desde firebase"
+                        // para que quede cuadrada la imagen
+                        //size="lg"
+                        size={70}
+                      />
+                    </View>
+                    <View flex={1}>
+                      <Text>{nombre} </Text>
+                      <Text>Cantidad: {cantidad}</Text>
+                      <Text>Precio: $ {precio} </Text>
+                    </View>
+                    <View>
+                      <Pressable
+                        onPress={() => confirmarEliminacion(id)}
+                        full
+                        padding={5}
+                        style={{ marginTop: "center" }}
+                      >
+                        <AntDesing
+                          name="delete"
+                          style={{
+                            color: "red",
+                            fontSize: 30,
+                          }}
+                        />
+                      </Pressable>
+                    </View>
 
-                  <Button
+                    {/* <Button
                     onPress={() => confirmarEliminacion(id)}
                     full
                     backgroundColor="red.600"
@@ -144,9 +168,9 @@ const ResumenPedido = () => {
                     <Text style={[globalStyles.botonTexto, { color: "#FFF" }]}>
                       Eliminar
                     </Text>
-                  </Button>
+                  </Button> */}
 
-                  {/* <IconButton 
+                    {/* <IconButton 
                  name="home"
                  size={30}
                  color="red"
@@ -157,11 +181,11 @@ const ResumenPedido = () => {
                   
                    
                   </IconButton> */}
-                </List>
-              </VStack>
-            );
-          })}
-          <View></View>
+                  </List>
+                </VStack>
+              );
+            })}
+          </ImageBackground>
         </View>
       </ScrollView>
       <Box flex={0}>
@@ -213,6 +237,13 @@ const styles = StyleSheet.create({
   },
   boton1: {
     backgroundColor: "#32cd32",
+  },
+  imagen4: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  image: {
+    opacity: 0.1,
   },
 });
 

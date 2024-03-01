@@ -6,7 +6,7 @@ import PedidosContext from "../context/firebase/pedidos/pedidosContext";
 import firebase from "../firebase";
 import Countdown from "react-countdown";
 import { BlurView } from "expo-blur";
-import background from "../assets/background1.jpeg";
+import background from "../assets/fotos/background1.jpeg";
 
 import * as Animatable from "react-native-animatable";
 
