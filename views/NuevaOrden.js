@@ -10,7 +10,6 @@ import * as Animatable from "react-native-animatable";
 
 const NuevaOrden = () => {
   const navigation = useNavigation();
-  
 
   return (
     <NativeBaseProvider>
@@ -46,6 +45,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFDA00",
     width: 350,
     marginLeft: 20,
+  },
+  boton2: {
+    backgroundColor: "green",
+    width: 350,
+    marginBottom: 10,
   },
 });
 

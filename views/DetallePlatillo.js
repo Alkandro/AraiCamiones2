@@ -11,7 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import PedidosContext from "../context/firebase/pedidos/pedidosContext";
 import { StyleSheet, ImageBackground } from "react-native";
-import background from "../assets/fotos/platos.jpeg";
+
 
 const DetallePlatillo = () => {
   // Pedido context
@@ -28,37 +28,47 @@ const DetallePlatillo = () => {
 
   return (
     <NativeBaseProvider>
-      <View flex={1}>
+      <View 
+      
+      flex={1}
+      justifyContent='center'
+      justifyItems='center'
+      >
         <ImageBackground
-          source={background}
+          source={require('../assets/fotos/platos.jpeg')}
           resizeMode="cover"
           style={styles.imagen4}
           imageStyle={styles.image}
         >
-          <View padding={5}>
-            <Text style={styles.titulo2}>{nombre}</Text>
+          <View marginBottom={230}
+          >
             <View>
-              <Image
-                //Metemos tamaño en la imagen ancho y alto para que se refleje
+              {/* <Text style={styles.titulo2}>{nombre}</Text> */}
+              <View>
+                <Image
+                  //Metemos tamaño en la imagen ancho y alto para que se refleje
 
-                style={{ marginHorizontal: "5%", width: 350, height: 300 }}
-                source={{ uri: imagen }}
-                alt="desde firebase"
-                borderRadius={20}
-              />
-              <Text style={styles.descripcion2}>{descripcion}</Text>
-              <Text style={styles.precio2}>Precio: $ {precio}</Text>
-            </View>
-            <View>
-              <Button
-                style={styles.boton2}
-                rounded="2xl"
-                marginHorizontal="20%"
-                marginTop={10}
-                onPress={() => navigation.navigate("FormularioPlatillo")}
-              >
-                <Text style={styles.botonTexto2}>Ordenar</Text>
-              </Button>
+                  style={{ marginHorizontal: '5%', width: 350, height: 300 }}
+                  source={{ uri: imagen }}
+                  alt="desde firebase"
+                  borderRadius={15}
+                  borderColor= "#fff"
+                  borderWidth= {0.9}
+                />
+                <Text style={styles.descripcion2}>{descripcion}</Text>
+                <Text style={styles.precio2}>Precio: $ {precio}</Text>
+              </View>
+              <View>
+                <Button
+                  style={styles.boton2}
+                  rounded="2xl"
+                  marginHorizontal="20%"
+                  marginTop={5}
+                  onPress={() => navigation.navigate("FormularioPlatillo")}
+                >
+                  <Text style={styles.botonTexto2}>Ordenar</Text>
+                </Button>
+              </View>
             </View>
           </View>
         </ImageBackground>
@@ -76,10 +86,11 @@ const styles = StyleSheet.create({
   },
   precio2: {
     marginVertical: 2,
-    marginTop: 30,
+    marginTop: 20,
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
+    color:'white',
   },
   botonTexto2: {
     textTransform: "uppercase",
@@ -92,13 +103,14 @@ const styles = StyleSheet.create({
   descripcion2: {
     marginTop: 30,
     textAlign: "center",
+    color: "white",
   },
   imagen4: {
     flex: 1,
     justifyContent: "center",
   },
   image: {
-    opacity: 0.5,
+    opacity: 1,
   },
 });
 

@@ -111,7 +111,9 @@ const ProgresoPedido = () => {
           )}
           {completado && (
             <>
-              <View alignItems="center">
+              <View alignItems="center"
+              marginBottom={20}
+              >
                 <Box>
                   <Animatable.Text
                     animation="pulse"
