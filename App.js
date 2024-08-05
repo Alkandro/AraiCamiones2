@@ -71,13 +71,13 @@ const App = () => {
                     fontSize: 15,color:'green',fontStyle:'italic',
                     
                   },
-                  headerRight: () => (
-                    <Button
-                      onPress={() => alert("This is a button!")}
-                      title="Ir al Pedido"
-                      color="#000"
-                    />
-                  ),
+                  // headerRight: () => (
+                  //   <Button
+                  //     onPress={() => alert("This is a button!")}
+                  //     title="Ir al Pedido"
+                  //     color="#000"
+                  //   />
+                  // ),
                 }}
               />
 
