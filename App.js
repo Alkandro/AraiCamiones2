@@ -2,7 +2,9 @@ import "react-native-gesture-handler";
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Button } from "react-native";
+import { Button, StatusBar } from "react-native";
+
+import { useNavigation } from "@react-navigation/native";
 
 import BotonResumen from "./components/ui/BotonResumen";
 
@@ -12,6 +14,8 @@ import DetallePlatillo from "./views/DetallePlatillo";
 import FormularioPlatillo from "./views/FormularioPlatillo";
 import ResumenPedido from "./views/ResumenPedido";
 import ProgresoPedido from "./views/ProgresoPedido";
+
+import LoginScreen from "./views/LoginScreen";
 
 //importar state de context
 import FirebaseState from "./context/firebase/firebaseState";
@@ -38,10 +42,23 @@ const App = () => {
               }}
             >
               <Stack.Screen
+                name="LoginScreen"
+                component={LoginScreen}
+                options={{
+                  title: "Login",
+                  headerShown: false,
+                }}
+              />
+
+              <Stack.Screen
                 name="NuevaOrden"
                 component={NuevaOrden}
                 options={{
-                  title: "Nueva Orden",
+                  headerBackTitle: "Salir",
+                  headerBackTitleStyle: {
+                    fontSize: 20,color:'red',
+                    fontVariant: "proportional-nums",
+                  },
                 }}
               />
 
@@ -50,16 +67,18 @@ const App = () => {
                 component={Menu}
                 options={{
                   title: "Menu",
+                  headerBackTitleStyle: {
+                    fontSize: 15,color:'green',fontStyle:'italic',
+                    
+                  },
+                  headerRight: () => (
+                    <Button
+                      onPress={() => alert("This is a button!")}
+                      title="Ir al Pedido"
+                      color="#000"
+                    />
+                  ),
                 }}
-
-                // Para colocar un boton un boton para ir a alguna pantalla
-                // headerRight: () => (
-                //   <Button
-                //     color="#000"
-                //     title="Ir al Pedido"
-                //     onPress={() => navigation.navigate("ResumenPedido")}
-                //   ></Button>
-                // ),
               />
 
               <Stack.Screen
@@ -67,6 +86,13 @@ const App = () => {
                 component={DetallePlatillo}
                 options={{
                   title: null,
+                  
+                    headerBackTitle: "Menu",
+                    headerBackTitleStyle: {
+                      fontSize: 20,
+                      color:'green',fontStyle:'italic',
+                    },
+                  
                 }}
               />
 
@@ -75,6 +101,11 @@ const App = () => {
                 component={FormularioPlatillo}
                 options={{
                   title: "Ordenar Platillo",
+                  headerBackTitle: "Detalle",
+                  headerBackTitleStyle: {
+                    fontSize: 20,
+                    color:'green',fontStyle:'italic',
+                  },
                 }}
               />
 

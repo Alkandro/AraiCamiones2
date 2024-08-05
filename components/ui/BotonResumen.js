@@ -1,29 +1,88 @@
-import React, {useContext} from "react";
-import { Button, Text } from "native-base";
-import globalStyles from "../../styles/global";
-import { useNavigation } from "@react-navigation/native";
+import React, {useContext} from 'react';
+import { Button, Text } from 'native-base';
+import globalStyles from '../../styles/global';
+import { useNavigation } from '@react-navigation/native'
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 
 const BotonResumen = () => {
 
-  const navigation = useNavigation();
+    const navigation = useNavigation();
 
-//    //Leer el objeto de pedido
-const {pedido} = useContext(PedidoContext);
+    // Leer el objeto de pedido
+    const { pedido } = useContext(PedidoContext);
 
-  if (pedido.length === 0) return null;
+    if(pedido.length === 0) return null;
 
-
-
-  return (
-    <Button
-    onPress={() => navigation.navigate("ResumenPedido")}
-     style={globalStyles.boton}>
-      <Text style={globalStyles.botonTexto}>ir a Pedido</Text>
-    </Button>
-  );
-};
+    return ( 
+        <Button 
+            onPress={ () => navigation.navigate("ResumenPedido") }
+            style={globalStyles.boton}
+        >
+            <Text style={globalStyles.botonTexto}>Ir a Pedido</Text>
+        </Button>
+     );
+}
+ 
 export default BotonResumen;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, {useContext} from "react";
+// import { Button, Text } from "native-base";
+// import globalStyles from "../../styles/global";
+// import { useNavigation } from "@react-navigation/native";
+// import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
+
+// const BotonResumen = () => {
+
+//   const navigation = useNavigation();
+
+// //    //Leer el objeto de pedido
+// const {pedido} = useContext(PedidoContext);
+
+//   if (pedido.length === 0) return null;
+
+
+
+//   return (
+//     <Button
+//     onPress={() => navigation.navigate("ResumenPedido")}
+//      style={globalStyles.boton}>
+//       <Text style={globalStyles.botonTexto}>ir aaaa Pedido</Text>
+//     </Button>
+//   );
+// };
+// export default BotonResumen;
 
 
 

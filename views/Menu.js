@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeBaseProvider, View, Image, Text, List } from "native-base";
 import globalStyles from "../styles/global";
 import _ from "lodash";
+import { BlurView } from "expo-blur";
 
 import { Box, HStack, Button, Center } from "native-base";
 
@@ -107,9 +108,14 @@ const Menu = () => {
           })}
         </View>
       </ScrollView>
-
-      <Box flex={0}>
-        <HStack paddingY={4} alignItems="center" safeAreaBottom shadow={9}>
+      <BlurView instnsity={90}>
+        <View
+          paddingY={4}
+          alignItems="center"
+          safeAreaBottom
+          shadow={9}
+          marginBottom={5}
+        >
           <Button
             height={16}
             width="full"
@@ -120,23 +126,8 @@ const Menu = () => {
               <Text style={globalStyles.botonTexto}>Ir al Pedido</Text>
             </Center>
           </Button>
-        </HStack>
-      </Box>
-
-      {/* {/* <Box flex={0}>
-        <HStack paddingY={4} alignItems="center" safeAreaBottom shadow={9}>  // para colocar un boton al pie de la pantalla
-          <Button
-            height={16}
-            width="full"
-            style={globalStyles.boton}
-            onPress={() => navigation.navigate("ResumenPedido")}
-          >
-            <Center>
-              <Text style={globalStyles.botonTexto}>Ir al Pedido</Text>
-            </Center>
-          </Button>
-        </HStack>
-      </Box> */}
+        </View>
+      </BlurView>
     </NativeBaseProvider>
   );
 };

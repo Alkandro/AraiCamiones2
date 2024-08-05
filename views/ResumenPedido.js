@@ -12,6 +12,10 @@ import AntDesing from "react-native-vector-icons/AntDesign";
 
 import background from "../assets/fotos/verdurasfotos.png";
 
+import background2 from "../assets/fotos/background2.jpeg";
+
+import { BlurView } from "expo-blur";
+
 import {
   NativeBaseProvider,
   Text,
@@ -107,125 +111,131 @@ const ResumenPedido = () => {
 
   return (
     <NativeBaseProvider>
-      <ScrollView>
-        <View alignItems="center" marginTop={5}>
-          <Text fontWeight="600" fontSize={30}>
-            Resumen Pedido{" "}
-          </Text>
-        </View>
-
-        <View marginTop={3}>
-          <ImageBackground
-            source={background}
-            resizeMode="cover"
-            style={styles.imagen4}
-            imageStyle={styles.image}
-          >
-            {pedido.map((platillo, i) => {
-              const { cantidad, nombre, imagen, id, precio } = platillo;
-
-              return (
-                <VStack key={id + i}>
-                  <List style={{ flexDirection: "row", alignItems: "center" }}>
-                    <View mx={5}>
-                      <Image
-                        source={{ uri: imagen }}
-                        alt="desde firebase"
-                        // para que quede cuadrada la imagen
-                        //size="lg"
-                        size={70}
-                      />
-                    </View>
-                    <View flex={1}>
-                      <Text>{nombre} </Text>
-                      <Text>Cantidad: {cantidad}</Text>
-                      <Text>Precio: $ {precio} </Text>
-                    </View>
-                    <View>
-                      <Pressable
-                        onPress={() => confirmarEliminacion(id)}
-                        full
-                        padding={5}
-                        style={{ marginTop: "center" }}
-                      >
-                        <AntDesing
-                          name="delete"
-                          style={{
-                            color: "red",
-                            fontSize: 30,
-                          }}
-                        />
-                      </Pressable>
-                    </View>
-
-                    {/* <Button
-                    onPress={() => confirmarEliminacion(id)}
-                    full
-                    backgroundColor="red.600"
-                    marginLeft={39}
-                    style={{ marginTop: "center" }}
-                  >
-                    <Text style={[globalStyles.botonTexto, { color: "#FFF" }]}>
-                      Eliminar
-                    </Text>
-                  </Button> */}
-
-                    {/* <IconButton 
-                 name="home"
-                 size={30}
-                 color="red"
-                 onPress={() => console.log('aaaaaaa')}
-                  rounded="8" overflow="hidden" borderWidth="1" borderColor="coolGray.300" maxW="96" shadow="3" bg="coolGray.100" p="5">
-                 
-                  
-                  
-                   
-                  </IconButton> */}
-                  </List>
-                </VStack>
-              );
-            })}
-          </ImageBackground>
-        </View>
-      </ScrollView>
-      <Box flex={0}>
-        <Text
-          marginBottom={2}
-          fontWeight="600"
-          fontSize={25}
-          textAlign="center"
+      <View flex={1}>
+        <ImageBackground
+          source={background2}
+          resizeMode="cover"
+          style={styles.imagen4}
+          imageStyle={styles.image1}
         >
-          Total a Pagar: $ {total}
-        </Text>
+          <ScrollView>
+            <View alignItems="center" marginTop={5}>
+              <Text fontWeight="600" fontSize={30}>
+                Resumen Pedido{" "}
+              </Text>
+            </View>
 
-        <HStack alignItems="center" safeAreaBottom shadow={9}>
-          <Button
-            height={16}
-            width="full"
-            style={globalStyles.boton}
-            onPress={() => navigation.navigate("Menu")}
-          >
-            <Center>
-              <Text style={globalStyles.botonTexto}>Seguir Pidiendo</Text>
-            </Center>
-          </Button>
-        </HStack>
-      </Box>
+            <View marginTop={3}>
+              <ImageBackground
+                source={background}
+                resizeMode="cover"
+                style={styles.imagen4}
+                imageStyle={styles.image}
+              >
+                {pedido.map((platillo, i) => {
+                  const { cantidad, nombre, imagen, id, precio } = platillo;
 
-      <Box flex={0}>
-        <HStack paddingY={0} alignItems="center" safeAreaBottom shadow={9}>
-          <Button
-            height={16}
-            width="full"
-            style={styles.boton1}
-            onPress={() => progresoPedido()}
-          >
-            <Center>
-              <Text style={styles.botonTexto1}>Ordenar Pedido</Text>
-            </Center>
-          </Button>
-        </HStack>
-      </Box>
+                  return (
+                    <VStack key={id + i}>
+                      <List
+                        style={{ flexDirection: "row", alignItems: "center" }}
+                      >
+                        <View mx={5}>
+                          <Image
+                            source={{ uri: imagen }}
+                            alt="desde firebase"
+                            // para que quede cuadrada la imagen
+                            //size="lg"
+                            size={75}
+                          />
+                        </View>
+                        <View flex={1}>
+                          <Text fontWeight="bold">{nombre} </Text>
+                          <Text fontWeight="bold">Cantidad: {cantidad}</Text>
+                          <Text fontWeight="bold">Precio: $ {precio} </Text>
+                        </View>
+                        <View>
+                          <Pressable
+                            onPress={() => confirmarEliminacion(id)}
+                            full
+                            padding={5}
+                            style={{ marginTop: "center" }}
+                          >
+                            <AntDesing
+                              name="delete"
+                              style={{
+                                color: "red",
+                                fontSize: 30,
+                              }}
+                            />
+                          </Pressable>
+                        </View>
+                      </List>
+                    </VStack>
+                  );
+                })}
+              </ImageBackground>
+            </View>
+          </ScrollView>
+
+          <BlurView intensity={20}>
+            <View
+              alignItems="center"
+              height={200}
+              borderColor="#000"
+              borderWidth={2}
+              borderRadius={10}
+              marginBottom={4}
+            >
+              <Text
+                marginTop={3}
+                fontWeight="bold"
+                fontSize={25}
+                textAlign="center"
+              >
+                Total a Pagar: $ {total}
+              </Text>
+
+              <View  alignItems="center" safeAreaBottom shadow={9}>
+                <Button
+                  marginTop={3}
+                  height={10}
+                  width="330"
+                  rounded="2xl"
+                  borderRadius='full'
+                  style={globalStyles.boton}
+                  onPress={() => navigation.navigate("Menu")}
+                >
+                  <View>
+                    <Text style={globalStyles.botonTexto}>Seguir Pidiendo</Text>
+                  </View>
+                </Button>
+              </View>
+
+              <HStack
+                paddingY={0}
+                alignItems="center"
+                safeAreaBottom
+                shadow={9}
+              >
+                <Button
+                marginTop={5}
+                  height={10}
+                  width="330"
+                  rounded="2xl"
+                  borderRadius='full'
+                  backgroundColor="#32cd32"
+                  onPress={() => progresoPedido()}
+                >
+                  <View>
+                    <Text style={styles.botonTexto1}>Ordenar Pedido</Text>
+                  </View>
+                </Button>
+              </HStack>
+            </View>
+          </BlurView>
+        </ImageBackground>
+      </View>
     </NativeBaseProvider>
   );
 };
@@ -243,7 +253,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    opacity: 0.1,
+    opacity: 0.3,
+  },
+  image1: {
+    opacity: 0.6,
   },
 });
 

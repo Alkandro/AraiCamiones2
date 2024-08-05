@@ -1,13 +1,22 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Alert, StyleSheet, TextInput, Platform } from "react-native";
+import {
+  Alert,
+  StyleSheet,
+  TextInput,
+  Platform,
+  ImageBackground,
+} from "react-native";
 import globalStyles from "../styles/global";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
+import { AntDesign } from "@expo/vector-icons";
+
+import background from "../assets/fotos/pasta.jpeg";
+
 import PedidosContext from "../context/firebase/pedidos/pedidosContext";
 
 import {
-  Container,
   NativeBaseProvider,
   Text,
   View,
@@ -18,6 +27,7 @@ import {
   HStack,
   Icon,
   Center,
+  Pressable,
 } from "native-base";
 
 const FormularioPlatillo = () => {
@@ -89,46 +99,54 @@ const FormularioPlatillo = () => {
 
   return (
     <NativeBaseProvider>
-      <View style={{ flex: 1 }}>
-        <FormControl>
-          <VStack space={5} alignItems="center" marginTop={10}>
-            <Text fontSize={30}>Cantidad </Text>
-          </VStack>
+      <View flex={1}>
+        <ImageBackground
+          source={background}
+          resizeMode="cover"
+          style={styles.imagen4}
+        >
+          <View style={{ flex: 1 }}>
+            <FormControl>
+              <VStack space={5} alignItems="center" marginTop={10}>
+                <Text color="white" fontSize={30}>
+                  Cantidad{" "}
+                </Text>
+              </VStack>
 
-          <VStack>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-              margin={6}
-            >
-              <Button
-                props
-                margin="2"
-                borderRadius={"full"}
-                style={{ height: 45, backgroundColor: "#000000" }}
-                onPress={() => decrementarUno()}
-              >
-                <Icon
+              <VStack>
+                <View
+                  style={{
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                  margin={6}
+                >
+                  <Button
+                    props
+                    margin="2"
+                    borderRadius={"full"}
+                    style={{ height: 45, backgroundColor: "green" }}
+                    onPress={() => decrementarUno()}
+                  >
+                    <Icon
                   style={{ fontSize: 30 }}
                   as={Ionicons}
                   name={Platform.OS ? "remove" : "remove"}
                   size="70"
-                  color="white"
+                  color="green"
                   textAlign="center"
                 />
-              </Button>
+                  </Button>
 
-              <View margin={1}>
-                <TextInput
-                  style={styles.input}
-                  onChangeText={(cantidad) => calcularCantidad(cantidad)}
-                  value={cantidad.toString()}
-                  keyboardType="numeric"
-                />
-                {/* <TextInput
+                  <View margin={1}>
+                    <TextInput
+                      style={styles.input}
+                      onChangeText={(cantidad) => calcularCantidad(cantidad)}
+                      value={cantidad.toString()}
+                      keyboardType="numeric"
+                    />
+                    {/* <TextInput
                   props
                   marginTop="9"
                   style={{ textAlign: "center", fontSize: 40 }}
@@ -137,63 +155,66 @@ const FormularioPlatillo = () => {
                   onChangeText={(cantidad) => calcularCantidad(cantidad)}
                   backgroundColor="blue"
                 /> */}
-              </View>
+                  </View>
 
+                  <Button
+                    props
+                    margin="2"
+                    borderRadius={"full"}
+                    style={{
+                      height: 45,
+
+                      justifyContent: "center",
+                      backgroundColor: "green",
+                    }}
+                    onPress={() => incrementarUno()}
+                  >
+                    <Icon
+                      style={{ fontSize: 30 }}
+                      as={Ionicons}
+                      name={Platform.OS ? "add" : "add"}
+                      size="70"
+                      color="black"
+                      textAlign="center"
+                    />
+                  </Button>
+                </View>
+
+                <View style={styles.cantidad1}>
+                  <Text
+                    style={{
+                      marginVertical: 25,
+                      textAlign: "center",
+                      fontSize: 28,
+                      fontWeight: "bold",
+                      height: "50",
+                      padding: 10,
+                      color:'white',
+                    }}
+                  >
+                    Subtotal: $ {total}
+                  </Text>
+                </View>
+              </VStack>
+            </FormControl>
+          </View>
+
+          <Box flex={0}>
+            <HStack paddingY={0} alignItems="center" safeAreaBottom shadow={9}>
               <Button
-                props
-                margin="2"
-                borderRadius={"full"}
-                style={{
-                  height: 45,
-
-                  justifyContent: "center",
-                  backgroundColor: "#000000",
-                }}
-                onPress={() => incrementarUno()}
+                height={16}
+                width="full"
+                style={globalStyles.boton}
+                onPress={() => confirmarOrden()}
               >
-                <Icon
-                  style={{ fontSize: 30 }}
-                  as={Ionicons}
-                  name={Platform.OS ? "add" : "add"}
-                  size="70"
-                  color="white"
-                  textAlign="center"
-                />
+                <Center>
+                  <Text style={styles.botonTexto1}>Agregar al pedido</Text>
+                </Center>
               </Button>
-            </View>
-
-            <View style={styles.cantidad1}>
-              <Text
-                style={{
-                  marginVertical: 25,
-                  textAlign: "center",
-                  fontSize: 28,
-                  fontWeight: "bold",
-                  height: "50",
-                  padding: 10,
-                }}
-              >
-                Subtotal: $ {total}
-              </Text>
-            </View>
-          </VStack>
-        </FormControl>
+            </HStack>
+          </Box>
+        </ImageBackground>
       </View>
-
-      <Box flex={0}>
-        <HStack paddingY={0} alignItems="center" safeAreaBottom shadow={9}>
-          <Button
-            height={16}
-            width="full"
-            style={globalStyles.boton}
-            onPress={() => confirmarOrden()}
-          >
-            <Center>
-              <Text style={styles.botonTexto1}>Agregar al pedido</Text>
-            </Center>
-          </Button>
-        </HStack>
-      </Box>
     </NativeBaseProvider>
   );
 };
@@ -214,6 +235,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 28,
     textAlign: "center",
+    color:'white'
+  },
+  imagen4: {
+    flex: 1,
+    justifyContent: "center",
   },
 });
 

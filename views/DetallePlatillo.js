@@ -11,7 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import PedidosContext from "../context/firebase/pedidos/pedidosContext";
 import { StyleSheet, ImageBackground } from "react-native";
-import background from "../assets/fotos/platos.jpeg";
+
 
 const DetallePlatillo = () => {
   // Pedido context
@@ -28,14 +28,20 @@ const DetallePlatillo = () => {
 
   return (
     <NativeBaseProvider>
-      <View flex={1}>
+      <View 
+      
+      flex={1}
+      justifyContent='center'
+      justifyItems='center'
+      >
         <ImageBackground
-          source={background}
+          source={require('../assets/fotos/platos.jpeg')}
           resizeMode="cover"
           style={styles.imagen4}
           imageStyle={styles.image}
         >
-          <View marginBottom={150}>
+          <View marginBottom={230}
+          >
             <View>
               {/* <Text style={styles.titulo2}>{nombre}</Text> */}
               <View>
@@ -84,6 +90,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
+    color:'white',
   },
   botonTexto2: {
     textTransform: "uppercase",
@@ -103,7 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    opacity: 0.5,
+    opacity: 1,
   },
 });
 
