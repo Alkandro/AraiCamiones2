@@ -8,12 +8,12 @@ import { BlurView } from "expo-blur";
 
 import { Box, HStack, Button, Center } from "native-base";
 
-import FirebaseContext from "../context/firebase/firebaseContext";
+import firebaseContextMatsushima from "../context/firebase/FirebaseStateMatsushima/firebaseContextMatsushima";
 import PedidoContext from "../context/firebase/pedidos/pedidosContext";
 
-const Menu = () => {
+const Menu1 = () => {
   //Context de firebase
-  const { menu, obtenerProductos, } = useContext(FirebaseContext);
+  const { menu, obtenerProductos, } = useContext(firebaseContextMatsushima);
 
   //Contex del Pedido
   const { seleccionarPlatillo } = useContext(PedidoContext);
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Menu;
+export default Menu1;
 
 
 

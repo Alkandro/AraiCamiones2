@@ -1,26 +1,27 @@
 import React, { useReducer } from "react";
 
-import firebase from "../../firebase";
-import FirebaseReducer from "./firebaseReducer";
-import FirebaseContext from "./firebaseContext";
+import firebase from "../../../firebase";
+import FirebaseReducerMatsushima from "./firebaseReducerMatsushima";
+import FirebaseContextMatsushima from "./firebaseContextMatsushima";
 
-import { OBTENER_PRODUCTOS_EXITO } from "../../types";
+import { OBTENER_PRODUCTOS_MATSUSHIMA } from "../../../types";
 import _ from "lodash";
 
-const FirebaseState = (props) => {
+
+const FirebaseStateMatsushima = (props) => {
   // Crear state inicial
   const initialState = {
     menu: [],
   };
 
   // useReducer con dispatch  para ejecutar las funciones
-  const [state, dispatch] = useReducer(FirebaseReducer, initialState);
+  const [state, dispatch] = useReducer(FirebaseReducerMatsushima, initialState);
 
   // Función que se ejecuta para traer los productos
   const obtenerProductos = () => {
     // consultar firebase
     firebase.db
-      .collection("productos")
+      .collection("matsushima")
       .where("existencia", "==", true) // traer solo los que esten en existencia
       .onSnapshot(manejarSnapshot);
 
@@ -39,14 +40,14 @@ const FirebaseState = (props) => {
 
       // Tenemos resultados de la base de datos
       dispatch({
-        type: OBTENER_PRODUCTOS_EXITO,
+        type: OBTENER_PRODUCTOS_MATSUSHIMA,
         payload: platillos,
       });
     }
   };
 
   return (
-    <FirebaseContext.Provider
+    <FirebaseContextMatsushima.Provider
       value={{
         menu: state.menu,
         firebase,
@@ -54,10 +55,8 @@ const FirebaseState = (props) => {
       }}
     >
       {props.children}
-    </FirebaseContext.Provider>
+    </FirebaseContextMatsushima.Provider>
   );
 };
 
-export default FirebaseState;
-
-
+export default FirebaseStateMatsushima;

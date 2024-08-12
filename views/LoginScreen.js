@@ -26,7 +26,7 @@ export default function Login(props) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       Alert.alert("Iniciando sesion", "Accediendo...");
-      props.navigation.navigate("Menu");
+      props.navigation.navigate("Matsushima");
     } catch (error) {
       console.log(error);
       Alert.alert("Error!", "El usuario o la contrasena son incorrectas");
