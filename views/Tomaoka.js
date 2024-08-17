@@ -11,9 +11,13 @@ import { Box, HStack, Button, Center } from "native-base";
 import firebaseContextTomaoka from "../context/firebase/FirebaseStateTomaoka/firebaseContextTomaoka"
 import PedidoContext from "../context/firebase/pedidos/pedidosContext";
 
-const Menu2 = () => {
+const Tomaoka = () => {
   //Context de firebase
   const { menu, obtenerProductos, } = useContext(firebaseContextTomaoka);
+
+//ordenar los das 
+const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+
 
   //Contex del Pedido
   const { seleccionarPlatillo } = useContext(PedidoContext);
@@ -67,7 +71,7 @@ const Menu2 = () => {
     >
       <ScrollView style={{ backgroundColor: "#FFF" }}>
         <View>
-          {menu.map((platillo, i) => {
+        {_.sortBy(menu, (platillo) => diasSemana.indexOf(platillo.dia)).map((platillo, i) => {
             const { imagen, nombre, descripcion, categoria, precio, id } =
               platillo;
 
@@ -144,7 +148,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Menu2;
+export default Tomaoka;
 
 
 

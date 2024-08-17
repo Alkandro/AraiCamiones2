@@ -8,12 +8,12 @@ import { BlurView } from "expo-blur";
 
 import { Box, HStack, Button, Center } from "native-base";
 
-import firebaseContextMatsushima from "../context/firebase/FirebaseStateMatsushima/firebaseContextMatsushima";
+import firebaseContextHoshino from "../context/firebase/FirebaseStateHoshino/firebaseContextHoshino"
 import PedidoContext from "../context/firebase/pedidos/pedidosContext";
 
-const Matsushima = () => {
+const Hoshino = () => {
   //Context de firebase
-  const { menu, obtenerProductos, } = useContext(firebaseContextMatsushima);
+  const { menu, obtenerProductos, } = useContext(firebaseContextHoshino);
 
   //Contex del Pedido
   const { seleccionarPlatillo } = useContext(PedidoContext);
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Matsushima;
+export default Hoshino;
 
 
 

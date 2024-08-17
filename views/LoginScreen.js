@@ -23,14 +23,30 @@ export default function Login(props) {
   const [password, setPassword] = useState();
 
   const logueo = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
+    if (email === 'Tomaoka' && password === '123456') {
       Alert.alert("Iniciando sesion", "Accediendo...");
-      props.navigation.navigate("Matsushima");
-    } catch (error) {
-      console.log(error);
+      props.navigation.navigate('Tomaoka');
+     } else if (email === 'Matsushima' && password === '123456') {
+        Alert.alert("Iniciando sesion", "Accediendo...");
+        props.navigation.navigate('Matsushima');
+      } else if (email === 'Hoshino' && password === '123456') {
+        Alert.alert("Iniciando sesion", "Accediendo...");
+        props.navigation.navigate('Hoshino');
+      } else if (email === 'Menu' && password === '123456') {
+          Alert.alert("Iniciando sesion", "Accediendo...");
+          props.navigation.navigate('Menu');
+    } else {
       Alert.alert("Error!", "El usuario o la contrasena son incorrectas");
-    }
+      props.navigation.navigate('LoginScreen');
+    } 
+    // try {
+    //   await signInWithEmailAndPassword(auth, email, password);
+    //   Alert.alert("Iniciando sesion", "Accediendo...");
+    //   props.navigation.navigate("Matsushima");
+    // } catch (error) {
+    //   console.log(error);
+    //   Alert.alert("Error!", "El usuario o la contrasena son incorrectas");
+    // }
   };
 
   return (
