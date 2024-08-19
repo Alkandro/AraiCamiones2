@@ -15,10 +15,6 @@ const Tomaoka = () => {
   //Context de firebase
   const { menu, obtenerProductos, } = useContext(firebaseContextTomaoka);
 
-//ordenar los das 
-const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
-
-
   //Contex del Pedido
   const { seleccionarPlatillo } = useContext(PedidoContext);
 
@@ -71,7 +67,7 @@ const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sába
     >
       <ScrollView style={{ backgroundColor: "#FFF" }}>
         <View>
-        {_.sortBy(menu, (platillo) => diasSemana.indexOf(platillo.dia)).map((platillo, i) => {
+          {menu.map((platillo, i) => {
             const { imagen, nombre, descripcion, categoria, precio, id } =
               platillo;
 

@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
+    "@babel/helper-create-regexp-features-plugin": "^7.25.2",
     "react-native-dotenv": "^3.4.9"
   },
   "private": true,
