@@ -23,15 +23,15 @@ export default function Login(props) {
   const [password, setPassword] = useState();
 
   const logueo = async () => {
-    if (email === 'Tomaoka' && password === '123456') {
+    if (email === 'To' && password === '12') {
       Alert.alert("Iniciando sesion", "Accediendo...");
-      props.navigation.navigate('Tomaoka');
+      props.navigation.navigate('TomaokaDrawer');
      } else if (email === 'Matsushima' && password === '123456') {
         Alert.alert("Iniciando sesion", "Accediendo...");
         props.navigation.navigate('Matsushima');
-      } else if (email === 'Hoshino' && password === '123456') {
+      } else if (email === 'Ho' && password === '12') {
         Alert.alert("Iniciando sesion", "Accediendo...");
-        props.navigation.navigate('Hoshino');
+        props.navigation.navigate('HoshinoDrawer');
       } else if (email === 'Menu' && password === '123456') {
           Alert.alert("Iniciando sesion", "Accediendo...");
           props.navigation.navigate('Menu');

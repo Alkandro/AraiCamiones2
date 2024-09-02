@@ -22,7 +22,7 @@ const NuevaOrden = () => {
           <Button
             style={styles.boton1}
             rounded="2xl"
-            onPress={() => navigation.navigate("Menu")}
+            onPress={() => navigation.navigate("Hoshino")}
           >
             <Text style={globalStyles.botonTexto}>Crear Nueva Orden</Text>
           </Button>
