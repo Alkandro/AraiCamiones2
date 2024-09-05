@@ -23,23 +23,15 @@ import ProgresoPedido from "./views/ProgresoPedido";
 import Matsushima from "./views/Matsushima";
 import Tomaoka from "./views/Tomaoka";
 //Hoshino
-import Lunes from "./views/Hoshino/Lunes";
-import Martes from "./views/Hoshino/Martes";
-import Miercoles from "./views/Hoshino/Miercoles";
-import Jueves from "./views/Hoshino/Jueves";
-import Viernes from "./views/Hoshino/Viernes";
-import Sabado from "./views/Hoshino/Sabado";
-import Domingo from "./views/Hoshino/Domingo";
-//Tokaoka
+import LunesHoshino from "./views/Hoshino/LunesHoshino";
+import MartesHoshino from "./views/Hoshino/MartesHoshino";
+import MiercolesHoshino from "./views/Hoshino/MiercolesHoshino";
+import JuevesHoshino from "./views/Hoshino/JuevesHoshino";
+import ViernesHoshino from "./views/Hoshino/ViernesHoshino";
+import SabadoHoshino from "./views/Hoshino/SabadoHoshino";
+import DomingoHoshino from "./views/Hoshino/DomingoHoshino";
+//Tomaoka
 import LunesTomaoka from "./views/Tomaoka/LunesTomaoka";
-// import Martes from "./views/Hoshino/Martes";
-// import Miercoles from "./views/Hoshino/Miercoles";
-// import Jueves from "./views/Hoshino/Jueves";
-// import Viernes from "./views/Hoshino/Viernes";
-// import Sabado from "./views/Hoshino/Sabado";
-// import Domingo from "./views/Hoshino/Domingo";
-
-
 
 import LoginScreen from "./views/LoginScreen";
 
@@ -53,19 +45,15 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 // Componente personalizado para el contenido del Drawer con efecto Blur
-const CustomDrawerContent = (props) => (
+const CustomDrawerContent = ({ drawerTitle, ...props }) => (
   <View style={styles.drawerContainer}>
-    {/* Aplica el efecto blur */}
+    <View style={styles.backgroundOverlay} />
     <BlurView tint="dark" intensity={50} style={styles.blurView} />
-    {/* Encabezado personalizado */}
     <View style={styles.drawerHeader}>
-      <Image
-        source={avatar} // Usa la imagen de los activos
-        style={styles.drawerImage}
-      />
-      <Text style={styles.drawerTitle}>Hoshino</Text>
+      <Image source={avatar} style={styles.drawerImage} />
+      <Text style={styles.drawerTitle}>{drawerTitle}</Text>
+      {/* Título personalizado */}
     </View>
-    {/* Contenido del drawer */}
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
     </DrawerContentScrollView>
@@ -74,148 +62,150 @@ const CustomDrawerContent = (props) => (
 
 const HoshinoDrawer = () => {
   return (
+    
     <Drawer.Navigator
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      drawerContent={(props) => (
+        <CustomDrawerContent {...props} drawerTitle="Hoshino" />
+      )}
       screenOptions={{
         drawerStyle: {
-          backgroundColor: "transparent", // Fondo transparente para que se vea el blur
+          backgroundColor: "transparent",
           width: 200,
+          height: "100%",
         },
         drawerActiveTintColor: "#17f502",
-        drawerInactiveTintColor: "#fcfcfc", // Color de las letras inactivas
+        drawerInactiveTintColor: "#fcfcfc",
         drawerLabelStyle: {
-          color: "#fcfcfc", // Color de las letras activas
-          fontSize: 14, // Tamaño del texto
-          fontWeight: "bold", // Peso del texto
+          color: "#fcfcfc",
+          fontSize: 14,
+          fontWeight: "bold",
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
     >
+      
       <Drawer.Screen
         name="Lunes"
-        component={Lunes}
+        component={LunesHoshino}
         options={{
           title: "Lunes",
           drawerIcon: ({ focused, color, size }) => (
             <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
               color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
+            />
           ),
         }}
       />
       <Drawer.Screen
         name="Martes"
-        component={Martes}
+        component={MartesHoshino}
         options={{
           title: "Martes",
           drawerIcon: ({ focused, color, size }) => (
             <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
               color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
+            />
           ),
         }}
       />
       <Drawer.Screen
         name="Miercoles"
-        component={Miercoles}
+        component={MiercolesHoshino}
         options={{
           title: "Miercoles",
           drawerIcon: ({ focused, color, size }) => (
             <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
               color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
+            />
           ),
         }}
       />
       <Drawer.Screen
         name="Jueves"
-        component={Jueves}
+        component={JuevesHoshino}
         options={{
           title: "Jueves",
           drawerIcon: ({ focused, color, size }) => (
             <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
               color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
+            />
           ),
         }}
       />
       <Drawer.Screen
         name="Viernes"
-        component={Viernes}
+        component={ViernesHoshino}
         options={{
           title: "Viernes",
           drawerIcon: ({ focused, color, size }) => (
             <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
               color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
+            />
           ),
         }}
       />
       <Drawer.Screen
         name="Sabado"
-        component={Sabado}
+        component={SabadoHoshino}
         options={{
           title: "Sabado",
           drawerIcon: ({ focused, color, size }) => (
             <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
               color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
+            />
           ),
         }}
       />
       <Drawer.Screen
         name="Domingo"
-        component={Domingo}
+        component={DomingoHoshino}
         options={{
           title: "Domingo",
           drawerIcon: ({ focused, color, size }) => (
             <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
               color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
+            />
           ),
         }}
       />
-      {/* Puedes agregar más Drawer.Screen aquí si es necesario */}
+      
     </Drawer.Navigator>
+    
   );
 };
 
 const TomaokaDrawer = () => {
   return (
     <Drawer.Navigator
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      drawerContent={(props) => (
+        <CustomDrawerContent {...props} drawerTitle="Tomaoka" />
+      )}
       screenOptions={{
         drawerStyle: {
-          backgroundColor: "transparent", // Fondo transparente para que se vea el blur
+          backgroundColor: "transparent",
           width: 200,
+          height: "100%",
         },
         drawerActiveTintColor: "#17f502",
-        drawerInactiveTintColor: "#fcfcfc", // Color de las letras inactivas
+        drawerInactiveTintColor: "#fcfcfc",
         drawerLabelStyle: {
-          color: "#fcfcfc", // Color de las letras activas
-          fontSize: 14, // Tamaño del texto
-          fontWeight: "bold", // Peso del texto
+          color: "#fcfcfc",
+          fontSize: 14,
+          fontWeight: "bold",
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -227,105 +217,13 @@ const TomaokaDrawer = () => {
           title: "Lunes",
           drawerIcon: ({ focused, color, size }) => (
             <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
               color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
+            />
           ),
         }}
       />
-      {/* <Drawer.Screen
-        name="Martes"
-        component={Martes}
-        options={{
-          title: "Martes",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
-              color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="Miercoles"
-        component={Miercoles}
-        options={{
-          title: "Miercoles",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
-              color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="Jueves"
-        component={Jueves}
-        options={{
-          title: "Jueves",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
-              color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="Viernes"
-        component={Viernes}
-        options={{
-          title: "Viernes",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
-              color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="Sabado"
-        component={Sabado}
-        options={{
-          title: "Sabado",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
-              color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="Domingo"
-        component={Domingo}
-        options={{
-          title: "Domingo",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"} // Cambia el ícono según si está enfocado
-              size={size} // Usa el tamaño que proporciona `size`
-              color={focused ? "#17f502" : color}
-            /> // Cambia el color si está enfocado
-            //  name="truck" size={15} color={"#0a0a09"} />
-          ),
-        }}
-      /> */}
-      {/* Puedes agregar más Drawer.Screen aquí si es necesario */}
     </Drawer.Navigator>
   );
 };
@@ -383,14 +281,7 @@ const App = () => {
                   <Stack.Screen
                     name="TomaokaDrawer"
                     component={TomaokaDrawer}
-                    options={{
-                      title: "Tomaoka",
-                      headerBackTitleStyle: {
-                        fontSize: 15,
-                        color: "green",
-                        fontStyle: "italic",
-                      },
-                    }}
+                    options={{ title: "Tomaoka", headerShown: false }}
                   />
                   <Stack.Screen
                     name="HoshinoDrawer"
@@ -403,35 +294,31 @@ const App = () => {
                     options={{
                       title: "DetallePlatillo",
                       headerBackTitle: "Menu",
-                      headerBackTitleStyle: {
-                        fontSize: 20,
-                        color: "green",
-                        fontStyle: "italic",
-                      },
                     }}
                   />
                   <Stack.Screen
                     name="FormularioPlatillo"
                     component={FormularioPlatillo}
                     options={{
-                      title: "Ordenar Platillo",
-                      headerBackTitle: "Detalle",
-                      headerBackTitleStyle: {
-                        fontSize: 20,
-                        color: "green",
-                        fontStyle: "italic",
-                      },
+                      title: "FormularioPlatillo",
+                      headerBackTitle: "Menu",
                     }}
                   />
                   <Stack.Screen
                     name="ResumenPedido"
                     component={ResumenPedido}
-                    options={{ title: "Resumen del Pedido" }}
+                    options={{
+                      title: "ResumenPedido",
+                      headerBackTitle: "Menu",
+                    }}
                   />
                   <Stack.Screen
                     name="ProgresoPedido"
                     component={ProgresoPedido}
-                    options={{ title: "Progreso del Pedido" }}
+                    options={{
+                      title: "ProgresoPedido",
+                      headerBackTitle: "Menu",
+                    }}
                   />
                 </Stack.Navigator>
               </NavigationContainer>
@@ -443,13 +330,18 @@ const App = () => {
   );
 };
 
-// Estilos
 const styles = StyleSheet.create({
   drawerContainer: {
     flex: 1,
+    backgroundColor: "transparent",
+    // Asegúrate de que el contenedor ocupe toda la altura disponible
+  },
+  backgroundOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "#00000080", // Fondo semi-transparente
   },
   blurView: {
-    ...StyleSheet.absoluteFillObject,
+    marginTop: 20,
   },
   drawerHeader: {
     alignItems: "center",
@@ -459,13 +351,13 @@ const styles = StyleSheet.create({
   drawerImage: {
     width: 80,
     height: 80,
-    borderRadius: 40, // Hace la imagen circular
-    marginBottom: 10,
+    borderRadius: 40,
   },
   drawerTitle: {
-    color: "#ffffff",
-    fontSize: 18,
+    color: "#fcfcfc",
+    fontSize: 20,
     fontWeight: "bold",
+    marginTop: 10,
   },
 });
 
