@@ -3,14 +3,14 @@ import { NativeBaseProvider, View, Image, Text, List, ScrollView, Pressable } fr
 import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
 import { Button, Center } from "native-base";
-import firebaseContextHoshino from "../../context/firebase/FirebaseStateHoshino/firebaseContextHoshino";
+import firebaseContextHoshinoMartes from "../../context/firebase/FirebaseStateHoshinoMartes/firebaseContextHoshinoMartes";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import { useContext, useEffect } from "react";
 import { StyleSheet } from "react-native";
 
 const Hoshino = () => {
   // Context de Firebase
-  const { menu, obtenerProductos } = useContext(firebaseContextHoshino);
+  const { menu, obtenerProductos } = useContext(firebaseContextHoshinoMartes);
 
   // Context del Pedido
   const { seleccionarPlatillo } = useContext(PedidoContext);
@@ -63,7 +63,7 @@ const Hoshino = () => {
                     <View>
                       <Text>{platillo.nombre} </Text>
                       <Text numberOfLines={2}>{platillo.descripcion}</Text>
-                      <Text>Precio: $ {platillo.precio} </Text>
+                      <Text>Hora de salida {platillo.precio} </Text>
                     </View>
                   </List>
                 </Pressable>

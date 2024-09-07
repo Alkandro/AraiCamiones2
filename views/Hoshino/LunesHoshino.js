@@ -108,7 +108,7 @@ const Hoshino = () => {
                     <View>
                       <Text>{platillo.nombre} </Text>
                       <Text numberOfLines={2}>{platillo.descripcion}</Text>
-                      <Text>Horario: $ {platillo.precio} </Text>
+                      <Text>Hora de salida {platillo.precio} </Text>
                     </View>
                   </List>
                 </Pressable>
