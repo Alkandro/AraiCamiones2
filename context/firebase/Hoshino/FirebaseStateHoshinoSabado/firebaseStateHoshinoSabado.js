@@ -1,13 +1,13 @@
 import React, { useReducer } from "react";
 
-import firebase from "../../../firebase";
-import FirebaseReducerHoshino from "../FirebaseStateHoshino/firebaseReducerHoshino";
-import FirebaseContextHoshinoMartes from "./firebaseContextHoshinoMartes";
+import firebase from "../../../../firebase";
+import FirebaseReducerHoshino from "../../FirebaseStateHoshino/firebaseReducerHoshino";
+import FirebaseContextHoshinoSabado from "./firebaseContextHoshinoSabado";
 
-import { OBTENER_PRODUCTOS_HOSHINO } from "../../../types";
+import { OBTENER_PRODUCTOS_HOSHINO } from "../../../../types";
 import _ from "lodash";
 
-const FirebaseStateHoshinoMartes = (props) => {
+const FirebaseStateHoshinoSabado = (props) => {
   // Crear state inicial
   const initialState = {
     menu: [],
@@ -23,7 +23,7 @@ const FirebaseStateHoshinoMartes = (props) => {
     
 
     firebase.db
-      .collection("hoshinoMartes")
+      .collection("hoshinoSabado")
       .where("existencia", "==", true) // traer solo los que esten en existencia
       .onSnapshot(manejarSnapshot);
 
@@ -50,7 +50,7 @@ const FirebaseStateHoshinoMartes = (props) => {
   };
 
   return (
-    <FirebaseContextHoshinoMartes.Provider
+    <FirebaseContextHoshinoSabado.Provider
       value={{
         menu: state.menu,
         firebase,
@@ -58,8 +58,8 @@ const FirebaseStateHoshinoMartes = (props) => {
       }}
     >
       {props.children}
-    </FirebaseContextHoshinoMartes.Provider>
+    </FirebaseContextHoshinoSabado.Provider>
   );
 };
 
-export default FirebaseStateHoshinoMartes;
+export default FirebaseStateHoshinoSabado;

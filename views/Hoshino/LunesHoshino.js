@@ -48,7 +48,7 @@ import { NativeBaseProvider, View, Image, Text, List, ScrollView, Pressable } fr
 import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
 import { Button, Center } from "native-base";
-import firebaseContextHoshino from "../../context/firebase/FirebaseStateHoshino/firebaseContextHoshino";
+import firebaseContextHoshino from '../../context/firebase/FirebaseStateHoshino/firebaseContextHoshino';
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import { useContext, useEffect } from "react";
 import { StyleSheet } from "react-native";

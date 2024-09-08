@@ -22,6 +22,7 @@ import ResumenPedido from "./views/ResumenPedido";
 import ProgresoPedido from "./views/ProgresoPedido";
 import Matsushima from "./views/Matsushima";
 import Tomaoka from "./views/Tomaoka";
+
 //Hoshino
 import LunesHoshino from "./views/Hoshino/LunesHoshino";
 import MartesHoshino from "./views/Hoshino/MartesHoshino";
@@ -30,6 +31,7 @@ import JuevesHoshino from "./views/Hoshino/JuevesHoshino";
 import ViernesHoshino from "./views/Hoshino/ViernesHoshino";
 import SabadoHoshino from "./views/Hoshino/SabadoHoshino";
 import DomingoHoshino from "./views/Hoshino/DomingoHoshino";
+
 //Tomaoka
 import LunesTomaoka from "./views/Tomaoka/LunesTomaoka";
 
@@ -39,9 +41,14 @@ import FirebaseState from "./context/firebase/firebaseState";
 import FirebaseStateMatsushima from "./context/firebase/FirebaseStateMatsushima/firebaseStateMatsushima";
 import FirebaseStateTomaoka from "./context/firebase/FirebaseStateTomaoka/firebaseStateTomaoka";
 
+//HOSHINO
 import FirebaseStateHoshino from "./context/firebase/FirebaseStateHoshino/firebaseStateHoshino";
 import FirebaseStateHoshinoMartes from "./context/firebase/FirebaseStateHoshinoMartes/firebaseStateHoshinoMartes";
-
+import FirebaseStateHoshinoMiercoles from "./context/firebase/Hoshino/FirebaseStateHoshinoMiercoles/firebaseStateHoshinoMiercoles";
+import FirebaseStateHoshinoJueves from "./context/firebase/Hoshino/FirebaseStateHoshinoJueves/firebaseStateHoshinoJueves";
+import FirebaseStateHoshinoViernes from "./context/firebase/Hoshino/FirebaseStateHoshinoViernes/firebaseStateHoshinoViernes";
+import FirebaseStateHoshinoSabado from "./context/firebase/Hoshino/FirebaseStateHoshinoSabado/firebaseStateHoshinoSabado";
+import FirebaseStateHoshinoDomingo from "./context/firebase/Hoshino/FirebaseStateHoshinoDomingo/firebaseStateHoshinoDomingo";
 
 import PedidosState from "./context/firebase/pedidos/pedidosState";
 
@@ -66,7 +73,6 @@ const CustomDrawerContent = ({ drawerTitle, ...props }) => (
 
 const HoshinoDrawer = () => {
   return (
-    
     <Drawer.Navigator
       drawerContent={(props) => (
         <CustomDrawerContent {...props} drawerTitle="Hoshino" />
@@ -87,7 +93,6 @@ const HoshinoDrawer = () => {
         drawerItemStyle: { marginVertical: 10 },
       }}
     >
-      
       <Drawer.Screen
         name="Lunes"
         component={LunesHoshino}
@@ -186,9 +191,7 @@ const HoshinoDrawer = () => {
           ),
         }}
       />
-      
     </Drawer.Navigator>
-    
   );
 };
 
@@ -235,105 +238,122 @@ const TomaokaDrawer = () => {
 const App = () => {
   return (
     <FirebaseStateMatsushima>
-      
-<FirebaseStateHoshinoMartes>
-  <FirebaseStateHoshino>
-        <FirebaseStateTomaoka>
-          <FirebaseState>
-            <PedidosState>
-              <NavigationContainer>
-                <Stack.Navigator initialRouteName="LoginScreen">
-                  <Stack.Screen
-                    name="LoginScreen"
-                    component={LoginScreen}
-                    options={{ title: "LoginScreen", headerShown: false }}
-                  />
-                  <Stack.Screen
-                    name="NuevaOrden"
-                    component={NuevaOrden}
-                    options={{
-                      headerBackTitle: "Salir",
-                      headerBackTitleStyle: {
-                        fontSize: 20,
-                        color: "red",
-                        fontVariant: "proportional-nums",
-                      },
-                    }}
-                  />
-                  <Stack.Screen
-                    name="Menu"
-                    component={Menu}
-                    options={{
-                      title: "Menu",
-                      headerBackTitleStyle: {
-                        fontSize: 15,
-                        color: "green",
-                        fontStyle: "italic",
-                      },
-                    }}
-                  />
-                  <Stack.Screen
-                    name="Matsushima"
-                    component={Matsushima}
-                    options={{
-                      title: "Matsushima",
-                      headerBackTitleStyle: {
-                        fontSize: 15,
-                        color: "green",
-                        fontStyle: "italic",
-                      },
-                    }}
-                  />
-                  <Stack.Screen
-                    name="TomaokaDrawer"
-                    component={TomaokaDrawer}
-                    options={{ title: "Tomaoka", headerShown: false }}
-                  />
-                  <Stack.Screen
-                    name="HoshinoDrawer"
-                    component={HoshinoDrawer}
-                    options={{ title: "Hoshino", headerShown: false }}
-                  />
-                  <Stack.Screen
-                    name="DetallePlatillo"
-                    component={DetallePlatillo}
-                    options={{
-                      title: "DetallePlatillo",
-                      headerBackTitle: "Menu",
-                    }}
-                  />
-                  <Stack.Screen
-                    name="FormularioPlatillo"
-                    component={FormularioPlatillo}
-                    options={{
-                      title: "FormularioPlatillo",
-                      headerBackTitle: "Menu",
-                    }}
-                  />
-                  <Stack.Screen
-                    name="ResumenPedido"
-                    component={ResumenPedido}
-                    options={{
-                      title: "ResumenPedido",
-                      headerBackTitle: "Menu",
-                    }}
-                  />
-                  <Stack.Screen
-                    name="ProgresoPedido"
-                    component={ProgresoPedido}
-                    options={{
-                      title: "ProgresoPedido",
-                      headerBackTitle: "Menu",
-                    }}
-                  />
-                </Stack.Navigator>
-              </NavigationContainer>
-            </PedidosState>
-          </FirebaseState>
-        </FirebaseStateTomaoka>
-        </FirebaseStateHoshino>
-</FirebaseStateHoshinoMartes>
-      
+      <FirebaseStateHoshinoDomingo>
+        <FirebaseStateHoshinoSabado>
+          <FirebaseStateHoshinoViernes>
+            <FirebaseStateHoshinoJueves>
+              <FirebaseStateHoshinoMiercoles>
+                <FirebaseStateHoshinoMartes>
+                  <FirebaseStateHoshino>
+                    <FirebaseStateTomaoka>
+                      <FirebaseState>
+                        <PedidosState>
+                          <NavigationContainer>
+                            <Stack.Navigator initialRouteName="LoginScreen">
+                              <Stack.Screen
+                                name="LoginScreen"
+                                component={LoginScreen}
+                                options={{
+                                  title: "LoginScreen",
+                                  headerShown: false,
+                                }}
+                              />
+                              <Stack.Screen
+                                name="NuevaOrden"
+                                component={NuevaOrden}
+                                options={{
+                                  headerBackTitle: "Salir",
+                                  headerBackTitleStyle: {
+                                    fontSize: 20,
+                                    color: "red",
+                                    fontVariant: "proportional-nums",
+                                  },
+                                }}
+                              />
+                              <Stack.Screen
+                                name="Menu"
+                                component={Menu}
+                                options={{
+                                  title: "Menu",
+                                  headerBackTitleStyle: {
+                                    fontSize: 15,
+                                    color: "green",
+                                    fontStyle: "italic",
+                                  },
+                                }}
+                              />
+                              <Stack.Screen
+                                name="Matsushima"
+                                component={Matsushima}
+                                options={{
+                                  title: "Matsushima",
+                                  headerBackTitleStyle: {
+                                    fontSize: 15,
+                                    color: "green",
+                                    fontStyle: "italic",
+                                  },
+                                }}
+                              />
+                              <Stack.Screen
+                                name="TomaokaDrawer"
+                                component={TomaokaDrawer}
+                                options={{
+                                  title: "Tomaoka",
+                                  headerShown: false,
+                                }}
+                              />
+                              <Stack.Screen
+                                name="HoshinoDrawer"
+                                component={HoshinoDrawer}
+                                options={{
+                                  title: "Hoshino",
+                                  headerShown: false,
+                                }}
+                              />
+                              <Stack.Screen
+                                name="DetallePlatillo"
+                                component={DetallePlatillo}
+                                options={{
+                                  title: "DetallePlatillo",
+                                  headerBackTitle: "Menu",
+                                }}
+                              />
+                              <Stack.Screen
+                                name="FormularioPlatillo"
+                                component={FormularioPlatillo}
+                                options={{
+                                  title: "FormularioPlatillo",
+                                  headerBackTitle: "Menu",
+                                }}
+                              />
+                              <Stack.Screen
+                                name="ResumenPedido"
+                                component={ResumenPedido}
+                                options={{
+                                  title: "ResumenPedido",
+                                  headerBackTitle: "Menu",
+                                }}
+                              />
+                              <Stack.Screen
+                                name="ProgresoPedido"
+                                component={ProgresoPedido}
+                                options={{
+                                  title: "ProgresoPedido",
+                                  headerBackTitle: "Menu",
+                                }}
+                              />
+                            </Stack.Navigator>
+                          </NavigationContainer>
+                        </PedidosState>
+                      </FirebaseState>
+                    </FirebaseStateTomaoka>
+                  </FirebaseStateHoshino>
+                </FirebaseStateHoshinoMartes>
+              </FirebaseStateHoshinoMiercoles>
+            </FirebaseStateHoshinoJueves>
+          </FirebaseStateHoshinoViernes>
+        </FirebaseStateHoshinoSabado>
+      </FirebaseStateHoshinoDomingo>
     </FirebaseStateMatsushima>
   );
 };

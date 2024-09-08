@@ -56,7 +56,7 @@ const DetallePlatillo = () => {
                   borderWidth= {0.9}
                 />
                 <Text style={styles.descripcion2}>{descripcion}</Text>
-                <Text style={styles.precio2}>Precio: $ {precio}</Text>
+                <Text style={styles.precio2}>Horario de salida {precio}</Text>
               </View>
               <View>
                 <Button
