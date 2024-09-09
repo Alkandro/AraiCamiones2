@@ -154,6 +154,8 @@ const ResumenPedido = () => {
                           <Text fontWeight="bold">Cantidad: {cantidad}</Text>
                           <Text fontWeight="bold">Precio: $ {precio} </Text>
                         </View>
+
+                        {/* //BOTON PARA ELIMINAR  */}
                         <View>
                           <Pressable
                             onPress={() => confirmarEliminacion(id)}
@@ -170,6 +172,8 @@ const ResumenPedido = () => {
                             />
                           </Pressable>
                         </View>
+
+
                       </List>
                     </VStack>
                   );
