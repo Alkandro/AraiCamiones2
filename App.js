@@ -78,11 +78,6 @@ const HoshinoDrawer = () => {
         <CustomDrawerContent {...props} drawerTitle="Hoshino" />
       )}
       screenOptions={{
-        drawerStyle: {
-          backgroundColor: "transparent",
-          width: 200,
-          height: "100%",
-        },
         drawerActiveTintColor: "#17f502",
         drawerInactiveTintColor: "#fcfcfc",
         drawerLabelStyle: {
@@ -98,14 +93,30 @@ const HoshinoDrawer = () => {
         component={LunesHoshino}
         options={{
           title: "Lunes",
+           // Cambiar color de fondo y el estilo del header
+    headerStyle: {
+      backgroundColor: "#3d783c", // Color de fondo del header
+    },
+    headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+    headerTitleStyle: {
+      fontWeight: "bold", // Puedes personalizar más el estilo del título
+    },
+    // Cambiar el icono del Drawer
           drawerIcon: ({ focused, color, size }) => (
             <Icon
               name={focused ? "truck-fast" : "truck-ramp-box"}
               size={size}
               color={focused ? "#17f502" : color}
+              
             />
-          ),
-        }}
+            ),
+            // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+            drawerStyle: {
+              backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+              width: 210,
+              height: "100%",
+            },
+          }}
       />
       <Drawer.Screen
         name="Martes"

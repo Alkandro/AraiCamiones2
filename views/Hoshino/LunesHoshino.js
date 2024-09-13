@@ -1,197 +1,3 @@
-// import React, { useContext, useEffect } from 'react';
-// import { ScrollView, Pressable } from 'react-native';
-// import { View, Text, Image } from 'native-base';
-// import { useNavigation } from '@react-navigation/native';
-// import firebaseContextHoshino from '../../context/firebase/FirebaseStateHoshino/firebaseContextHoshino';
-// import PedidoContext from '../../context/firebase/pedidos/pedidosContext';
-
-// const Lunes = () => {
-//   const { menu, obtenerProductos } = useContext(firebaseContextHoshino);
-//   const { seleccionarPlatillo } = useContext(PedidoContext);
-//   const navigation = useNavigation();
-
-//   useEffect(() => {
-//     obtenerProductos();
-//   }, [obtenerProductos]);
-
-//   // Filtra los platillos para mostrar solo los del lunes
-//   const platillosLunes = menu.filter(platillo => platillo.categoria === 'lunes');
-
-//   return (
-//     <ScrollView>
-//       {platillosLunes.map((platillo) => (
-//         <Pressable
-//           key={platillo.id}
-//           onPress={() => {
-//             seleccionarPlatillo(platillo);
-//             navigation.navigate('DetallePlatillo');
-//           }}
-//         >
-//           <View>
-//             <Image source={{ uri: platillo.imagen }} alt="imagen" size={100} />
-//             <Text>{platillo.nombre}</Text>
-//             <Text>{platillo.descripcion}</Text>
-//             <Text>Precio: $ {platillo.precio}</Text>
-//           </View>
-//         </Pressable>
-//       ))}
-//     </ScrollView>
-//   );
-// };
-
-// export default Lunes;
-
-// import { useNavigation } from "@react-navigation/native";
-// import { NativeBaseProvider, View, Image, Text, List, ScrollView, Pressable } from "native-base";
-// import globalStyles from "../../styles/global";
-// import { BlurView } from "expo-blur";
-// import { useContext, useEffect } from "react";
-// import { StyleSheet, Alert } from "react-native";
-// import AntDesign from "react-native-vector-icons/AntDesign";
-// import firebaseContextHoshino from '../../context/firebase/FirebaseStateHoshino/firebaseContextHoshino';
-// import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
-
-// const Hoshino = () => {
-//   // Context de Firebase
-//   const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(firebaseContextHoshino);
-
-//   // Context del Pedido
-//   const { seleccionarPlatillo } = useContext(PedidoContext);
-
-//   // Hook para redireccionar
-//   const navigation = useNavigation();
-
-//   useEffect(() => {
-//     obtenerProductos();
-//   }, []);
-
-//   // Categoría que deseas filtrar
-//   const categoriaDeseada = 'lunes'; // Cambia esto por la categoría que necesites
-
-//   // Filtrar platillos por categoría específica
-//   const platillosFiltrados = menu.filter(platillo => platillo.categoria === categoriaDeseada);
-
-//   // Agrupar platillos por categoría (para esta categoría específica)
-//   const categorias = {
-//     [categoriaDeseada]: platillosFiltrados
-//   };
-
-//   // Elimina un producto de Firebase
-//   const eliminarProducto = async (platilloId) => {
-//     try {
-//       await eliminarProductoFirebase(platilloId); // Llama a la función del contexto que interactúa con Firebase
-//       obtenerProductos(); // Actualiza el menú después de eliminar el producto
-//     } catch (error) {
-//       console.error("Error eliminando producto:", error);
-//     }
-//   };
-
-//   // Confirmar antes de eliminar un producto
-//   const confirmarEliminacion = (platilloId) => {
-//     Alert.alert(
-//       "Deseas eliminar este artículo?",
-//       "Una vez eliminado no se puede recuperar",
-//       [
-//         {
-//           text: "Confirmar",
-//           onPress: () => eliminarProducto(platilloId),
-//         },
-//         { text: "Cancelar", style: "cancel" },
-//       ]
-//     );
-//   };
-
-//   return (
-//     <NativeBaseProvider style={globalStyles.contenedor}>
-//       <ScrollView style={{ backgroundColor: "#FFF" }}>
-//         <View>
-//           {Object.keys(categorias).map((categoria) => (
-//             <View key={categoria}>
-//               <View style={styles.separador}>
-//                 <Text style={styles.separadorTexto}>{categoria}</Text>
-//               </View>
-//               {categorias[categoria].map((platillo) => (
-//                 <Pressable
-//                   key={platillo.id}
-//                   onPress={() => {
-//                     const { existencia, ...platillo2 } = platillo;
-//                     seleccionarPlatillo(platillo2);
-//                     navigation.navigate("DetallePlatillo");
-//                   }}
-//                 >
-//                   <List style={{ flexDirection: "row", alignItems: "center" }}>
-//                     <View mx={5}>
-//                       <Image
-//                         source={{ uri: platillo.imagen }}
-//                         alt="desde firebase"
-//                         size={100}
-//                         borderRadius={16}
-//                       />
-//                     </View>
-//                     <View>
-//                       <Text>{platillo.nombre} </Text>
-//                       <Text
-//                       numberOfLines={3}
-//                       style={styles.descripcion}
-//                       >{platillo.descripcion}</Text>
-//                       <Text>Hora de salida {platillo.precio} </Text>
-//                     </View>
-
-//                     {/* Botón para eliminar */}
-//                     <View>
-//                       <Pressable
-//                         onPress={() => confirmarEliminacion(platillo.id)}
-//                         full
-//                         padding={5}
-//                         style={{ marginTop: "center" }}
-//                       >
-//                         <AntDesign
-//                           name="delete"
-//                           style={{
-//                             color: "red",
-//                             fontSize: 30,
-//                           }}
-//                         />
-//                       </Pressable>
-//                     </View>
-//                   </List>
-//                 </Pressable>
-//               ))}
-//             </View>
-//           ))}
-//         </View>
-//       </ScrollView>
-//       <BlurView intensity={90}>
-//         <View
-//           paddingY={4}
-//           alignItems="center"
-//           safeAreaBottom
-//           shadow={9}
-//           marginBottom={5}
-//         />
-//       </BlurView>
-//     </NativeBaseProvider>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   separador: {
-//     backgroundColor: "#000",
-//   },
-//   descripcion: {
-//     maxWidth: 140, // Ajusta el ancho según tu diseño
-//     lineHeight: 15, // Controla el espaciado entre líneas
-//   },
-//   separadorTexto: {
-//     marginLeft: 10,
-//     color: "#FFDA00",
-//     fontWeight: "bold",
-//     textTransform: "uppercase",
-//   },
-// });
-
-// export default Hoshino;
-
 import { useNavigation } from "@react-navigation/native";
 import {
   NativeBaseProvider,
@@ -209,6 +15,46 @@ import { useContext, useEffect, useState } from "react";
 import { StyleSheet, Alert } from "react-native";
 import firebaseContextHoshino from "../../context/firebase/FirebaseStateHoshino/firebaseContextHoshino";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
+import { parseISO, format } from "date-fns";
+
+// Función para formatear y validar la fecha
+const formatFechaEntrega = (fechaEntrega) => {
+  try {
+    console.log("Valor de fechaEntrega:", fechaEntrega); // Añadido para depuración
+
+    // Verifica si la fecha es nula o indefinida
+    if (!fechaEntrega) {
+      return "Fecha no disponible";
+    }
+
+    // Intenta parsear la fecha si es un string
+    if (typeof fechaEntrega === "string") {
+      // Intenta usar Date.parse para analizar la cadena
+      const parsedDate = Date.parse(fechaEntrega);
+      if (!isNaN(parsedDate)) {
+        fechaEntrega = new Date(parsedDate);
+      } else {
+        return "Fecha no válida";
+      }
+    }
+
+    // Verifica si la fecha es una instancia válida de Date
+    if (!(fechaEntrega instanceof Date) || isNaN(fechaEntrega.getTime())) {
+      return "Fecha no válida";
+    }
+    if (fechaEntrega.seconds) {
+      fechaEntrega = new Date(fechaEntrega.seconds * 1000);
+    }
+
+    // Formatea la fecha a 'dd/MM/yyyy'
+    return format(fechaEntrega, "dd/MM/yyyy");
+  } catch (error) {
+    console.error("Error al formatear la fecha:", error);
+    return "Fecha no válida";
+  }
+};
+
+
 
 const Hoshino = () => {
   const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(
@@ -248,14 +94,17 @@ const Hoshino = () => {
 
   // Función para confirmar y eliminar los platillos seleccionados
   const eliminarSeleccionados = () => {
-      // Verificar si hay algún platillo seleccionado
-      const platillosIds = Object.keys(selectedPlatillos);
-      if (platillosIds.length === 0) {
-        Alert.alert("No hay nada seleccionado", "Por favor, selecciona al menos uno.");
-        return;
-      }
+    // Verificar si hay algún platillo seleccionado
+    const platillosIds = Object.keys(selectedPlatillos);
+    if (platillosIds.length === 0) {
+      Alert.alert(
+        "No hay nada seleccionado",
+        "Por favor, selecciona al menos uno."
+      );
+      return;
+    }
     Alert.alert(
-      "Si confirmas la entrega se eliminara",
+      "Si confirmas la entrega se eliminará",
       "Una vez eliminados no se pueden recuperar",
       [
         {
@@ -279,10 +128,10 @@ const Hoshino = () => {
 
   const CustomCheckbox = ({ isChecked, onChange, ariaLabel }) => (
     <Checkbox
-      boxSize={7}
+      boxSize={8}
       borderColor="black"
       shadow={9}
-      marginLeft={6}
+      marginRight={-7}
       isChecked={isChecked}
       onChange={onChange}
       accessibilityLabel={ariaLabel}
@@ -304,7 +153,13 @@ const Hoshino = () => {
 
   return (
     <NativeBaseProvider style={globalStyles.contenedor}>
-      <ScrollView style={{ backgroundColor: "#FFF" }}>
+      <ScrollView
+        style={{
+          backgroundColor: "#F0F8FF",
+          shadow: 9,
+          borderColor: "black",
+        }}
+      >
         <View>
           {Object.keys(categorias).map((categoria) => (
             <View key={categoria}>
@@ -320,25 +175,39 @@ const Hoshino = () => {
                     navigation.navigate("DetallePlatillo");
                   }}
                 >
-                  <List style={{ flexDirection: "row", alignItems: "center" }}>
-                    <View mx={5}>
+                  <List
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "space-between", // Distribuir elementos
+                      backgroundColor: "#FFF5EE", // Fondo de cada platillo
+                      borderRadius: 10,
+                      marginBottom: 10,
+                    }}
+                  >
+                    <View mx={3}>
                       <Image
-                        source={{ uri: platillo.imagen }}
+                        source={
+                          platillo.imagen
+                            ? { uri: platillo.imagen }
+                            : require("../../assets/fotos/autos.jpeg")
+                        }
                         alt="desde firebase"
-                        size={100}
+                        size={70}
                         borderRadius={16}
                       />
                     </View>
-                    <View>
-                      <Text>{platillo.nombre} </Text>
+                    <View style={{ flex: 1 }}>
+                      <Text>Empresa: {platillo.nombre} </Text>
                       <Text numberOfLines={3} style={styles.descripcion}>
-                        {platillo.descripcion}
+                        Dirección: {platillo.descripcion}
                       </Text>
-                      <Text>Hora de salida {platillo.precio} </Text>
+                      <Text>Hora de salida: {platillo.precio} </Text>
+                      <Text>Entrega: {formatFechaEntrega(platillo.fecha)}</Text>
                     </View>
 
                     {/* Checkbox para eliminar */}
-                    <View>
+                    <View style={{ marginLeft: "auto", marginRight: 10 }}>
                       <CustomCheckbox
                         isChecked={!!selectedPlatillos[platillo.id]}
                         onChange={(isChecked) =>
@@ -373,7 +242,7 @@ const Hoshino = () => {
 
 const styles = StyleSheet.create({
   separador: {
-    backgroundColor: "#000",
+    backgroundColor: "#000", // Color de fondo del separador de categorías
   },
   descripcion: {
     maxWidth: 140,
