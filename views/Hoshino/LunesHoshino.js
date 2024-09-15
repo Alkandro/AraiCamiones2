@@ -17,7 +17,6 @@ import firebaseContextHoshino from "../../context/firebase/FirebaseStateHoshino/
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import { parseISO, format } from "date-fns";
 
-
 // Función para formatear y validar la fecha
 const formatFechaEntrega = (fechaEntrega) => {
   try {
@@ -25,7 +24,7 @@ const formatFechaEntrega = (fechaEntrega) => {
 
     // Verifica si la fecha es nula o indefinida
     if (!fechaEntrega) {
-      return "Fecha no disponible";
+      return "NG";
     }
 
     // Intenta parsear la fecha si es un string
@@ -54,8 +53,6 @@ const formatFechaEntrega = (fechaEntrega) => {
     return "Fecha no válida";
   }
 };
-
-
 
 const Hoshino = () => {
   const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(
@@ -154,92 +151,127 @@ const Hoshino = () => {
 
   return (
     <NativeBaseProvider style={globalStyles.contenedor}>
-      <View flex= {1}
-      backgroundColor="#3d783c">
-      <ScrollView
-        style={{
-          backgroundColor: "#3d783c",
-          shadow: 9,
-          borderColor: "black",
-        }}
-      >
-        <View>
-          {Object.keys(categorias).map((categoria) => (
-            <View key={categoria}>
-              <View style={styles.separador}>
-                <Text style={styles.separadorTexto}>{categoria}</Text>
-              </View>
-              {categorias[categoria].map((platillo) => (
-                <Pressable
-                  key={platillo.id}
-                  onPress={() => {
-                    const { existencia, ...platillo2 } = platillo;
-                    seleccionarPlatillo(platillo2);
-                    navigation.navigate("DetallePlatillo");
-                  }}
-                >
-                  <List
-                    style={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "space-between", // Distribuir elementos
-                      backgroundColor: "#FFF5EE", // Fondo de cada platillo
-                      borderRadius: 10,
-                      marginBottom: 10,
+      <View flex={1} backgroundColor="#3d783c">
+        <ScrollView
+          style={{
+            backgroundColor: "#3d783c",
+            shadow: 9,
+            borderColor: "black",
+          }}
+        >
+          <View>
+            {Object.keys(categorias).map((categoria) => (
+              <View key={categoria}>
+                <View style={styles.separador}>
+                  <Text style={styles.separadorTexto}>{categoria}</Text>
+                </View>
+                {categorias[categoria].map((platillo) => (
+                  <Pressable
+                    key={platillo.id}
+                    onPress={() => {
+                      const { existencia, ...platillo2 } = platillo;
+                      seleccionarPlatillo(platillo2);
+                      navigation.navigate("DetallePlatillo");
                     }}
                   >
-                    <View mx={3}>
-                      <Image
-                      
-                        source={
-                          platillo.imagen
-                            ? { uri: platillo.imagen }
-                            : require("../../assets/fotos/autos.jpeg")
-                        }
-                        alt="desde firebase"
-                        size={70}
-                        borderRadius={16}
-                      />
-                    </View>
-                    <View style={{ flex: 1 }}>
-                      <Text>Empresa: {platillo.nombre} </Text>
-                      <Text numberOfLines={3} style={styles.descripcion}>
-                        Dirección: {platillo.descripcion}
-                      </Text>
-                      <Text>Salida: {platillo.precio} </Text>
-                      <Text>Entrega: {formatFechaEntrega(platillo.fecha)}</Text>
-                    </View>
+                    <List
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "space-between", // Distribuir elementos
+                        backgroundColor: "#FFF5EE", // Fondo de cada platillo
+                        borderRadius: 10,
+                        marginBottom: 10,
+                      }}
+                    >
+                      <View mx={3}>
+                        <Image
+                          source={
+                            platillo.imagen
+                              ? { uri: platillo.imagen }
+                              : require("../../assets/fotos/autos.jpeg")
+                          }
+                          alt="desde firebase"
+                          size={70}
+                          borderRadius={16}
+                        />
+                      </View>
+                      <View style={{ flex: 1 }}>
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <Text>
+                            <Text style={{ fontWeight: "bold" }}>Salida:</Text>{" "}
+                            {platillo.precio}
+                          </Text>
+                          <View 
+                          marginLeft={10} 
+                          marginBottom={1}
+                          style={{ padding:2,justifyContent: 'center', alignItems: 'center', borderWidth: 2, borderColor: 'green', borderRadius: 2}}>
+                          <Text >
+                            <Text style={{ fontWeight: "bold" }}>Fecha:</Text>
 
-                    {/* Checkbox para eliminar */}
-                    <View style={{ marginLeft: "auto", marginRight: 10 }}>
-                      <CustomCheckbox
-                        isChecked={!!selectedPlatillos[platillo.id]}
-                        onChange={(isChecked) =>
-                          handleCheckboxChange(platillo.id, isChecked)
-                        }
-                        ariaLabel={`Eliminar ${platillo.nombre}`}
-                      />
-                    </View>
-                  </List>
-                </Pressable>
-              ))}
-            </View>
-          ))}
-        </View>
-      </ScrollView>
-      <BlurView intensity={90}>
-        <View
-          paddingY={4}
-          alignItems="center"
-          safeAreaBottom
-          shadow={9}
-          marginBottom={5}
-        >
-          <Pressable onPress={eliminarSeleccionados}>
-            <Text style={styles.eliminarTexto}>Eliminar seleccionados</Text>
-          </Pressable>
-        </View>
-      </BlurView>
+                            {""}
+                            {formatFechaEntrega(platillo.fecha2)}
+                          </Text>
+                          </View>
+
+                        </View>
+                        <Text>
+
+                        <Text style={{ fontWeight: "bold" }}>Empresa:</Text> {""}{platillo.nombre} </Text>
+                        <Text>
+                        <Text numberOfLines={3} 
+                        fontWeight= "bold" style={styles.descripcion}
+                         >
+                          Dirección de carga:</Text>{""} {platillo.descripcion}
+                        </Text>
+                        <Text>
+                        <Text numberOfLines={3} 
+                        fontWeight= "bold" style={styles.descripcion2}
+                         >
+                          Dirección de descarga:</Text>{""} {platillo.descripcion2}
+                        </Text>
+                        
+<Text>
+                        <Text style={{ fontWeight: "bold" }}>
+                          Entrega:</Text> {""}{formatFechaEntrega(platillo.fecha)}
+                        </Text>
+                      </View>
+
+                      {/* Checkbox para eliminar */}
+                      <View style={{ marginLeft: "auto", marginRight: 10 }}>
+                        <CustomCheckbox
+                          isChecked={!!selectedPlatillos[platillo.id]}
+                          onChange={(isChecked) =>
+                            handleCheckboxChange(platillo.id, isChecked)
+                          }
+                          ariaLabel={`Eliminar ${platillo.nombre}`}
+                        />
+                      </View>
+                    </List>
+                  </Pressable>
+                ))}
+              </View>
+            ))}
+          </View>
+        </ScrollView>
+        <BlurView intensity={90}>
+          <View
+            paddingY={4}
+            alignItems="center"
+            safeAreaBottom
+            shadow={9}
+            marginBottom={5}
+          >
+            <Pressable onPress={eliminarSeleccionados}>
+              <Text style={styles.eliminarTexto}>Eliminar seleccionados</Text>
+            </Pressable>
+          </View>
+        </BlurView>
       </View>
     </NativeBaseProvider>
   );
@@ -250,6 +282,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#000", // Color de fondo del separador de categorías
   },
   descripcion: {
+    maxWidth: 140,
+    lineHeight: 15,
+  },
+  descripcion2: {
     maxWidth: 140,
     lineHeight: 15,
   },
