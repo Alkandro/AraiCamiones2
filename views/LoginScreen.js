@@ -54,7 +54,7 @@ export default function Login(props) {
       <StatusBar hidden={true} />
 
       <ImageBackground
-        source={require("../assets/fotos/PlayaLogin.jpeg")}
+        source={require("../assets/fotos/smoke.jpg")}
         resizeMode="cover"
         style={styles.imagen4}
         absoluteFill
@@ -72,7 +72,7 @@ export default function Login(props) {
           <BlurView instnsity={90}>
             <View style={styles.login}>
               <Image
-                source={require("../assets/fotos/logoresta.png")}
+                source={require("../assets/fotos/78031.jpeg")}
                 resizeMode="cover"
                 style={styles.fotoprofile}
               />

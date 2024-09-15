@@ -17,6 +17,7 @@ import firebaseContextHoshino from "../../context/firebase/FirebaseStateHoshino/
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import { parseISO, format } from "date-fns";
 
+
 // Función para formatear y validar la fecha
 const formatFechaEntrega = (fechaEntrega) => {
   try {
@@ -153,9 +154,11 @@ const Hoshino = () => {
 
   return (
     <NativeBaseProvider style={globalStyles.contenedor}>
+      <View flex= {1}
+      backgroundColor="#3d783c">
       <ScrollView
         style={{
-          backgroundColor: "#F0F8FF",
+          backgroundColor: "#3d783c",
           shadow: 9,
           borderColor: "black",
         }}
@@ -187,6 +190,7 @@ const Hoshino = () => {
                   >
                     <View mx={3}>
                       <Image
+                      
                         source={
                           platillo.imagen
                             ? { uri: platillo.imagen }
@@ -202,7 +206,7 @@ const Hoshino = () => {
                       <Text numberOfLines={3} style={styles.descripcion}>
                         Dirección: {platillo.descripcion}
                       </Text>
-                      <Text>Hora de salida: {platillo.precio} </Text>
+                      <Text>Salida: {platillo.precio} </Text>
                       <Text>Entrega: {formatFechaEntrega(platillo.fecha)}</Text>
                     </View>
 
@@ -236,6 +240,7 @@ const Hoshino = () => {
           </Pressable>
         </View>
       </BlurView>
+      </View>
     </NativeBaseProvider>
   );
 };
@@ -255,7 +260,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   eliminarTexto: {
-    color: "blue",
+    color: "white",
     fontWeight: "bold",
   },
 });

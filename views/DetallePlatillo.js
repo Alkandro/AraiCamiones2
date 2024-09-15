@@ -10,7 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 import PedidosContext from "../context/firebase/pedidos/pedidosContext";
-import { StyleSheet, ImageBackground } from "react-native";
+import { Platform,StyleSheet, ImageBackground } from "react-native";
 
 
 const DetallePlatillo = () => {
@@ -35,7 +35,7 @@ const DetallePlatillo = () => {
       justifyItems='center'
       >
         <ImageBackground
-          source={require('../assets/fotos/platos.jpeg')}
+          source={require('../assets/fotos/smoke.jpg')}
           resizeMode="cover"
           style={styles.imagen4}
           imageStyle={styles.image}
@@ -44,16 +44,22 @@ const DetallePlatillo = () => {
           >
             <View>
               {/* <Text style={styles.titulo2}>{nombre}</Text> */}
-              <View>
+              <View paddingTop={20} >
                 <Image
+                style={
+                  Platform.OS === 'ios'
+                    ? { marginHorizontal: '5%', width: 350, height: 300 } // Estilos para iOS
+                    : { marginHorizontal: '5%', width: 330, height: 300 } // Estilos para Android
+                }
                   //Metemos tamaño en la imagen ancho y alto para que se refleje
 
-                  style={{ marginHorizontal: '5%', width: 350, height: 300 }}
+                  
                   source={{ uri: imagen }}
                   alt="desde firebase"
                   borderRadius={15}
                   borderColor= "#fff"
                   borderWidth= {0.9}
+                  
                 />
                 <Text style={styles.descripcion2}>{descripcion}</Text>
                 <Text style={styles.precio2}>Horario de salida {precio}</Text>

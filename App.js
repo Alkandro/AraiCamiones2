@@ -93,9 +93,11 @@ const HoshinoDrawer = () => {
         component={LunesHoshino}
         options={{
           title: "Lunes",
+          headerTitleAlign: 'center',
            // Cambiar color de fondo y el estilo del header
     headerStyle: {
       backgroundColor: "#3d783c", // Color de fondo del header
+      
     },
     headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
     headerTitleStyle: {
@@ -327,6 +329,7 @@ const App = () => {
                                 options={{
                                   title: "DetallePlatillo",
                                   headerBackTitle: "Menu",
+                                  headerTitleAlign: 'center',
                                 }}
                               />
                               <Stack.Screen
