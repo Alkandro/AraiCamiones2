@@ -20,8 +20,6 @@ import { parseISO, format } from "date-fns";
 // Función para formatear y validar la fecha
 const formatFechaEntrega = (fechaEntrega) => {
   try {
-    console.log("Valor de fechaEntrega:", fechaEntrega); // Añadido para depuración
-
     // Verifica si la fecha es nula o indefinida
     if (!fechaEntrega) {
       return "NG";
@@ -180,8 +178,10 @@ const Hoshino = () => {
                         alignItems: "center",
                         justifyContent: "space-between", // Distribuir elementos
                         backgroundColor: "#FFF5EE", // Fondo de cada platillo
-                        borderRadius: 10,
+                        borderRadius: 15,
                         marginBottom: 10,
+                        borderWidth: 4,
+                        borderColor: "black",
                       }}
                     >
                       <View mx={3}>
@@ -207,38 +207,57 @@ const Hoshino = () => {
                             <Text style={{ fontWeight: "bold" }}>Salida:</Text>{" "}
                             {platillo.precio}
                           </Text>
-                          <View 
-                          marginLeft={10} 
-                          marginBottom={1}
-                          style={{ padding:2,justifyContent: 'center', alignItems: 'center', borderWidth: 2, borderColor: 'green', borderRadius: 2}}>
-                          <Text >
-                            <Text style={{ fontWeight: "bold" }}>Fecha:</Text>
+                          <View
+                            marginRight={-10}
+                            marginBottom={1}
+                            style={{
+                              padding: 2,
+                              justifyContent: "center",
+                              alignItems: "center",
+                              borderWidth: 2,
+                              borderColor: "green",
+                              borderRadius: 6,
+                              position: "relative",
+                            }}
+                          >
+                            <Text>
+                              <Text style={{ fontWeight: "bold" }}>Fecha:</Text>
 
-                            {""}
-                            {formatFechaEntrega(platillo.fecha2)}
-                          </Text>
+                              {""}
+                              {formatFechaEntrega(platillo.fecha2)}
+                            </Text>
                           </View>
-
                         </View>
                         <Text>
+                          <Text style={{ fontWeight: "bold" }}>Empresa:</Text>{" "}
+                          {""}
+                          {platillo.nombre}{" "}
+                        </Text>
+                        <Text>
+                          <Text
+                            numberOfLines={3}
+                            fontWeight="bold"
+                            style={styles.descripcion}
+                          >
+                            Dirección de carga:
+                          </Text>
+                          {""} {platillo.descripcion}
+                        </Text>
+                        <Text>
+                          <Text
+                            numberOfLines={3}
+                            fontWeight="bold"
+                            style={styles.descripcion2}
+                          >
+                            Dirección de descarga:
+                          </Text>
+                          {""} {platillo.descripcion2}
+                        </Text>
 
-                        <Text style={{ fontWeight: "bold" }}>Empresa:</Text> {""}{platillo.nombre} </Text>
                         <Text>
-                        <Text numberOfLines={3} 
-                        fontWeight= "bold" style={styles.descripcion}
-                         >
-                          Dirección de carga:</Text>{""} {platillo.descripcion}
-                        </Text>
-                        <Text>
-                        <Text numberOfLines={3} 
-                        fontWeight= "bold" style={styles.descripcion2}
-                         >
-                          Dirección de descarga:</Text>{""} {platillo.descripcion2}
-                        </Text>
-                        
-<Text>
-                        <Text style={{ fontWeight: "bold" }}>
-                          Entrega:</Text> {""}{formatFechaEntrega(platillo.fecha)}
+                          <Text style={{ fontWeight: "bold" }}>Entrega:</Text>{" "}
+                          {""}
+                          {formatFechaEntrega(platillo.fecha)}
                         </Text>
                       </View>
 
