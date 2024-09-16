@@ -70,7 +70,7 @@ const ResumenPedido = () => {
               orden: pedido, //array
               creado: Date.now(),
             };
-            console.log(pedidoObj);
+            // console.log(pedidoObj);
 
             try {
               const pedido = await firebase.db

@@ -125,84 +125,192 @@ const HoshinoDrawer = () => {
         component={MartesHoshino}
         options={{
           title: "Martes",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-        }}
+          headerTitleAlign: 'center',
+          // Cambiar color de fondo y el estilo del header
+   headerStyle: {
+     backgroundColor: "#3d783c", // Color de fondo del header
+     
+   },
+   headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+   headerTitleStyle: {
+     fontWeight: "bold", // Puedes personalizar más el estilo del título
+   },
+   // Cambiar el icono del Drawer
+         drawerIcon: ({ focused, color, size }) => (
+           <Icon
+             name={focused ? "truck-fast" : "truck-ramp-box"}
+             size={size}
+             color={focused ? "#17f502" : color}
+             
+           />
+           ),
+           // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+           drawerStyle: {
+             backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+             width: 210,
+             height: "100%",
+           },
+         }}
       />
       <Drawer.Screen
         name="Miercoles"
         component={MiercolesHoshino}
         options={{
           title: "Miercoles",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-        }}
+          headerTitleAlign: 'center',
+          // Cambiar color de fondo y el estilo del header
+   headerStyle: {
+     backgroundColor: "#3d783c", // Color de fondo del header
+     
+   },
+   headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+   headerTitleStyle: {
+     fontWeight: "bold", // Puedes personalizar más el estilo del título
+   },
+   // Cambiar el icono del Drawer
+         drawerIcon: ({ focused, color, size }) => (
+           <Icon
+             name={focused ? "truck-fast" : "truck-ramp-box"}
+             size={size}
+             color={focused ? "#17f502" : color}
+             
+           />
+           ),
+           // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+           drawerStyle: {
+             backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+             width: 210,
+             height: "100%",
+           },
+         }}
       />
       <Drawer.Screen
         name="Jueves"
         component={JuevesHoshino}
         options={{
           title: "Jueves",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-        }}
+          headerTitleAlign: 'center',
+          // Cambiar color de fondo y el estilo del header
+   headerStyle: {
+     backgroundColor: "#3d783c", // Color de fondo del header
+     
+   },
+   headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+   headerTitleStyle: {
+     fontWeight: "bold", // Puedes personalizar más el estilo del título
+   },
+   // Cambiar el icono del Drawer
+         drawerIcon: ({ focused, color, size }) => (
+           <Icon
+             name={focused ? "truck-fast" : "truck-ramp-box"}
+             size={size}
+             color={focused ? "#17f502" : color}
+             
+           />
+           ),
+           // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+           drawerStyle: {
+             backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+             width: 210,
+             height: "100%",
+           },
+         }}
       />
       <Drawer.Screen
         name="Viernes"
         component={ViernesHoshino}
         options={{
           title: "Viernes",
+          headerTitleAlign: 'center',
+           // Cambiar color de fondo y el estilo del header
+    headerStyle: {
+      backgroundColor: "#3d783c", // Color de fondo del header
+      
+    },
+    headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+    headerTitleStyle: {
+      fontWeight: "bold", // Puedes personalizar más el estilo del título
+    },
+    // Cambiar el icono del Drawer
           drawerIcon: ({ focused, color, size }) => (
             <Icon
               name={focused ? "truck-fast" : "truck-ramp-box"}
               size={size}
               color={focused ? "#17f502" : color}
+              
             />
-          ),
-        }}
+            ),
+            // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+            drawerStyle: {
+              backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+              width: 210,
+              height: "100%",
+            },
+          }}
       />
       <Drawer.Screen
         name="Sabado"
         component={SabadoHoshino}
         options={{
           title: "Sabado",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-        }}
+          headerTitleAlign: 'center',
+          // Cambiar color de fondo y el estilo del header
+   headerStyle: {
+     backgroundColor: "#3d783c", // Color de fondo del header
+     
+   },
+   headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+   headerTitleStyle: {
+     fontWeight: "bold", // Puedes personalizar más el estilo del título
+   },
+   // Cambiar el icono del Drawer
+         drawerIcon: ({ focused, color, size }) => (
+           <Icon
+             name={focused ? "truck-fast" : "truck-ramp-box"}
+             size={size}
+             color={focused ? "#17f502" : color}
+             
+           />
+           ),
+           // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+           drawerStyle: {
+             backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+             width: 210,
+             height: "100%",
+           },
+         }}
       />
       <Drawer.Screen
         name="Domingo"
         component={DomingoHoshino}
         options={{
           title: "Domingo",
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-        }}
+          headerTitleAlign: 'center',
+          // Cambiar color de fondo y el estilo del header
+   headerStyle: {
+     backgroundColor: "#3d783c", // Color de fondo del header
+     
+   },
+   headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+   headerTitleStyle: {
+     fontWeight: "bold", // Puedes personalizar más el estilo del título
+   },
+   // Cambiar el icono del Drawer
+         drawerIcon: ({ focused, color, size }) => (
+           <Icon
+             name={focused ? "truck-fast" : "truck-ramp-box"}
+             size={size}
+             color={focused ? "#17f502" : color}
+             
+           />
+           ),
+           // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+           drawerStyle: {
+             backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+             width: 210,
+             height: "100%",
+           },
+         }}
       />
     </Drawer.Navigator>
   );

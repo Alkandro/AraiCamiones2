@@ -10,14 +10,21 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 import PedidosContext from "../context/firebase/pedidos/pedidosContext";
-import { Platform,StyleSheet, ImageBackground } from "react-native";
-
+import { Platform, StyleSheet, ImageBackground } from "react-native";
 
 const DetallePlatillo = () => {
   // Pedido context
   const { platillo } = useContext(PedidosContext);
-  const { nombre, imagen, descripcion, precio } = platillo;
-  console.log({ platillo });
+  const {
+    nombre,
+    imagen,
+    descripcion,
+    precio,
+    fecha,
+    fecha2,
+    categoria,
+    descripcion2,
+  } = platillo;
 
   // Redireccionar
   const navigation = useNavigation();
@@ -28,43 +35,62 @@ const DetallePlatillo = () => {
 
   return (
     <NativeBaseProvider>
-      <View 
-      
-      flex={1}
-      justifyContent='center'
-      justifyItems='center'
-      >
+      <View flex={1} justifyContent="center" justifyItems="center">
         <ImageBackground
-          source={require('../assets/fotos/smoke.jpg')}
+          source={require("../assets/fotos/smoke.jpg")}
           resizeMode="cover"
           style={styles.imagen4}
           imageStyle={styles.image}
         >
-          <View marginBottom={230}
-          >
+          <View marginBottom={230}>
             <View>
               {/* <Text style={styles.titulo2}>{nombre}</Text> */}
-              <View paddingTop={20} >
+              <View paddingTop={20}>
                 <Image
-                style={
-                  Platform.OS === 'ios'
-                    ? { marginHorizontal: '5%', width: 350, height: 300 } // Estilos para iOS
-                    : { marginHorizontal: '5%', width: 330, height: 300 } // Estilos para Android
-                }
+                  style={
+                    Platform.OS === "ios"
+                      ? { marginHorizontal: "5%", width: 350, height: 300 } // Estilos para iOS
+                      : { marginHorizontal: "5%", width: 330, height: 300 } // Estilos para Android
+                  }
                   //Metemos tamaño en la imagen ancho y alto para que se refleje
 
-                  
                   source={{ uri: imagen }}
                   alt="desde firebase"
                   borderRadius={15}
-                  borderColor= "#fff"
-                  borderWidth= {0.9}
-                  
+                  borderColor="#fff"
+                  borderWidth={0.9}
                 />
-                <Text style={styles.descripcion2}>{descripcion}</Text>
-                <Text style={styles.precio2}>Horario de salida {precio}</Text>
+                <Text textAlign={"center"} marginTop={5}>
+                  <Text style={styles.precio2}>Fecha de carga:</Text>
+                  {""}
+                  <Text style={styles.precio3}>{platillo.fecha}</Text>
+                </Text>
+
+                <Text textAlign={"center"} marginTop={5}>
+                  <Text style={styles.precio2}>Horario de salida:</Text>
+                  {""}
+                  <Text style={styles.precio3}>{platillo.precio}</Text>
+                </Text>
+
+                <Text textAlign={"center"} marginTop={5}>
+                  <Text style={styles.precio2}>Lugar de carga:</Text>
+                  {""}
+                  <Text style={styles.precio3}>{platillo.descripcion}</Text>
+                </Text>
+
+                <Text textAlign={"center"} marginTop={5}>
+                  <Text style={styles.precio2}>Lugar de descarga:</Text>
+                  {""}
+                  <Text style={styles.precio3}>{platillo.descripcion2}</Text>
+                </Text>
+
+                <Text textAlign={"center"} marginTop={5}>
+                  <Text style={styles.precio2}>Fecha de entrega:</Text>
+                  {""}
+                  <Text style={styles.precio3}>{platillo.fecha2}</Text>
+                </Text>
               </View>
-              <View>
+              {/* <View>
                 <Button
                   style={styles.boton2}
                   rounded="2xl"
@@ -72,9 +98,9 @@ const DetallePlatillo = () => {
                   marginTop={5}
                   onPress={() => navigation.navigate("FormularioPlatillo")}
                 >
-                  <Text style={styles.botonTexto2}>Ordenar</Text>
+                  <Text style={styles.botonTexto2}>Regresar</Text>
                 </Button>
-              </View>
+              </View> */}
             </View>
           </View>
         </ImageBackground>
@@ -96,8 +122,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
-    color:'white',
+    color: "white",
   },
+  precio3: {
+    marginVertical: 2,
+    marginTop: 20,
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#FFDA00",
+  },
+
   botonTexto2: {
     textTransform: "uppercase",
     fontWeight: "bold",
