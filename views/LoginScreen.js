@@ -26,9 +26,9 @@ export default function Login(props) {
     if (email === 'To' && password === '12') {
       Alert.alert("Iniciando sesion", "Accediendo...");
       props.navigation.navigate('TomaokaDrawer');
-     } else if (email === 'Matsushima' && password === '123456') {
+     } else if (email === 'M' && password === '1') {
         Alert.alert("Iniciando sesion", "Accediendo...");
-        props.navigation.navigate('Matsushima');
+        props.navigation.navigate('MatsushimaDrawer');
       } else if (email === 'Ho' && password === '12') {
         Alert.alert("Iniciando sesion", "Accediendo...");
         props.navigation.navigate('HoshinoDrawer');
