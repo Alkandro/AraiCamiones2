@@ -23,7 +23,7 @@ export default function Login(props) {
   const [password, setPassword] = useState();
 
   const logueo = async () => {
-    if (email === 'To' && password === '12') {
+    if (email === 'T' && password === '1') {
       Alert.alert("Iniciando sesion", "Accediendo...");
       props.navigation.navigate('TomaokaDrawer');
      } else if (email === 'M' && password === '1') {
