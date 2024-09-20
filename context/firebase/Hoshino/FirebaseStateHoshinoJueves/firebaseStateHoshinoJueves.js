@@ -7,7 +7,7 @@ import FirebaseContextHoshinoJueves from "./firebaseContextHoshinoJueves";
 import { OBTENER_PRODUCTOS_HOSHINO } from "../../../../types";
 import _ from "lodash";
 
-const FirebaseStateHoshinoMiercoles = (props) => {
+const FirebaseStateHoshinoJueves = (props) => {
   // Crear state inicial
   const initialState = {
     menu: [],
@@ -72,4 +72,4 @@ const FirebaseStateHoshinoMiercoles = (props) => {
   );
 };
 
-export default FirebaseStateHoshinoMiercoles;
+export default FirebaseStateHoshinoJueves;

@@ -43,6 +43,15 @@ const FirebaseStateTomaokaSabado = (props) => {
       });
     }
   };
+  // Función para eliminar un producto de Firebase
+  const eliminarProductoFirebase = async (id) => {
+    try {
+      await firebase.db.collection("tomaokaSabado").doc(id).delete(); // Eliminar el documento por ID
+      console.log("Producto eliminado de Firebase");
+    } catch (error) {
+      console.error("Error eliminando el producto:", error);
+    }
+  };
 
   return (
     <FirebaseContextTomaokaSabado.Provider
@@ -50,6 +59,7 @@ const FirebaseStateTomaokaSabado = (props) => {
         menu: state.menu,
         firebase,
         obtenerProductos,
+        eliminarProductoFirebase, // Asegúrate de exportar esta función
       }}
     >
       {props.children}
