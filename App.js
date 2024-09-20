@@ -46,6 +46,10 @@ import DomingoMatsushima from "./views/Matsushima/DomingoMatsushima";
 import LunesTomaoka from "./views/Tomaoka/LunesTomaoka";
 import MartesTomaoka from "./views/Tomaoka/MartesTomaoka";
 import MiercolesTomaoka from "./views/Tomaoka/MiercolesTomaoka";
+import JuevesTomaoka from "./views/Tomaoka/JuevesTomaoka";
+import ViernesTomaoka from "./views/Tomaoka/ViernesTomaoka";
+import SabadoTomaoka from "./views/Tomaoka/SabadoTomaoka";
+import DomingoTomaoka from "./views/Tomaoka/DomingoTomaoka";
 
 import LoginScreen from "./views/LoginScreen";
 
@@ -73,6 +77,11 @@ import FirebaseStateMatsushimaDomingo from "./context/firebase/Matsushima/Fireba
 import FirebaseStateTomaoka from "./context/firebase/FirebaseStateTomaoka/firebaseStateTomaoka";
 import FirebaseStateTomaokaMartes from "./context/firebase/FirebaseStateTomaokaMartes/firebaseStateTomaokaMartes";
 import FirebaseStateTomaokaMiercoles from "./context/firebase/TomaokaState/FirebaseStateTomaokaMiercoles/firebaseStateTomaokaMiercoles";
+import FirebaseStateTomaokaJueves from "./context/firebase/TomaokaState/FirebaseStateTomaokaJueves/firebaseStateTomaokaJueves";
+import FirebaseStateTomaokaViernes from "./context/firebase/TomaokaState/FirebaseStateTomaokaViernes/firebaseStateTomaokaViernes";
+import FirebaseStateTomaokaSabado from "./context/firebase/TomaokaState/FirebaseStateTomaokaSabado/firebaseStateTomaokaSabado";
+import FirebaseStateTomaokaDomingo from "./context/firebase/TomaokaState/FirebaseStateTomaokaDomingo/firebaseStateTomaokaDomingo";
+
 
 import PedidosState from "./context/firebase/pedidos/pedidosState";
 
@@ -817,141 +826,156 @@ const TomaokaDrawer = () => {
 
 const App = () => {
   return (
-
-    <FirebaseStateTomaokaMiercoles>
-    <FirebaseStateTomaokaMartes>
-      <FirebaseStateTomaoka>
-        <FirebaseStateMatsushimaDomingo>
-          <FirebaseStateMatsushimaSabado>
-            <FirebaseStateMatsushimaViernes>
-              <FirebaseStateMatsushimaJueves>
-                <FirebaseStateMatsushimaMiercoles>
-                  <FirebaseStateMatsushimaMartes>
-                    <FirebaseStateMatsushima>
-                      <FirebaseStateHoshinoDomingo>
-                        <FirebaseStateHoshinoSabado>
-                          <FirebaseStateHoshinoViernes>
-                            <FirebaseStateHoshinoJueves>
-                              <FirebaseStateHoshinoMiercoles>
-                                <FirebaseStateHoshinoMartes>
-                                  <FirebaseStateHoshino>
-                                    <FirebaseState>
-                                      <PedidosState>
-                                        <NavigationContainer>
-                                          <Stack.Navigator initialRouteName="LoginScreen">
-                                            <Stack.Screen
-                                              name="LoginScreen"
-                                              component={LoginScreen}
-                                              options={{
-                                                title: "LoginScreen",
-                                                headerShown: false,
-                                              }}
-                                            />
-                                            <Stack.Screen
-                                              name="NuevaOrden"
-                                              component={NuevaOrden}
-                                              options={{
-                                                headerBackTitle: "Salir",
-                                                headerBackTitleStyle: {
-                                                  fontSize: 20,
-                                                  color: "red",
-                                                  fontVariant:
-                                                    "proportional-nums",
-                                                },
-                                              }}
-                                            />
-                                            <Stack.Screen
-                                              name="Menu"
-                                              component={Menu}
-                                              options={{
-                                                title: "Menu",
-                                                headerBackTitleStyle: {
-                                                  fontSize: 15,
-                                                  color: "green",
-                                                  fontStyle: "italic",
-                                                },
-                                              }}
-                                            />
-                                            <Stack.Screen
-                                              name="MatsushimaDrawer"
-                                              component={MatsushimaDrawer}
-                                              options={{
-                                                title: "Matsushima",
-                                                headerShown: false,
-                                              }}
-                                            />
-                                            <Stack.Screen
-                                              name="TomaokaDrawer"
-                                              component={TomaokaDrawer}
-                                              options={{
-                                                title: "Tomaoka",
-                                                headerShown: false,
-                                              }}
-                                            />
-                                            <Stack.Screen
-                                              name="HoshinoDrawer"
-                                              component={HoshinoDrawer}
-                                              options={{
-                                                title: "Hoshino",
-                                                headerShown: false,
-                                              }}
-                                            />
-                                            <Stack.Screen
-                                              name="DetallePlatillo"
-                                              component={DetallePlatillo}
-                                              options={{
-                                                title: "DetallePlatillo",
-                                                headerBackTitle: "Menu",
-                                                headerTitleAlign: "center",
-                                              }}
-                                            />
-                                            <Stack.Screen
-                                              name="FormularioPlatillo"
-                                              component={FormularioPlatillo}
-                                              options={{
-                                                title: "FormularioPlatillo",
-                                                headerBackTitle: "Menu",
-                                              }}
-                                            />
-                                            <Stack.Screen
-                                              name="ResumenPedido"
-                                              component={ResumenPedido}
-                                              options={{
-                                                title: "ResumenPedido",
-                                                headerBackTitle: "Menu",
-                                              }}
-                                            />
-                                            <Stack.Screen
-                                              name="ProgresoPedido"
-                                              component={ProgresoPedido}
-                                              options={{
-                                                title: "ProgresoPedido",
-                                                headerBackTitle: "Menu",
-                                              }}
-                                            />
-                                          </Stack.Navigator>
-                                        </NavigationContainer>
-                                      </PedidosState>
-                                    </FirebaseState>
-                                  </FirebaseStateHoshino>
-                                </FirebaseStateHoshinoMartes>
-                              </FirebaseStateHoshinoMiercoles>
-                            </FirebaseStateHoshinoJueves>
-                          </FirebaseStateHoshinoViernes>
-                        </FirebaseStateHoshinoSabado>
-                      </FirebaseStateHoshinoDomingo>
-                    </FirebaseStateMatsushima>
-                  </FirebaseStateMatsushimaMartes>
-                </FirebaseStateMatsushimaMiercoles>
-              </FirebaseStateMatsushimaJueves>
-            </FirebaseStateMatsushimaViernes>
-          </FirebaseStateMatsushimaSabado>
-        </FirebaseStateMatsushimaDomingo>
-      </FirebaseStateTomaoka>
-    </FirebaseStateTomaokaMartes>
-    </FirebaseStateTomaokaMiercoles>
-
-
+    <FirebaseStateTomaokaDomingo>
+    <FirebaseStateTomaokaSabado>
+      <FirebaseStateTomaokaViernes>
+        <FirebaseStateTomaokaJueves>
+          <FirebaseStateTomaokaMiercoles>
+            <FirebaseStateTomaokaMartes>
+              <FirebaseStateTomaoka>
+                <FirebaseStateMatsushimaDomingo>
+                  <FirebaseStateMatsushimaSabado>
+                    <FirebaseStateMatsushimaViernes>
+                      <FirebaseStateMatsushimaJueves>
+                        <FirebaseStateMatsushimaMiercoles>
+                          <FirebaseStateMatsushimaMartes>
+                            <FirebaseStateMatsushima>
+                              <FirebaseStateHoshinoDomingo>
+                                <FirebaseStateHoshinoSabado>
+                                  <FirebaseStateHoshinoViernes>
+                                    <FirebaseStateHoshinoJueves>
+                                      <FirebaseStateHoshinoMiercoles>
+                                        <FirebaseStateHoshinoMartes>
+                                          <FirebaseStateHoshino>
+                                            <FirebaseState>
+                                              <PedidosState>
+                                                <NavigationContainer>
+                                                  <Stack.Navigator initialRouteName="LoginScreen">
+                                                    <Stack.Screen
+                                                      name="LoginScreen"
+                                                      component={LoginScreen}
+                                                      options={{
+                                                        title: "LoginScreen",
+                                                        headerShown: false,
+                                                      }}
+                                                    />
+                                                    <Stack.Screen
+                                                      name="NuevaOrden"
+                                                      component={NuevaOrden}
+                                                      options={{
+                                                        headerBackTitle:
+                                                          "Salir",
+                                                        headerBackTitleStyle: {
+                                                          fontSize: 20,
+                                                          color: "red",
+                                                          fontVariant:
+                                                            "proportional-nums",
+                                                        },
+                                                      }}
+                                                    />
+                                                    <Stack.Screen
+                                                      name="Menu"
+                                                      component={Menu}
+                                                      options={{
+                                                        title: "Menu",
+                                                        headerBackTitleStyle: {
+                                                          fontSize: 15,
+                                                          color: "green",
+                                                          fontStyle: "italic",
+                                                        },
+                                                      }}
+                                                    />
+                                                    <Stack.Screen
+                                                      name="MatsushimaDrawer"
+                                                      component={
+                                                        MatsushimaDrawer
+                                                      }
+                                                      options={{
+                                                        title: "Matsushima",
+                                                        headerShown: false,
+                                                      }}
+                                                    />
+                                                    <Stack.Screen
+                                                      name="TomaokaDrawer"
+                                                      component={TomaokaDrawer}
+                                                      options={{
+                                                        title: "Tomaoka",
+                                                        headerShown: false,
+                                                      }}
+                                                    />
+                                                    <Stack.Screen
+                                                      name="HoshinoDrawer"
+                                                      component={HoshinoDrawer}
+                                                      options={{
+                                                        title: "Hoshino",
+                                                        headerShown: false,
+                                                      }}
+                                                    />
+                                                    <Stack.Screen
+                                                      name="DetallePlatillo"
+                                                      component={
+                                                        DetallePlatillo
+                                                      }
+                                                      options={{
+                                                        title:
+                                                          "DetallePlatillo",
+                                                        headerBackTitle: "Menu",
+                                                        headerTitleAlign:
+                                                          "center",
+                                                      }}
+                                                    />
+                                                    <Stack.Screen
+                                                      name="FormularioPlatillo"
+                                                      component={
+                                                        FormularioPlatillo
+                                                      }
+                                                      options={{
+                                                        title:
+                                                          "FormularioPlatillo",
+                                                        headerBackTitle: "Menu",
+                                                      }}
+                                                    />
+                                                    <Stack.Screen
+                                                      name="ResumenPedido"
+                                                      component={ResumenPedido}
+                                                      options={{
+                                                        title: "ResumenPedido",
+                                                        headerBackTitle: "Menu",
+                                                      }}
+                                                    />
+                                                    <Stack.Screen
+                                                      name="ProgresoPedido"
+                                                      component={ProgresoPedido}
+                                                      options={{
+                                                        title: "ProgresoPedido",
+                                                        headerBackTitle: "Menu",
+                                                      }}
+                                                    />
+                                                  </Stack.Navigator>
+                                                </NavigationContainer>
+                                              </PedidosState>
+                                            </FirebaseState>
+                                          </FirebaseStateHoshino>
+                                        </FirebaseStateHoshinoMartes>
+                                      </FirebaseStateHoshinoMiercoles>
+                                    </FirebaseStateHoshinoJueves>
+                                  </FirebaseStateHoshinoViernes>
+                                </FirebaseStateHoshinoSabado>
+                              </FirebaseStateHoshinoDomingo>
+                            </FirebaseStateMatsushima>
+                          </FirebaseStateMatsushimaMartes>
+                        </FirebaseStateMatsushimaMiercoles>
+                      </FirebaseStateMatsushimaJueves>
+                    </FirebaseStateMatsushimaViernes>
+                  </FirebaseStateMatsushimaSabado>
+                </FirebaseStateMatsushimaDomingo>
+              </FirebaseStateTomaoka>
+            </FirebaseStateTomaokaMartes>
+          </FirebaseStateTomaokaMiercoles>
+        </FirebaseStateTomaokaJueves>
+      </FirebaseStateTomaokaViernes>
+    </FirebaseStateTomaokaSabado>
+    </FirebaseStateTomaokaDomingo>
   );
 };
 

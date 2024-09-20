@@ -13,7 +13,7 @@ import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
 import { useContext, useEffect, useState } from "react";
 import { StyleSheet, Alert } from "react-native";
-import firebaseContextTomaokaDomingo from "../../context/firebase/Tomaoka/FirebaseStateTomaokaDomingo/firebaseContextTomaokaDomingo";
+import firebaseContextTomaokaDomingo from "../../context/firebase/TomaokaState/FirebaseStateTomaokaDomingo/firebaseContextTomaokaDomingo";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import { parseISO, format } from "date-fns";
 
