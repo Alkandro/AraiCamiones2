@@ -29,12 +29,12 @@ export default function Login(props) {
      } else if (email === 'M' && password === '1') {
         Alert.alert("Iniciando sesion", "Accediendo...");
         props.navigation.navigate('MatsushimaDrawer');
-      } else if (email === 'Ho' && password === '12') {
+      } else if (email === 'H' && password === '1') {
         Alert.alert("Iniciando sesion", "Accediendo...");
         props.navigation.navigate('HoshinoDrawer');
-      } else if (email === 'Menu' && password === '123456') {
+      } else if (email === 'O' && password === '1') {
           Alert.alert("Iniciando sesion", "Accediendo...");
-          props.navigation.navigate('Menu');
+          props.navigation.navigate('OishiDrawer');
     } else {
       Alert.alert("Error!", "El usuario o la contrasena son incorrectas");
       props.navigation.navigate('LoginScreen');

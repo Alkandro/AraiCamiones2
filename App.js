@@ -51,6 +51,15 @@ import ViernesTomaoka from "./views/Tomaoka/ViernesTomaoka";
 import SabadoTomaoka from "./views/Tomaoka/SabadoTomaoka";
 import DomingoTomaoka from "./views/Tomaoka/DomingoTomaoka";
 
+//Oishi
+import LunesOishi from "./views/Oishi/LunesOishi";
+import MartesOishi from "./views/Oishi/MartesOishi";
+import MiercolesOishi from "./views/Oishi/MiercolesOishi";
+import JuevesOishi from "./views/Oishi/JuevesOishi";
+import ViernesOishi from "./views/Oishi/ViernesOishi";
+import SabadoOishi from "./views/Oishi/SabadoOishi";
+import DomingoOishi from "./views/Oishi/DomingoOishi";
+
 import LoginScreen from "./views/LoginScreen";
 
 import FirebaseState from "./context/firebase/firebaseState";
@@ -82,6 +91,14 @@ import FirebaseStateTomaokaViernes from "./context/firebase/TomaokaState/Firebas
 import FirebaseStateTomaokaSabado from "./context/firebase/TomaokaState/FirebaseStateTomaokaSabado/firebaseStateTomaokaSabado";
 import FirebaseStateTomaokaDomingo from "./context/firebase/TomaokaState/FirebaseStateTomaokaDomingo/firebaseStateTomaokaDomingo";
 
+//OISHI
+import FirebaseStateOishi from "./context/firebase/FirebaseStateOishi/firebaseStateOishi";
+import FirebaseStateOishiMartes from "./context/firebase/OishiState/FirebaseStateOishiMartes/firebaseStateOishiMartes";
+import FirebaseStateOishiMiercoles from "./context/firebase/OishiState/FirebaseStateOishiMiercoles/firebaseStateOishiMiercoles";
+import FirebaseStateOishiJueves from "./context/firebase/OishiState/FirebaseStateOishiJueves/firebaseStateOishiJueves";
+import FirebaseStateOishiViernes from "./context/firebase/OishiState/FirebaseStateOishiViernes/firebaseStateOishiViernes";
+import FirebaseStateOishiSabado from "./context/firebase/OishiState/FirebaseStateOishiSabado/firebaseStateOishiSabado";
+import FirebaseStateOishiDomingo from "./context/firebase/OishiState/FirebaseStateOishiDomingo/firebaseStateOishiDomingo";
 
 import PedidosState from "./context/firebase/pedidos/pedidosState";
 
@@ -824,158 +841,452 @@ const TomaokaDrawer = () => {
   );
 };
 
+const OishiDrawer = () => {
+  return (
+    <Drawer.Navigator
+      drawerContent={(props) => (
+        <CustomDrawerContent {...props} drawerTitle="Oishi vagabundao" />
+      )}
+      screenOptions={{
+        drawerActiveTintColor: "#17f502",
+        drawerInactiveTintColor: "#fcfcfc",
+        drawerLabelStyle: {
+          color: "#fcfcfc",
+          fontSize: 14,
+          fontWeight: "bold",
+        },
+        drawerItemStyle: { marginVertical: 10 },
+      }}
+    >
+      <Drawer.Screen
+        name="Lunes"
+        component={LunesOishi}
+        options={{
+          title: "Lunes",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Martes"
+        component={MartesOishi}
+        options={{
+          title: "Martes",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Miercoles"
+        component={MiercolesOishi}
+        options={{
+          title: "Miercoles",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Jueves"
+        component={JuevesOishi}
+        options={{
+          title: "Jueves",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Viernes"
+        component={ViernesOishi}
+        options={{
+          title: "Viernes",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Sabado"
+        component={SabadoOishi}
+        options={{
+          title: "Sabado",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Domingo"
+        component={DomingoOishi}
+        options={{
+          title: "Domingo",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+    </Drawer.Navigator>
+  );
+};
+
 const App = () => {
   return (
-    <FirebaseStateTomaokaDomingo>
-    <FirebaseStateTomaokaSabado>
-      <FirebaseStateTomaokaViernes>
-        <FirebaseStateTomaokaJueves>
-          <FirebaseStateTomaokaMiercoles>
-            <FirebaseStateTomaokaMartes>
-              <FirebaseStateTomaoka>
-                <FirebaseStateMatsushimaDomingo>
-                  <FirebaseStateMatsushimaSabado>
-                    <FirebaseStateMatsushimaViernes>
-                      <FirebaseStateMatsushimaJueves>
-                        <FirebaseStateMatsushimaMiercoles>
-                          <FirebaseStateMatsushimaMartes>
-                            <FirebaseStateMatsushima>
-                              <FirebaseStateHoshinoDomingo>
-                                <FirebaseStateHoshinoSabado>
-                                  <FirebaseStateHoshinoViernes>
-                                    <FirebaseStateHoshinoJueves>
-                                      <FirebaseStateHoshinoMiercoles>
-                                        <FirebaseStateHoshinoMartes>
-                                          <FirebaseStateHoshino>
-                                            <FirebaseState>
-                                              <PedidosState>
-                                                <NavigationContainer>
-                                                  <Stack.Navigator initialRouteName="LoginScreen">
-                                                    <Stack.Screen
-                                                      name="LoginScreen"
-                                                      component={LoginScreen}
-                                                      options={{
-                                                        title: "LoginScreen",
-                                                        headerShown: false,
-                                                      }}
-                                                    />
-                                                    <Stack.Screen
-                                                      name="NuevaOrden"
-                                                      component={NuevaOrden}
-                                                      options={{
-                                                        headerBackTitle:
-                                                          "Salir",
-                                                        headerBackTitleStyle: {
-                                                          fontSize: 20,
-                                                          color: "red",
-                                                          fontVariant:
-                                                            "proportional-nums",
-                                                        },
-                                                      }}
-                                                    />
-                                                    <Stack.Screen
-                                                      name="Menu"
-                                                      component={Menu}
-                                                      options={{
-                                                        title: "Menu",
-                                                        headerBackTitleStyle: {
-                                                          fontSize: 15,
-                                                          color: "green",
-                                                          fontStyle: "italic",
-                                                        },
-                                                      }}
-                                                    />
-                                                    <Stack.Screen
-                                                      name="MatsushimaDrawer"
-                                                      component={
-                                                        MatsushimaDrawer
-                                                      }
-                                                      options={{
-                                                        title: "Matsushima",
-                                                        headerShown: false,
-                                                      }}
-                                                    />
-                                                    <Stack.Screen
-                                                      name="TomaokaDrawer"
-                                                      component={TomaokaDrawer}
-                                                      options={{
-                                                        title: "Tomaoka",
-                                                        headerShown: false,
-                                                      }}
-                                                    />
-                                                    <Stack.Screen
-                                                      name="HoshinoDrawer"
-                                                      component={HoshinoDrawer}
-                                                      options={{
-                                                        title: "Hoshino",
-                                                        headerShown: false,
-                                                      }}
-                                                    />
-                                                    <Stack.Screen
-                                                      name="DetallePlatillo"
-                                                      component={
-                                                        DetallePlatillo
-                                                      }
-                                                      options={{
-                                                        title:
-                                                          "DetallePlatillo",
-                                                        headerBackTitle: "Menu",
-                                                        headerTitleAlign:
-                                                          "center",
-                                                      }}
-                                                    />
-                                                    <Stack.Screen
-                                                      name="FormularioPlatillo"
-                                                      component={
-                                                        FormularioPlatillo
-                                                      }
-                                                      options={{
-                                                        title:
-                                                          "FormularioPlatillo",
-                                                        headerBackTitle: "Menu",
-                                                      }}
-                                                    />
-                                                    <Stack.Screen
-                                                      name="ResumenPedido"
-                                                      component={ResumenPedido}
-                                                      options={{
-                                                        title: "ResumenPedido",
-                                                        headerBackTitle: "Menu",
-                                                      }}
-                                                    />
-                                                    <Stack.Screen
-                                                      name="ProgresoPedido"
-                                                      component={ProgresoPedido}
-                                                      options={{
-                                                        title: "ProgresoPedido",
-                                                        headerBackTitle: "Menu",
-                                                      }}
-                                                    />
-                                                  </Stack.Navigator>
-                                                </NavigationContainer>
-                                              </PedidosState>
-                                            </FirebaseState>
-                                          </FirebaseStateHoshino>
-                                        </FirebaseStateHoshinoMartes>
-                                      </FirebaseStateHoshinoMiercoles>
-                                    </FirebaseStateHoshinoJueves>
-                                  </FirebaseStateHoshinoViernes>
-                                </FirebaseStateHoshinoSabado>
-                              </FirebaseStateHoshinoDomingo>
-                            </FirebaseStateMatsushima>
-                          </FirebaseStateMatsushimaMartes>
-                        </FirebaseStateMatsushimaMiercoles>
-                      </FirebaseStateMatsushimaJueves>
-                    </FirebaseStateMatsushimaViernes>
-                  </FirebaseStateMatsushimaSabado>
-                </FirebaseStateMatsushimaDomingo>
-              </FirebaseStateTomaoka>
-            </FirebaseStateTomaokaMartes>
-          </FirebaseStateTomaokaMiercoles>
-        </FirebaseStateTomaokaJueves>
-      </FirebaseStateTomaokaViernes>
-    </FirebaseStateTomaokaSabado>
-    </FirebaseStateTomaokaDomingo>
+    <FirebaseStateOishiDomingo>
+      <FirebaseStateOishiSabado>
+        <FirebaseStateOishiViernes>
+          <FirebaseStateOishiJueves>
+            <FirebaseStateOishiMiercoles>
+              <FirebaseStateOishiMartes>
+                <FirebaseStateOishi>
+                  <FirebaseStateTomaokaDomingo>
+                    <FirebaseStateTomaokaSabado>
+                      <FirebaseStateTomaokaViernes>
+                        <FirebaseStateTomaokaJueves>
+                          <FirebaseStateTomaokaMiercoles>
+                            <FirebaseStateTomaokaMartes>
+                              <FirebaseStateTomaoka>
+                                <FirebaseStateMatsushimaDomingo>
+                                  <FirebaseStateMatsushimaSabado>
+                                    <FirebaseStateMatsushimaViernes>
+                                      <FirebaseStateMatsushimaJueves>
+                                        <FirebaseStateMatsushimaMiercoles>
+                                          <FirebaseStateMatsushimaMartes>
+                                            <FirebaseStateMatsushima>
+                                              <FirebaseStateHoshinoDomingo>
+                                                <FirebaseStateHoshinoSabado>
+                                                  <FirebaseStateHoshinoViernes>
+                                                    <FirebaseStateHoshinoJueves>
+                                                      <FirebaseStateHoshinoMiercoles>
+                                                        <FirebaseStateHoshinoMartes>
+                                                          <FirebaseStateHoshino>
+                                                            <FirebaseState>
+                                                              <PedidosState>
+                                                                <NavigationContainer>
+                                                                  <Stack.Navigator initialRouteName="LoginScreen">
+                                                                    <Stack.Screen
+                                                                      name="LoginScreen"
+                                                                      component={
+                                                                        LoginScreen
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "LoginScreen",
+                                                                        headerShown: false,
+                                                                      }}
+                                                                    />
+                                                                    <Stack.Screen
+                                                                      name="NuevaOrden"
+                                                                      component={
+                                                                        NuevaOrden
+                                                                      }
+                                                                      options={{
+                                                                        headerBackTitle:
+                                                                          "Salir",
+                                                                        headerBackTitleStyle:
+                                                                          {
+                                                                            fontSize: 20,
+                                                                            color:
+                                                                              "red",
+                                                                            fontVariant:
+                                                                              "proportional-nums",
+                                                                          },
+                                                                      }}
+                                                                    />
+                                                                    <Stack.Screen
+                                                                      name="Menu"
+                                                                      component={
+                                                                        Menu
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "Menu",
+                                                                        headerBackTitleStyle:
+                                                                          {
+                                                                            fontSize: 15,
+                                                                            color:
+                                                                              "green",
+                                                                            fontStyle:
+                                                                              "italic",
+                                                                          },
+                                                                      }}
+                                                                    />
+                                                                    <Stack.Screen
+                                                                      name="MatsushimaDrawer"
+                                                                      component={
+                                                                        MatsushimaDrawer
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "Matsushima",
+                                                                        headerShown: false,
+                                                                        headerTitleAlign:
+                                                                          "center",
+                                                                      }}
+                                                                    />
+                                                                    <Stack.Screen
+                                                                      name="TomaokaDrawer"
+                                                                      component={
+                                                                        TomaokaDrawer
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "Tomaoka",
+                                                                        headerShown: false,
+                                                                        headerTitleAlign:
+                                                                          "center",
+                                                                      }}
+                                                                    />
+                                                                    <Stack.Screen
+                                                                      name="HoshinoDrawer"
+                                                                      component={
+                                                                        HoshinoDrawer
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "Hoshino",
+                                                                        headerShown: false,
+                                                                        headerTitleAlign:
+                                                                          "center",
+                                                                      }}
+                                                                    />
+                                                                    <Stack.Screen
+                                                                      name="OishiDrawer"
+                                                                      component={
+                                                                        OishiDrawer
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "Oishi",
+                                                                        headerShown: false,
+                                                                        headerTitleAlign:
+                                                                          "center",
+                                                                      }}
+                                                                    />
+                                                                    <Stack.Screen
+                                                                      name="DetallePlatillo"
+                                                                      component={
+                                                                        DetallePlatillo
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "DetallePlatillo",
+                                                                        headerBackTitle:
+                                                                          "Menu",
+                                                                        headerTitleAlign:
+                                                                          "center",
+                                                                      }}
+                                                                    />
+                                                                    <Stack.Screen
+                                                                      name="FormularioPlatillo"
+                                                                      component={
+                                                                        FormularioPlatillo
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "FormularioPlatillo",
+                                                                        headerBackTitle:
+                                                                          "Menu",
+                                                                      }}
+                                                                    />
+                                                                    <Stack.Screen
+                                                                      name="ResumenPedido"
+                                                                      component={
+                                                                        ResumenPedido
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "ResumenPedido",
+                                                                        headerBackTitle:
+                                                                          "Menu",
+                                                                      }}
+                                                                    />
+                                                                    <Stack.Screen
+                                                                      name="ProgresoPedido"
+                                                                      component={
+                                                                        ProgresoPedido
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "ProgresoPedido",
+                                                                        headerBackTitle:
+                                                                          "Menu",
+                                                                      }}
+                                                                    />
+                                                                  </Stack.Navigator>
+                                                                </NavigationContainer>
+                                                              </PedidosState>
+                                                            </FirebaseState>
+                                                          </FirebaseStateHoshino>
+                                                        </FirebaseStateHoshinoMartes>
+                                                      </FirebaseStateHoshinoMiercoles>
+                                                    </FirebaseStateHoshinoJueves>
+                                                  </FirebaseStateHoshinoViernes>
+                                                </FirebaseStateHoshinoSabado>
+                                              </FirebaseStateHoshinoDomingo>
+                                            </FirebaseStateMatsushima>
+                                          </FirebaseStateMatsushimaMartes>
+                                        </FirebaseStateMatsushimaMiercoles>
+                                      </FirebaseStateMatsushimaJueves>
+                                    </FirebaseStateMatsushimaViernes>
+                                  </FirebaseStateMatsushimaSabado>
+                                </FirebaseStateMatsushimaDomingo>
+                              </FirebaseStateTomaoka>
+                            </FirebaseStateTomaokaMartes>
+                          </FirebaseStateTomaokaMiercoles>
+                        </FirebaseStateTomaokaJueves>
+                      </FirebaseStateTomaokaViernes>
+                    </FirebaseStateTomaokaSabado>
+                  </FirebaseStateTomaokaDomingo>
+                </FirebaseStateOishi>
+              </FirebaseStateOishiMartes>
+            </FirebaseStateOishiMiercoles>
+          </FirebaseStateOishiJueves>
+        </FirebaseStateOishiViernes>
+      </FirebaseStateOishiSabado>
+    </FirebaseStateOishiDomingo>
   );
 };
 
