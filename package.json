@@ -33,7 +33,7 @@
     "expo-image-picker": "15.0.7",
     "expo-splash-screen": "0.27.5",
     "expo-status-bar": "~1.12.1",
-    "expo-updates": "0.25.24",
+    "expo-updates": "0.25.25",
     "firebase": "^10.7.1",
     "native-base": "^3.4.28",
     "react": "18.2.0",

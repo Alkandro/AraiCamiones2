@@ -35,6 +35,9 @@ export default function Login(props) {
       } else if (email === 'O' && password === '1') {
           Alert.alert("Iniciando sesion", "Accediendo...");
           props.navigation.navigate('OishiDrawer');
+        } else if (email === 'Ok' && password === '1') {
+          Alert.alert("Iniciando sesion", "Accediendo...");
+          props.navigation.navigate('OkamotoDrawer');
     } else {
       Alert.alert("Error!", "El usuario o la contrasena son incorrectas");
       props.navigation.navigate('LoginScreen');

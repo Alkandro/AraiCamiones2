@@ -60,6 +60,15 @@ import ViernesOishi from "./views/Oishi/ViernesOishi";
 import SabadoOishi from "./views/Oishi/SabadoOishi";
 import DomingoOishi from "./views/Oishi/DomingoOishi";
 
+//Oishi
+import LunesOkamoto from "./views/Okamoto/LunesOkamoto";
+import MartesOkamoto from "./views/Okamoto/MartesOkamoto";
+import MiercolesOkamoto from "./views/Okamoto/MiercolesOkamoto";
+import JuevesOkamoto from "./views/Okamoto/JuevesOkamoto";
+import ViernesOkamoto from "./views/Okamoto/ViernesOkamoto";
+import SabadoOkamoto from "./views/Okamoto/SabadoOkamoto";
+import DomingoOkamoto from "./views/Okamoto/DomingoOkamoto";
+
 import LoginScreen from "./views/LoginScreen";
 
 import FirebaseState from "./context/firebase/firebaseState";
@@ -99,6 +108,15 @@ import FirebaseStateOishiJueves from "./context/firebase/OishiState/FirebaseStat
 import FirebaseStateOishiViernes from "./context/firebase/OishiState/FirebaseStateOishiViernes/firebaseStateOishiViernes";
 import FirebaseStateOishiSabado from "./context/firebase/OishiState/FirebaseStateOishiSabado/firebaseStateOishiSabado";
 import FirebaseStateOishiDomingo from "./context/firebase/OishiState/FirebaseStateOishiDomingo/firebaseStateOishiDomingo";
+
+//OKAMOTO
+import FirebaseStateOkamoto from "./context/firebase/FirebaseStateOkamoto/firebaseStateOkamoto";
+import FirebaseStateOkamotoMartes from "./context/firebase/OkamotoState/FirebaseStateOkamotoMartes/firebaseStateOkamotoMartes";
+import FirebaseStateOkamotoMiercoles from "./context/firebase/OkamotoState/FirebaseStateOkamotoMiercoles/firebaseStateOkamotoMiercoles";
+import FirebaseStateOkamotoJueves from "./context/firebase/OkamotoState/FirebaseStateOkamotoJueves/firebaseStateOkamotoJueves";
+import FirebaseStateOkamotoViernes from "./context/firebase/OkamotoState/FirebaseStateOkamotoViernes/firebaseStateOkamotoViernes";
+import FirebaseStateOkamotoSabado from "./context/firebase/OkamotoState/FirebaseStateOkamotoSabado/firebaseStateOkamotoSabado";
+import FirebaseStateOkamotoDomingo from "./context/firebase/OkamotoState/FirebaseStateOkamotoDomingo/firebaseStateOkamotoDomingo";
 
 import PedidosState from "./context/firebase/pedidos/pedidosState";
 
@@ -609,7 +627,6 @@ const MatsushimaDrawer = () => {
     </Drawer.Navigator>
   );
 };
-
 const TomaokaDrawer = () => {
   return (
     <Drawer.Navigator
@@ -840,7 +857,6 @@ const TomaokaDrawer = () => {
     </Drawer.Navigator>
   );
 };
-
 const OishiDrawer = () => {
   return (
     <Drawer.Navigator
@@ -1071,9 +1087,246 @@ const OishiDrawer = () => {
     </Drawer.Navigator>
   );
 };
+const OkamotoDrawer = () => {
+  return (
+    <Drawer.Navigator
+      drawerContent={(props) => (
+        <CustomDrawerContent {...props} drawerTitle="Okamoto" />
+      )}
+      screenOptions={{
+        drawerActiveTintColor: "#17f502",
+        drawerInactiveTintColor: "#fcfcfc",
+        drawerLabelStyle: {
+          color: "#fcfcfc",
+          fontSize: 14,
+          fontWeight: "bold",
+        },
+        drawerItemStyle: { marginVertical: 10 },
+      }}
+    >
+      <Drawer.Screen
+        name="Lunes"
+        component={LunesOkamoto}
+        options={{
+          title: "Lunes",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Martes"
+        component={MartesOkamoto}
+        options={{
+          title: "Martes",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Miercoles"
+        component={MiercolesOkamoto}
+        options={{
+          title: "Miercoles",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Jueves"
+        component={JuevesOkamoto}
+        options={{
+          title: "Jueves",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Viernes"
+        component={ViernesOkamoto}
+        options={{
+          title: "Viernes",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Sabado"
+        component={SabadoOkamoto}
+        options={{
+          title: "Sabado",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Domingo"
+        component={DomingoOkamoto}
+        options={{
+          title: "Domingo",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+    </Drawer.Navigator>
+  );
+};
 
 const App = () => {
   return (
+<FirebaseStateOkamotoDomingo>
+<FirebaseStateOkamotoSabado>
+<FirebaseStateOkamotoViernes>
+    <FirebaseStateOkamotoJueves>
+    <FirebaseStateOkamotoMiercoles>
+    <FirebaseStateOkamotoMartes>
+    <FirebaseStateOkamoto>
     <FirebaseStateOishiDomingo>
       <FirebaseStateOishiSabado>
         <FirebaseStateOishiViernes>
@@ -1205,6 +1458,19 @@ const App = () => {
                                                                           "center",
                                                                       }}
                                                                     />
+                                                                     <Stack.Screen
+                                                                      name="OkamotoDrawer"
+                                                                      component={
+                                                                        OkamotoDrawer
+                                                                      }
+                                                                      options={{
+                                                                        title:
+                                                                          "Okamoto",
+                                                                        headerShown: false,
+                                                                        headerTitleAlign:
+                                                                          "center",
+                                                                      }}
+                                                                    />
                                                                     <Stack.Screen
                                                                       name="DetallePlatillo"
                                                                       component={
@@ -1287,6 +1553,16 @@ const App = () => {
         </FirebaseStateOishiViernes>
       </FirebaseStateOishiSabado>
     </FirebaseStateOishiDomingo>
+    </FirebaseStateOkamoto>
+    </FirebaseStateOkamotoMartes>
+    </FirebaseStateOkamotoMiercoles>
+    </FirebaseStateOkamotoJueves>
+    </FirebaseStateOkamotoViernes>
+    </FirebaseStateOkamotoSabado>
+    </FirebaseStateOkamotoDomingo>
+
+
+
   );
 };
 
