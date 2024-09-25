@@ -60,7 +60,7 @@ import ViernesOishi from "./views/Oishi/ViernesOishi";
 import SabadoOishi from "./views/Oishi/SabadoOishi";
 import DomingoOishi from "./views/Oishi/DomingoOishi";
 
-//Oishi
+//Okamoto
 import LunesOkamoto from "./views/Okamoto/LunesOkamoto";
 import MartesOkamoto from "./views/Okamoto/MartesOkamoto";
 import MiercolesOkamoto from "./views/Okamoto/MiercolesOkamoto";
@@ -68,6 +68,60 @@ import JuevesOkamoto from "./views/Okamoto/JuevesOkamoto";
 import ViernesOkamoto from "./views/Okamoto/ViernesOkamoto";
 import SabadoOkamoto from "./views/Okamoto/SabadoOkamoto";
 import DomingoOkamoto from "./views/Okamoto/DomingoOkamoto";
+
+//Yamakado
+import LunesYamakado from "./views/Yamakado/LunesYamakado";
+import MartesYamakado from "./views/Yamakado/MartesYamakado";
+import MiercolesYamakado from "./views/Yamakado/MiercolesYamakado";
+import JuevesYamakado from "./views/Yamakado/JuevesYamakado";
+import ViernesYamakado from "./views/Yamakado/ViernesYamakado";
+import SabadoYamakado from "./views/Yamakado/SabadoYamakado";
+import DomingoYamakado from "./views/Yamakado/DomingoYamakado";
+
+//Sklar
+import LunesSklar from "./views/Sklar/LunesSklar";
+import MartesSklar from "./views/Sklar/MartesSklar";
+import MiercolesSklar from "./views/Sklar/MiercolesSklar";
+import JuevesSklar from "./views/Sklar/JuevesSklar";
+import ViernesSklar from "./views/Sklar/ViernesSklar";
+import SabadoSklar from "./views/Sklar/SabadoSklar";
+import DomingoSklar from "./views/Sklar/DomingoSklar";
+
+//Enrique
+import LunesEnrique from "./views/Enrique/LunesEnrique";
+import MartesEnrique from "./views/Enrique/MartesEnrique";
+import MiercolesEnrique from "./views/Enrique/MiercolesEnrique";
+import JuevesEnrique from "./views/Enrique/JuevesEnrique";
+import ViernesEnrique from "./views/Enrique/ViernesEnrique";
+import SabadoEnrique from "./views/Enrique/SabadoEnrique";
+import DomingoEnrique from "./views/Enrique/DomingoEnrique";
+
+//User1
+import LunesUser1 from "./views/User1/LunesUser1";
+import MartesUser1 from "./views/User1/MartesUser1";
+import MiercolesUser1 from "./views/User1/MiercolesUser1";
+import JuevesUser1 from "./views/User1/JuevesUser1";
+import ViernesUser1 from "./views/User1/ViernesUser1";
+import SabadoUser1 from "./views/User1/SabadoUser1";
+import DomingoUser1 from "./views/User1/DomingoUser1";
+
+//User2
+import LunesUser2 from "./views/User2/LunesUser2";
+import MartesUser2 from "./views/User2/MartesUser2";
+import MiercolesUser2 from "./views/User2/MiercolesUser2";
+import JuevesUser2 from "./views/User2/JuevesUser2";
+import ViernesUser2 from "./views/User2/ViernesUser2";
+import SabadoUser2 from "./views/User2/SabadoUser2";
+import DomingoUser2 from "./views/User2/DomingoUser2";
+
+//User3
+import LunesUser3 from "./views/User3/LunesUser3";
+import MartesUser3 from "./views/User3/MartesUser3";
+import MiercolesUser3 from "./views/User3/MiercolesUser3";
+import JuevesUser3 from "./views/User3/JuevesUser3";
+import ViernesUser3 from "./views/User3/ViernesUser3";
+import SabadoUser3 from "./views/User3/SabadoUser3";
+import DomingoUser3 from "./views/User3/DomingoUser3";
 
 import LoginScreen from "./views/LoginScreen";
 
@@ -110,6 +164,60 @@ import FirebaseStateOishiSabado from "./context/firebase/OishiState/FirebaseStat
 import FirebaseStateOishiDomingo from "./context/firebase/OishiState/FirebaseStateOishiDomingo/firebaseStateOishiDomingo";
 
 //OKAMOTO
+import FirebaseStateOkamoto from "./context/firebase/FirebaseStateOkamoto/firebaseStateOkamoto";
+import FirebaseStateOkamotoMartes from "./context/firebase/OkamotoState/FirebaseStateOkamotoMartes/firebaseStateOkamotoMartes";
+import FirebaseStateOkamotoMiercoles from "./context/firebase/OkamotoState/FirebaseStateOkamotoMiercoles/firebaseStateOkamotoMiercoles";
+import FirebaseStateOkamotoJueves from "./context/firebase/OkamotoState/FirebaseStateOkamotoJueves/firebaseStateOkamotoJueves";
+import FirebaseStateOkamotoViernes from "./context/firebase/OkamotoState/FirebaseStateOkamotoViernes/firebaseStateOkamotoViernes";
+import FirebaseStateOkamotoSabado from "./context/firebase/OkamotoState/FirebaseStateOkamotoSabado/firebaseStateOkamotoSabado";
+import FirebaseStateOkamotoDomingo from "./context/firebase/OkamotoState/FirebaseStateOkamotoDomingo/firebaseStateOkamotoDomingo";
+
+//YAMAKADO
+import FirebaseStateYamakado from "./context/firebase/FirebaseStateYamakado/firebaseStateYamakado";
+import FirebaseStateYamakadoMartes from "./context/firebase/YamakadoState/FirebaseStateYamakadoMartes/firebaseStateYamakadoMartes";
+import FirebaseStateYamakadoMiercoles from "./context/firebase/YamakadoState/FirebaseStateYamakadoMiercoles/firebaseStateYamakadoMiercoles";
+import FirebaseStateYamakadoJueves from "./context/firebase/YamakadoState/FirebaseStateYamakadoJueves/firebaseStateYamakadoJueves";
+import FirebaseStateYamakadoViernes from "./context/firebase/YamakadoState/FirebaseStateYamakadoViernes/firebaseStateYamakadoViernes";
+import FirebaseStateYamakadoSabado from "./context/firebase/YamakadoState/FirebaseStateYamakadoSabado/firebaseStateYamakadoSabado";
+import FirebaseStateYamakadoDomingo from "./context/firebase/YamakadoState/FirebaseStateYamakadoDomingo/firebaseStateYamakadoDomingo";
+
+//SKLAR
+import FirebaseStateOkamoto from "./context/firebase/FirebaseStateOkamoto/firebaseStateOkamoto";
+import FirebaseStateOkamotoMartes from "./context/firebase/OkamotoState/FirebaseStateOkamotoMartes/firebaseStateOkamotoMartes";
+import FirebaseStateOkamotoMiercoles from "./context/firebase/OkamotoState/FirebaseStateOkamotoMiercoles/firebaseStateOkamotoMiercoles";
+import FirebaseStateOkamotoJueves from "./context/firebase/OkamotoState/FirebaseStateOkamotoJueves/firebaseStateOkamotoJueves";
+import FirebaseStateOkamotoViernes from "./context/firebase/OkamotoState/FirebaseStateOkamotoViernes/firebaseStateOkamotoViernes";
+import FirebaseStateOkamotoSabado from "./context/firebase/OkamotoState/FirebaseStateOkamotoSabado/firebaseStateOkamotoSabado";
+import FirebaseStateOkamotoDomingo from "./context/firebase/OkamotoState/FirebaseStateOkamotoDomingo/firebaseStateOkamotoDomingo";
+
+//ENRIQUE
+import FirebaseStateOkamoto from "./context/firebase/FirebaseStateOkamoto/firebaseStateOkamoto";
+import FirebaseStateOkamotoMartes from "./context/firebase/OkamotoState/FirebaseStateOkamotoMartes/firebaseStateOkamotoMartes";
+import FirebaseStateOkamotoMiercoles from "./context/firebase/OkamotoState/FirebaseStateOkamotoMiercoles/firebaseStateOkamotoMiercoles";
+import FirebaseStateOkamotoJueves from "./context/firebase/OkamotoState/FirebaseStateOkamotoJueves/firebaseStateOkamotoJueves";
+import FirebaseStateOkamotoViernes from "./context/firebase/OkamotoState/FirebaseStateOkamotoViernes/firebaseStateOkamotoViernes";
+import FirebaseStateOkamotoSabado from "./context/firebase/OkamotoState/FirebaseStateOkamotoSabado/firebaseStateOkamotoSabado";
+import FirebaseStateOkamotoDomingo from "./context/firebase/OkamotoState/FirebaseStateOkamotoDomingo/firebaseStateOkamotoDomingo";
+
+//USER1
+import FirebaseStateOkamoto from "./context/firebase/FirebaseStateOkamoto/firebaseStateOkamoto";
+import FirebaseStateOkamotoMartes from "./context/firebase/OkamotoState/FirebaseStateOkamotoMartes/firebaseStateOkamotoMartes";
+import FirebaseStateOkamotoMiercoles from "./context/firebase/OkamotoState/FirebaseStateOkamotoMiercoles/firebaseStateOkamotoMiercoles";
+import FirebaseStateOkamotoJueves from "./context/firebase/OkamotoState/FirebaseStateOkamotoJueves/firebaseStateOkamotoJueves";
+import FirebaseStateOkamotoViernes from "./context/firebase/OkamotoState/FirebaseStateOkamotoViernes/firebaseStateOkamotoViernes";
+import FirebaseStateOkamotoSabado from "./context/firebase/OkamotoState/FirebaseStateOkamotoSabado/firebaseStateOkamotoSabado";
+import FirebaseStateOkamotoDomingo from "./context/firebase/OkamotoState/FirebaseStateOkamotoDomingo/firebaseStateOkamotoDomingo";
+
+//USER2
+import FirebaseStateOkamoto from "./context/firebase/FirebaseStateOkamoto/firebaseStateOkamoto";
+import FirebaseStateOkamotoMartes from "./context/firebase/OkamotoState/FirebaseStateOkamotoMartes/firebaseStateOkamotoMartes";
+import FirebaseStateOkamotoMiercoles from "./context/firebase/OkamotoState/FirebaseStateOkamotoMiercoles/firebaseStateOkamotoMiercoles";
+import FirebaseStateOkamotoJueves from "./context/firebase/OkamotoState/FirebaseStateOkamotoJueves/firebaseStateOkamotoJueves";
+import FirebaseStateOkamotoViernes from "./context/firebase/OkamotoState/FirebaseStateOkamotoViernes/firebaseStateOkamotoViernes";
+import FirebaseStateOkamotoSabado from "./context/firebase/OkamotoState/FirebaseStateOkamotoSabado/firebaseStateOkamotoSabado";
+import FirebaseStateOkamotoDomingo from "./context/firebase/OkamotoState/FirebaseStateOkamotoDomingo/firebaseStateOkamotoDomingo";
+
+//USER3
 import FirebaseStateOkamoto from "./context/firebase/FirebaseStateOkamoto/firebaseStateOkamoto";
 import FirebaseStateOkamotoMartes from "./context/firebase/OkamotoState/FirebaseStateOkamotoMartes/firebaseStateOkamotoMartes";
 import FirebaseStateOkamotoMiercoles from "./context/firebase/OkamotoState/FirebaseStateOkamotoMiercoles/firebaseStateOkamotoMiercoles";
@@ -1320,249 +1428,246 @@ const OkamotoDrawer = () => {
 
 const App = () => {
   return (
-<FirebaseStateOkamotoDomingo>
-<FirebaseStateOkamotoSabado>
-<FirebaseStateOkamotoViernes>
-    <FirebaseStateOkamotoJueves>
-    <FirebaseStateOkamotoMiercoles>
-    <FirebaseStateOkamotoMartes>
-    <FirebaseStateOkamoto>
-    <FirebaseStateOishiDomingo>
-      <FirebaseStateOishiSabado>
-        <FirebaseStateOishiViernes>
-          <FirebaseStateOishiJueves>
-            <FirebaseStateOishiMiercoles>
-              <FirebaseStateOishiMartes>
-                <FirebaseStateOishi>
-                  <FirebaseStateTomaokaDomingo>
-                    <FirebaseStateTomaokaSabado>
-                      <FirebaseStateTomaokaViernes>
-                        <FirebaseStateTomaokaJueves>
-                          <FirebaseStateTomaokaMiercoles>
-                            <FirebaseStateTomaokaMartes>
-                              <FirebaseStateTomaoka>
-                                <FirebaseStateMatsushimaDomingo>
-                                  <FirebaseStateMatsushimaSabado>
-                                    <FirebaseStateMatsushimaViernes>
-                                      <FirebaseStateMatsushimaJueves>
-                                        <FirebaseStateMatsushimaMiercoles>
-                                          <FirebaseStateMatsushimaMartes>
-                                            <FirebaseStateMatsushima>
-                                              <FirebaseStateHoshinoDomingo>
-                                                <FirebaseStateHoshinoSabado>
-                                                  <FirebaseStateHoshinoViernes>
-                                                    <FirebaseStateHoshinoJueves>
-                                                      <FirebaseStateHoshinoMiercoles>
-                                                        <FirebaseStateHoshinoMartes>
-                                                          <FirebaseStateHoshino>
-                                                            <FirebaseState>
-                                                              <PedidosState>
-                                                                <NavigationContainer>
-                                                                  <Stack.Navigator initialRouteName="LoginScreen">
-                                                                    <Stack.Screen
-                                                                      name="LoginScreen"
-                                                                      component={
-                                                                        LoginScreen
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "LoginScreen",
-                                                                        headerShown: false,
-                                                                      }}
-                                                                    />
-                                                                    <Stack.Screen
-                                                                      name="NuevaOrden"
-                                                                      component={
-                                                                        NuevaOrden
-                                                                      }
-                                                                      options={{
-                                                                        headerBackTitle:
-                                                                          "Salir",
-                                                                        headerBackTitleStyle:
-                                                                          {
-                                                                            fontSize: 20,
-                                                                            color:
-                                                                              "red",
-                                                                            fontVariant:
-                                                                              "proportional-nums",
-                                                                          },
-                                                                      }}
-                                                                    />
-                                                                    <Stack.Screen
-                                                                      name="Menu"
-                                                                      component={
-                                                                        Menu
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "Menu",
-                                                                        headerBackTitleStyle:
-                                                                          {
-                                                                            fontSize: 15,
-                                                                            color:
-                                                                              "green",
-                                                                            fontStyle:
-                                                                              "italic",
-                                                                          },
-                                                                      }}
-                                                                    />
-                                                                    <Stack.Screen
-                                                                      name="MatsushimaDrawer"
-                                                                      component={
-                                                                        MatsushimaDrawer
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "Matsushima",
-                                                                        headerShown: false,
-                                                                        headerTitleAlign:
-                                                                          "center",
-                                                                      }}
-                                                                    />
-                                                                    <Stack.Screen
-                                                                      name="TomaokaDrawer"
-                                                                      component={
-                                                                        TomaokaDrawer
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "Tomaoka",
-                                                                        headerShown: false,
-                                                                        headerTitleAlign:
-                                                                          "center",
-                                                                      }}
-                                                                    />
-                                                                    <Stack.Screen
-                                                                      name="HoshinoDrawer"
-                                                                      component={
-                                                                        HoshinoDrawer
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "Hoshino",
-                                                                        headerShown: false,
-                                                                        headerTitleAlign:
-                                                                          "center",
-                                                                      }}
-                                                                    />
-                                                                    <Stack.Screen
-                                                                      name="OishiDrawer"
-                                                                      component={
-                                                                        OishiDrawer
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "Oishi",
-                                                                        headerShown: false,
-                                                                        headerTitleAlign:
-                                                                          "center",
-                                                                      }}
-                                                                    />
-                                                                     <Stack.Screen
-                                                                      name="OkamotoDrawer"
-                                                                      component={
-                                                                        OkamotoDrawer
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "Okamoto",
-                                                                        headerShown: false,
-                                                                        headerTitleAlign:
-                                                                          "center",
-                                                                      }}
-                                                                    />
-                                                                    <Stack.Screen
-                                                                      name="DetallePlatillo"
-                                                                      component={
-                                                                        DetallePlatillo
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "DetallePlatillo",
-                                                                        headerBackTitle:
-                                                                          "Menu",
-                                                                        headerTitleAlign:
-                                                                          "center",
-                                                                      }}
-                                                                    />
-                                                                    <Stack.Screen
-                                                                      name="FormularioPlatillo"
-                                                                      component={
-                                                                        FormularioPlatillo
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "FormularioPlatillo",
-                                                                        headerBackTitle:
-                                                                          "Menu",
-                                                                      }}
-                                                                    />
-                                                                    <Stack.Screen
-                                                                      name="ResumenPedido"
-                                                                      component={
-                                                                        ResumenPedido
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "ResumenPedido",
-                                                                        headerBackTitle:
-                                                                          "Menu",
-                                                                      }}
-                                                                    />
-                                                                    <Stack.Screen
-                                                                      name="ProgresoPedido"
-                                                                      component={
-                                                                        ProgresoPedido
-                                                                      }
-                                                                      options={{
-                                                                        title:
-                                                                          "ProgresoPedido",
-                                                                        headerBackTitle:
-                                                                          "Menu",
-                                                                      }}
-                                                                    />
-                                                                  </Stack.Navigator>
-                                                                </NavigationContainer>
-                                                              </PedidosState>
-                                                            </FirebaseState>
-                                                          </FirebaseStateHoshino>
-                                                        </FirebaseStateHoshinoMartes>
-                                                      </FirebaseStateHoshinoMiercoles>
-                                                    </FirebaseStateHoshinoJueves>
-                                                  </FirebaseStateHoshinoViernes>
-                                                </FirebaseStateHoshinoSabado>
-                                              </FirebaseStateHoshinoDomingo>
-                                            </FirebaseStateMatsushima>
-                                          </FirebaseStateMatsushimaMartes>
-                                        </FirebaseStateMatsushimaMiercoles>
-                                      </FirebaseStateMatsushimaJueves>
-                                    </FirebaseStateMatsushimaViernes>
-                                  </FirebaseStateMatsushimaSabado>
-                                </FirebaseStateMatsushimaDomingo>
-                              </FirebaseStateTomaoka>
-                            </FirebaseStateTomaokaMartes>
-                          </FirebaseStateTomaokaMiercoles>
-                        </FirebaseStateTomaokaJueves>
-                      </FirebaseStateTomaokaViernes>
-                    </FirebaseStateTomaokaSabado>
-                  </FirebaseStateTomaokaDomingo>
-                </FirebaseStateOishi>
-              </FirebaseStateOishiMartes>
-            </FirebaseStateOishiMiercoles>
-          </FirebaseStateOishiJueves>
-        </FirebaseStateOishiViernes>
-      </FirebaseStateOishiSabado>
-    </FirebaseStateOishiDomingo>
-    </FirebaseStateOkamoto>
-    </FirebaseStateOkamotoMartes>
-    </FirebaseStateOkamotoMiercoles>
-    </FirebaseStateOkamotoJueves>
-    </FirebaseStateOkamotoViernes>
-    </FirebaseStateOkamotoSabado>
+    <FirebaseStateOkamotoDomingo>
+      <FirebaseStateOkamotoSabado>
+        <FirebaseStateOkamotoViernes>
+          <FirebaseStateOkamotoJueves>
+            <FirebaseStateOkamotoMiercoles>
+              <FirebaseStateOkamotoMartes>
+                <FirebaseStateOkamoto>
+                  <FirebaseStateOishiDomingo>
+                    <FirebaseStateOishiSabado>
+                      <FirebaseStateOishiViernes>
+                        <FirebaseStateOishiJueves>
+                          <FirebaseStateOishiMiercoles>
+                            <FirebaseStateOishiMartes>
+                              <FirebaseStateOishi>
+                                <FirebaseStateTomaokaDomingo>
+                                  <FirebaseStateTomaokaSabado>
+                                    <FirebaseStateTomaokaViernes>
+                                      <FirebaseStateTomaokaJueves>
+                                        <FirebaseStateTomaokaMiercoles>
+                                          <FirebaseStateTomaokaMartes>
+                                            <FirebaseStateTomaoka>
+                                              <FirebaseStateMatsushimaDomingo>
+                                                <FirebaseStateMatsushimaSabado>
+                                                  <FirebaseStateMatsushimaViernes>
+                                                    <FirebaseStateMatsushimaJueves>
+                                                      <FirebaseStateMatsushimaMiercoles>
+                                                        <FirebaseStateMatsushimaMartes>
+                                                          <FirebaseStateMatsushima>
+                                                            <FirebaseStateHoshinoDomingo>
+                                                              <FirebaseStateHoshinoSabado>
+                                                                <FirebaseStateHoshinoViernes>
+                                                                  <FirebaseStateHoshinoJueves>
+                                                                    <FirebaseStateHoshinoMiercoles>
+                                                                      <FirebaseStateHoshinoMartes>
+                                                                        <FirebaseStateHoshino>
+                                                                          <FirebaseState>
+                                                                            <PedidosState>
+                                                                              <NavigationContainer>
+                                                                                <Stack.Navigator initialRouteName="LoginScreen">
+                                                                                  <Stack.Screen
+                                                                                    name="LoginScreen"
+                                                                                    component={
+                                                                                      LoginScreen
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "LoginScreen",
+                                                                                      headerShown: false,
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="NuevaOrden"
+                                                                                    component={
+                                                                                      NuevaOrden
+                                                                                    }
+                                                                                    options={{
+                                                                                      headerBackTitle:
+                                                                                        "Salir",
+                                                                                      headerBackTitleStyle:
+                                                                                        {
+                                                                                          fontSize: 20,
+                                                                                          color:
+                                                                                            "red",
+                                                                                          fontVariant:
+                                                                                            "proportional-nums",
+                                                                                        },
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="Menu"
+                                                                                    component={
+                                                                                      Menu
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "Menu",
+                                                                                      headerBackTitleStyle:
+                                                                                        {
+                                                                                          fontSize: 15,
+                                                                                          color:
+                                                                                            "green",
+                                                                                          fontStyle:
+                                                                                            "italic",
+                                                                                        },
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="MatsushimaDrawer"
+                                                                                    component={
+                                                                                      MatsushimaDrawer
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "Matsushima",
+                                                                                      headerShown: false,
+                                                                                      headerTitleAlign:
+                                                                                        "center",
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="TomaokaDrawer"
+                                                                                    component={
+                                                                                      TomaokaDrawer
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "Tomaoka",
+                                                                                      headerShown: false,
+                                                                                      headerTitleAlign:
+                                                                                        "center",
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="HoshinoDrawer"
+                                                                                    component={
+                                                                                      HoshinoDrawer
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "Hoshino",
+                                                                                      headerShown: false,
+                                                                                      headerTitleAlign:
+                                                                                        "center",
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="OishiDrawer"
+                                                                                    component={
+                                                                                      OishiDrawer
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "Oishi",
+                                                                                      headerShown: false,
+                                                                                      headerTitleAlign:
+                                                                                        "center",
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="OkamotoDrawer"
+                                                                                    component={
+                                                                                      OkamotoDrawer
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "Okamoto",
+                                                                                      headerShown: false,
+                                                                                      headerTitleAlign:
+                                                                                        "center",
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="DetallePlatillo"
+                                                                                    component={
+                                                                                      DetallePlatillo
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "DetallePlatillo",
+                                                                                      headerBackTitle:
+                                                                                        "Menu",
+                                                                                      headerTitleAlign:
+                                                                                        "center",
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="FormularioPlatillo"
+                                                                                    component={
+                                                                                      FormularioPlatillo
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "FormularioPlatillo",
+                                                                                      headerBackTitle:
+                                                                                        "Menu",
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="ResumenPedido"
+                                                                                    component={
+                                                                                      ResumenPedido
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "ResumenPedido",
+                                                                                      headerBackTitle:
+                                                                                        "Menu",
+                                                                                    }}
+                                                                                  />
+                                                                                  <Stack.Screen
+                                                                                    name="ProgresoPedido"
+                                                                                    component={
+                                                                                      ProgresoPedido
+                                                                                    }
+                                                                                    options={{
+                                                                                      title:
+                                                                                        "ProgresoPedido",
+                                                                                      headerBackTitle:
+                                                                                        "Menu",
+                                                                                    }}
+                                                                                  />
+                                                                                </Stack.Navigator>
+                                                                              </NavigationContainer>
+                                                                            </PedidosState>
+                                                                          </FirebaseState>
+                                                                        </FirebaseStateHoshino>
+                                                                      </FirebaseStateHoshinoMartes>
+                                                                    </FirebaseStateHoshinoMiercoles>
+                                                                  </FirebaseStateHoshinoJueves>
+                                                                </FirebaseStateHoshinoViernes>
+                                                              </FirebaseStateHoshinoSabado>
+                                                            </FirebaseStateHoshinoDomingo>
+                                                          </FirebaseStateMatsushima>
+                                                        </FirebaseStateMatsushimaMartes>
+                                                      </FirebaseStateMatsushimaMiercoles>
+                                                    </FirebaseStateMatsushimaJueves>
+                                                  </FirebaseStateMatsushimaViernes>
+                                                </FirebaseStateMatsushimaSabado>
+                                              </FirebaseStateMatsushimaDomingo>
+                                            </FirebaseStateTomaoka>
+                                          </FirebaseStateTomaokaMartes>
+                                        </FirebaseStateTomaokaMiercoles>
+                                      </FirebaseStateTomaokaJueves>
+                                    </FirebaseStateTomaokaViernes>
+                                  </FirebaseStateTomaokaSabado>
+                                </FirebaseStateTomaokaDomingo>
+                              </FirebaseStateOishi>
+                            </FirebaseStateOishiMartes>
+                          </FirebaseStateOishiMiercoles>
+                        </FirebaseStateOishiJueves>
+                      </FirebaseStateOishiViernes>
+                    </FirebaseStateOishiSabado>
+                  </FirebaseStateOishiDomingo>
+                </FirebaseStateOkamoto>
+              </FirebaseStateOkamotoMartes>
+            </FirebaseStateOkamotoMiercoles>
+          </FirebaseStateOkamotoJueves>
+        </FirebaseStateOkamotoViernes>
+      </FirebaseStateOkamotoSabado>
     </FirebaseStateOkamotoDomingo>
-
-
-
   );
 };
 
