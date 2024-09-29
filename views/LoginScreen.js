@@ -88,14 +88,14 @@ export default function Login(props) {
         }
         break;
       case "matsushima@arai.co.jp":
-        if (password === "matsushimaPass") {
+        if (password === "123456") {
           props.navigation.navigate("MatsushimaDrawer");
         } else {
           Alert.alert("Error!", "Contraseña incorrecta para Matsushima");
         }
         break;
-      case "H":
-        if (password === "hoshinoPass") {
+      case "hoshino@arai.co.jp":
+        if (password === "123456") {
           props.navigation.navigate("HoshinoDrawer");
         } else {
           Alert.alert("Error!", "Contraseña incorrecta para Hoshino");
@@ -108,50 +108,50 @@ export default function Login(props) {
           Alert.alert("Error!", "Contraseña incorrecta para Oishi");
         }
         break;
-      case "Ok":
-        if (password === "okamotoPass") {
+      case "okamoto@arai.co.jp":
+        if (password === "123456") {
           props.navigation.navigate("OkamotoDrawer");
         } else {
           Alert.alert("Error!", "Contraseña incorrecta para Okamoto");
         }
         break;
-      case "Y":
-        if (password === "yamakadoPass") {
+      case "yamakado@arai.co.jp":
+        if (password === "123456") {
           props.navigation.navigate("YamakadoDrawer");
         } else {
           Alert.alert("Error!", "Contraseña incorrecta para Yamakado");
         }
         break;
-      case "S":
-        if (password === "sklarPass") {
+      case "sklar@arai.co.jp":
+        if (password === "123456") {
           props.navigation.navigate("SklarDrawer");
         } else {
           Alert.alert("Error!", "Contraseña incorrecta para Sklar");
         }
         break;
-      case "E":
-        if (password === "enriquePass") {
+      case "enrique@arai.co.jp":
+        if (password === "123456") {
           props.navigation.navigate("EnriqueDrawer");
         } else {
           Alert.alert("Error!", "Contraseña incorrecta para Enrique");
         }
         break;
-      case "U1":
-        if (password === "user1Pass") {
+      case "user1@arai.co.jp":
+        if (password === "123456") {
           props.navigation.navigate("User1Drawer");
         } else {
           Alert.alert("Error!", "Contraseña incorrecta para User1");
         }
         break;
-      case "U2":
-        if (password === "user2Pass") {
+      case "user2@arai.co.jp":
+        if (password === "123456") {
           props.navigation.navigate("User2Drawer");
         } else {
           Alert.alert("Error!", "Contraseña incorrecta para User2");
         }
         break;
-      case "U3":
-        if (password === "user3Pass") {
+      case "user3@arai.co.jp":
+        if (password === "123456") {
           props.navigation.navigate("User3Drawer");
         } else {
           Alert.alert("Error!", "Contraseña incorrecta para User3");
