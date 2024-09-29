@@ -32,6 +32,7 @@ import JuevesHoshino from "./views/Hoshino/JuevesHoshino";
 import ViernesHoshino from "./views/Hoshino/ViernesHoshino";
 import SabadoHoshino from "./views/Hoshino/SabadoHoshino";
 import DomingoHoshino from "./views/Hoshino/DomingoHoshino";
+import MensajeHoshino from "./views/Hoshino/MensajeHoshino";
 
 //Matsushima
 import LunesMatsushima from "./views/Matsushima/LunesMatsushima";
@@ -135,6 +136,7 @@ import FirebaseStateHoshinoJueves from "./context/firebase/Hoshino/FirebaseState
 import FirebaseStateHoshinoViernes from "./context/firebase/Hoshino/FirebaseStateHoshinoViernes/firebaseStateHoshinoViernes";
 import FirebaseStateHoshinoSabado from "./context/firebase/Hoshino/FirebaseStateHoshinoSabado/firebaseStateHoshinoSabado";
 import FirebaseStateHoshinoDomingo from "./context/firebase/Hoshino/FirebaseStateHoshinoDomingo/firebaseStateHoshinoDomingo";
+import FirebaseStateHoshinoMensaje from "./context/firebase/Hoshino/FirebaseStateHoshinoMensaje/firebaseStateHoshinoMensaje";
 
 //MATSUSHIMA
 import FirebaseStateMatsushima from "./context/firebase/FirebaseStateMatsushima/firebaseStateMatsushima";
@@ -477,6 +479,36 @@ const HoshinoDrawer = () => {
         component={DomingoHoshino}
         options={{
           title: "Domingo",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Mensaje"
+        component={MensajeHoshino}
+        options={{
+          title: "Mensaje",
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
@@ -2878,6 +2910,7 @@ const App = () => {
                                                                                                                                           <FirebaseStateMatsushimaMiercoles>
                                                                                                                                             <FirebaseStateMatsushimaMartes>
                                                                                                                                               <FirebaseStateMatsushima>
+                                                                                                                                              <FirebaseStateHoshinoMensaje>
                                                                                                                                                 <FirebaseStateHoshinoDomingo>
                                                                                                                                                   <FirebaseStateHoshinoSabado>
                                                                                                                                                     <FirebaseStateHoshinoViernes>
@@ -3140,6 +3173,7 @@ const App = () => {
                                                                                                                                                     </FirebaseStateHoshinoViernes>
                                                                                                                                                   </FirebaseStateHoshinoSabado>
                                                                                                                                                 </FirebaseStateHoshinoDomingo>
+                                                                                                                                                </FirebaseStateHoshinoMensaje>
                                                                                                                                               </FirebaseStateMatsushima>
                                                                                                                                             </FirebaseStateMatsushimaMartes>
                                                                                                                                           </FirebaseStateMatsushimaMiercoles>
