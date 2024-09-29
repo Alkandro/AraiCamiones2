@@ -12,7 +12,7 @@ const FirebaseStateEnrique = (props) => {
   };
 
   // useReducer con dispatch para ejecutar las funciones
-  const [state, dispatch] = useReducer(FirebaseReducerHoshino, initialState);
+  const [state, dispatch] = useReducer(FirebaseReducerEnrique, initialState);
 
   // Función que se ejecuta para traer los productos
   const obtenerProductos = () => {
@@ -34,7 +34,7 @@ const FirebaseStateEnrique = (props) => {
 
       // Actualizar el estado con los productos obtenidos
       dispatch({
-        type: OBTENER_PRODUCTOS_HOSHINO,
+        type: OBTENER_PRODUCTOS_ENRIQUE,
         payload: platillos,
       });
     }

@@ -1,6 +1,3 @@
-
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyDFW1ReaxxSkkMuKiYT9T51B3rwN0z0-Zg",
     authDomain: "restaurant-deb73.firebaseapp.com",
@@ -12,8 +9,7 @@ const firebaseConfig = {
   };
 
 
-  // Initialize Firebase
-
-
   export default firebaseConfig;
   
+
+ 

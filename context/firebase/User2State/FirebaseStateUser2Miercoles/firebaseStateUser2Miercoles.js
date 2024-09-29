@@ -40,7 +40,7 @@ const FirebaseStateUser2Miercoles = (props) => {
 
       // Tenemos resultados de la base de datos
       dispatch({
-        type: OBTENER_PRODUCTOS_USER1,
+        type: OBTENER_PRODUCTOS_USER2,
         payload: platillos,
       });
     }

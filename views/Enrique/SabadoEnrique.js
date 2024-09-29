@@ -54,7 +54,7 @@ const Enrique = () => {
     obtenerProductos();
   }, []);
 
-  const categoriaDeseada = "sabad";
+  const categoriaDeseada = "sabado";
   const platillosFiltrados = menu.filter(
     (platillo) => platillo.categoria === categoriaDeseada
   );

@@ -15,3 +15,4 @@ class Firebase {
 
 const firebase = new Firebase();
 export default firebase;
+
