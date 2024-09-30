@@ -11,10 +11,15 @@ import {
 import { View, Text, StyleSheet, Image } from "react-native";
 import { BlurView } from "expo-blur";
 
+import { useEffect, useState } from "react";
+import AppSplashScreen from './SplashScreen';
+// import { Asset } from "expo-asset";
+// import * as SplashScreen from "expo-splash-screen";
+
 import Icon1 from "react-native-vector-icons/MaterialCommunityIcons";
 
 // Importa la imagen desde los activos
-import avatar from "./assets/fotos/avatar.png";
+import avatar from "./assets/fotos/7803.jpeg";
 import Icon from "react-native-vector-icons/FontAwesome6";
 
 import NuevaOrden from "./views/NuevaOrden";
@@ -232,8 +237,19 @@ import PedidosState from "./context/firebase/pedidos/pedidosState";
 
 import { getAuth, signOut } from "firebase/auth";
 
+// // Mantener visible el splash screen hasta que la app esté lista
+// SplashScreen.preventAutoHideAsync();
+
+// const preloadAssets = async () => {
+//   const imageAssets = Asset.loadAsync([
+//     require('./assets/fotos/7803.jpeg'), // precarga la imagen del splash
+//   ]);
+//   await Promise.all([...imageAssets]);
+// };
+
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+
 
 const auth = getAuth();
 
@@ -2839,6 +2855,39 @@ const User3Drawer = () => {
 };
 
 const App = () => {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simula la duración del splash screen
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);  // Después de 3 segundos, ocultamos el splash screen
+    }, 3000);  // Puedes ajustar el tiempo a tu gusto
+
+    return () => clearTimeout(timer);  // Limpia el timer al desmontar
+  }, []);
+
+  if (isLoading) {
+    return <AppSplashScreen />;  // Muestra el SplashScreen mientras se carga la app
+  }
+
+  return <LoginScreen />;
+
+
+  // useEffect(() => {
+  //   const loadResourcesAndHideSplash = async () => {
+  //     try {
+  //       await preloadAssets();
+  //     } catch (e) {
+  //       console.warn(e);
+  //     } finally {
+  //       await SplashScreen.hideAsync();
+  //     }
+  //   };
+
+  //   loadResourcesAndHideSplash();
+  // }, []);
+
   return (
     <FirebaseStateUser3Domingo>
       <FirebaseStateUser3Sabado>
