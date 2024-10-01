@@ -19,7 +19,7 @@ import AppSplashScreen from './SplashScreen';
 import Icon1 from "react-native-vector-icons/MaterialCommunityIcons";
 
 // Importa la imagen desde los activos
-import avatar from "./assets/fotos/7803.jpeg";
+import avatar from "./assets/fotos/avatar.png";
 import Icon from "react-native-vector-icons/FontAwesome6";
 
 import NuevaOrden from "./views/NuevaOrden";
@@ -237,15 +237,6 @@ import PedidosState from "./context/firebase/pedidos/pedidosState";
 
 import { getAuth, signOut } from "firebase/auth";
 
-// // Mantener visible el splash screen hasta que la app esté lista
-// SplashScreen.preventAutoHideAsync();
-
-// const preloadAssets = async () => {
-//   const imageAssets = Asset.loadAsync([
-//     require('./assets/fotos/7803.jpeg'), // precarga la imagen del splash
-//   ]);
-//   await Promise.all([...imageAssets]);
-// };
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -537,7 +528,7 @@ const HoshinoDrawer = () => {
           // Cambiar el icono del Drawer
           drawerIcon: ({ focused, color, size }) => (
             <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
+              name={focused ? "envelope" : "envelope"}
               size={size}
               color={focused ? "#17f502" : color}
             />
@@ -2869,24 +2860,8 @@ const App = () => {
 
   if (isLoading) {
     return <AppSplashScreen />;  // Muestra el SplashScreen mientras se carga la app
+     
   }
-
-  return <LoginScreen />;
-
-
-  // useEffect(() => {
-  //   const loadResourcesAndHideSplash = async () => {
-  //     try {
-  //       await preloadAssets();
-  //     } catch (e) {
-  //       console.warn(e);
-  //     } finally {
-  //       await SplashScreen.hideAsync();
-  //     }
-  //   };
-
-  //   loadResourcesAndHideSplash();
-  // }, []);
 
   return (
     <FirebaseStateUser3Domingo>
@@ -3312,7 +3287,7 @@ const styles = StyleSheet.create({
   drawerHeader: {
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 20,
+    paddingVertical: 10,
   },
   drawerImage: {
     width: 80,
