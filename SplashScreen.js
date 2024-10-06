@@ -1,67 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import { View, Text, StyleSheet } from 'react-native';
-// import Animated, { Easing, useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
- 
-
-// const AnimatedMessage = () => {
-//   const opacity = useSharedValue(0);
-//   const translateY = useSharedValue(50);
-
-//   const animatedStyles = useAnimatedStyle(() => {
-//     return {
-//       opacity: opacity.value,
-//       transform: [{ translateY: translateY.value }],
-//     };
-//   });
-
-//   useEffect(() => {
-//     // Lanzar la animación
-//     opacity.value = withTiming(1, { duration: 2000, easing: Easing.inOut(Easing.ease) });
-//     translateY.value = withTiming(0, { duration: 2000, easing: Easing.inOut(Easing.ease) });
-
-//     // Ocultar splash screen después de 3 segundos
-//     setTimeout(() => {
-//       // AppSplashScreen.hide();  // Ocultar el splash screen (si no usas Expo)
-//     }, 3000);
-//   }, []);
-
-//   return (
-//     <Animated.View style={[styles.messageContainer, animatedStyles]}>
-//       <Text style={styles.message}>株式会社 新井商運!</Text>
-//       {/* <Text style={styles.message}>株式会社 新井商運!</Text> */}
-//     </Animated.View>
-//   );
-// };
-
-// const AppSplashScreen = () => {
-//   return (
-//     <View style={styles.container}>
-//       <AnimatedMessage />
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: 'black',  // Color de fondo del splash
-//   },
-//   messageContainer: {
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   message: {
-//     fontSize: 24,
-//     color: 'white',
-//     fontWeight: 'bold',
-//   },
-// });
-
-// export default AppSplashScreen;
-
-
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Animated, { Easing, useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
@@ -99,7 +35,7 @@ const AnimatedMessage = () => {
 
   return (
     <Animated.View style={[styles.messageContainer, animatedStyles]}>
-      <Text style={styles.message}>株式会社 新井商運!</Text>
+      <Text style={styles.message}>株式会社 新井商運</Text>
     </Animated.View>
   );
 };

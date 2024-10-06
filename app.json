@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "restaurantApp2",
-    "slug": "restaurantApp2",
+    "name": "arai",
+    "slug": "arai",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      
       "resizeMode": "cover",
       "backgroundColor": "#000000"
     },
@@ -22,8 +22,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        
+        "backgroundColor": "#000000"
       },
       "package": "com.alkandro.restaurantApp2",
       "runtimeVersion": "1.0.0"

@@ -210,6 +210,7 @@ export default function Login(props) {
                   style={styles.input}
                   placeholder="user@gmail.com"
                   onChangeText={(text) => setEmail(text)}
+                  autoCapitalize="none"  // Evita que la primera letra se capitalice
                 />
               </View>
               <View>

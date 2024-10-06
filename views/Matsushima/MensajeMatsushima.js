@@ -13,15 +13,15 @@ import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
 import { useContext, useEffect, useState } from "react";
 import { StyleSheet, Alert } from "react-native";
-import firebaseContextHoshinoMensaje from "../../context/firebase/Hoshino/FirebaseStateHoshinoMensaje/firebaseContextHoshinoMensaje";
+import firebaseContextMatsushimaMensaje from "../../context/firebase/Matsushima/FirebaseStateMatsushimaMensaje/firebaseContextMatsushimaMensaje";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import { parseISO, format } from "date-fns";
 
 
 
-const Hoshino = () => {
+const Matsushima = () => {
   const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(
-    firebaseContextHoshinoMensaje
+    firebaseContextMatsushimaMensaje
   );
   const { seleccionarPlatillo } = useContext(PedidoContext);
   const navigation = useNavigation();
@@ -242,6 +242,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Hoshino;
+export default Matsushima;
 
 
