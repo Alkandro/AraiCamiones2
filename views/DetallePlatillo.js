@@ -12,6 +12,8 @@ import { useNavigation } from "@react-navigation/native";
 import PedidosContext from "../context/firebase/pedidos/pedidosContext";
 import { Platform, StyleSheet, ImageBackground } from "react-native";
 
+
+//Con este codigo puedo trare lo que quiera y mostrarlo
 const DetallePlatillo = () => {
   // Pedido context
   const { platillo } = useContext(PedidosContext);
@@ -30,7 +32,13 @@ const DetallePlatillo = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    navigation.setOptions({ title: nombre });
+    navigation.setOptions({
+      title: nombre, // Título personalizado
+      headerStyle: {
+        backgroundColor: "#3d783c", // Color de fondo del header
+      },
+      headerTintColor: "white", // Color del texto e íconos del header
+    });
   }, []);
 
   return (

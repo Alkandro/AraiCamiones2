@@ -13,8 +13,7 @@ import { BlurView } from "expo-blur";
 
 import { useEffect, useState } from "react";
 import AppSplashScreen from "./SplashScreen";
-// import { Asset } from "expo-asset";
-// import * as SplashScreen from "expo-splash-screen";
+
 
 import Icon1 from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -22,13 +21,9 @@ import Icon1 from "react-native-vector-icons/MaterialCommunityIcons";
 import avatar from "./assets/fotos/avatar.png";
 import Icon from "react-native-vector-icons/FontAwesome6";
 
-import NuevaOrden from "./views/NuevaOrden";
-import Menu from "./views/Menu";
+
 import DetallePlatillo from "./views/DetallePlatillo";
 import DetalleMensaje from "./views/DetalleMensaje";
-import FormularioPlatillo from "./views/FormularioPlatillo";
-import ResumenPedido from "./views/ResumenPedido";
-import ProgresoPedido from "./views/ProgresoPedido";
 
 //Hoshino
 import LunesHoshino from "./views/Hoshino/LunesHoshino";
@@ -2987,42 +2982,7 @@ const App = () => {
                                                                                                                                                                               headerShown: false,
                                                                                                                                                                             }}
                                                                                                                                                                           />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="NuevaOrden"
-                                                                                                                                                                            component={
-                                                                                                                                                                              NuevaOrden
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              headerBackTitle:
-                                                                                                                                                                                "Salir",
-                                                                                                                                                                              headerBackTitleStyle:
-                                                                                                                                                                                {
-                                                                                                                                                                                  fontSize: 20,
-                                                                                                                                                                                  color:
-                                                                                                                                                                                    "red",
-                                                                                                                                                                                  fontVariant:
-                                                                                                                                                                                    "proportional-nums",
-                                                                                                                                                                                },
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="Menu"
-                                                                                                                                                                            component={
-                                                                                                                                                                              Menu
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "Menu",
-                                                                                                                                                                              headerBackTitleStyle:
-                                                                                                                                                                                {
-                                                                                                                                                                                  fontSize: 15,
-                                                                                                                                                                                  color:
-                                                                                                                                                                                    "green",
-                                                                                                                                                                                  fontStyle:
-                                                                                                                                                                                    "italic",
-                                                                                                                                                                                },
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
+
                                                                                                                                                                           <Stack.Screen
                                                                                                                                                                             name="MatsushimaDrawer"
                                                                                                                                                                             component={
@@ -3180,7 +3140,7 @@ const App = () => {
                                                                                                                                                                                 "center",
                                                                                                                                                                             }}
                                                                                                                                                                           />
-                                                                                                                                                                           <Stack.Screen
+                                                                                                                                                                          <Stack.Screen
                                                                                                                                                                             name="DetalleMensaje"
                                                                                                                                                                             component={
                                                                                                                                                                               DetalleMensaje
@@ -3192,42 +3152,6 @@ const App = () => {
                                                                                                                                                                                 "Menu",
                                                                                                                                                                               headerTitleAlign:
                                                                                                                                                                                 "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="FormularioPlatillo"
-                                                                                                                                                                            component={
-                                                                                                                                                                              FormularioPlatillo
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "FormularioPlatillo",
-                                                                                                                                                                              headerBackTitle:
-                                                                                                                                                                                "Menu",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="ResumenPedido"
-                                                                                                                                                                            component={
-                                                                                                                                                                              ResumenPedido
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "ResumenPedido",
-                                                                                                                                                                              headerBackTitle:
-                                                                                                                                                                                "Menu",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="ProgresoPedido"
-                                                                                                                                                                            component={
-                                                                                                                                                                              ProgresoPedido
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "ProgresoPedido",
-                                                                                                                                                                              headerBackTitle:
-                                                                                                                                                                                "Menu",
                                                                                                                                                                             }}
                                                                                                                                                                           />
                                                                                                                                                                         </Stack.Navigator>

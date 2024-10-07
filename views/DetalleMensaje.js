@@ -6,7 +6,7 @@ import { Platform, StyleSheet, ImageBackground } from "react-native";
 
 const DetallePlatillo = () => {
   const { platillo } = useContext(PedidosContext);
-  const { nombre, imagen } = platillo;
+  const {  imagen, } = platillo;
 
   // Redireccionar
   const navigation = useNavigation();
@@ -15,12 +15,12 @@ const DetallePlatillo = () => {
     navigation.setOptions({
       title: "Mensaje", // Título personalizado
       headerStyle: {
-        backgroundColor: '#3d783c', // Color de fondo del header
+        backgroundColor: "#3d783c", // Color de fondo del header
       },
-      headerTintColor: 'white', // Color del texto e íconos del header
+      headerTintColor: "white", // Color del texto e íconos del header
     });
   }, []);
-  
+
   return (
     <NativeBaseProvider>
       <View flex={1} justifyContent="center" justifyItems="center">
@@ -45,9 +45,9 @@ const DetallePlatillo = () => {
                   borderColor="#fff"
                   borderWidth={0.9}
                 />
-               
-   {/* Nueva Vista que envuelve el texto para centrarlo */}
-   <View style={styles.textContainer}>
+
+                {/* Nueva Vista que envuelve el texto para centrarlo */}
+                <View style={styles.textContainer}>
                   <Text style={styles.mensaje}>Mensaje </Text>
                   <Text style={styles.texto}>{platillo.descripcion}</Text>
                 </View>
