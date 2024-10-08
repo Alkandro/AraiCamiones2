@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
-import { NativeBaseProvider, Text, View, Image } from "native-base";
+import { NativeBaseProvider, Text, View, Image, ScrollView } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import PedidosContext from "../context/firebase/pedidos/pedidosContext";
 import { Platform, StyleSheet, ImageBackground } from "react-native";
 
 const DetallePlatillo = () => {
   const { platillo } = useContext(PedidosContext);
-  const {  imagen, } = platillo;
+  const { imagen, descripcion } = platillo;
 
   // Redireccionar
   const navigation = useNavigation();
@@ -30,30 +30,29 @@ const DetallePlatillo = () => {
           style={styles.imagen4}
           imageStyle={styles.image}
         >
-          <View marginBottom={230}>
+          <ScrollView contentContainerStyle={styles.scrollViewContent}>
             <View>
-              <View paddingTop={20}>
-                <Image
-                  style={
-                    Platform.OS === "ios"
-                      ? { marginHorizontal: "5%", width: 350, height: 300 }
-                      : { marginHorizontal: "5%", width: 330, height: 300 }
-                  }
-                  source={{ uri: imagen }}
-                  alt="desde firebase"
-                  borderRadius={15}
-                  borderColor="#fff"
-                  borderWidth={0.9}
-                />
+              <Image
+                style={
+                  Platform.OS === "ios"
+                    ? { marginHorizontal: "5%", width: 350, height: 300 }
+                    : { marginHorizontal: "5%", width: 330, height: 300 }
+                }
+                source={{ uri: imagen }}
+                alt="desde firebase"
+                borderRadius={15}
+                borderColor="#fff"
+                borderWidth={0.9}
+                marginTop={10}
+              />
 
-                {/* Nueva Vista que envuelve el texto para centrarlo */}
-                <View style={styles.textContainer}>
-                  <Text style={styles.mensaje}>Mensaje </Text>
-                  <Text style={styles.texto}>{platillo.descripcion}</Text>
-                </View>
+              {/* Vista que envuelve el mensaje y permite scroll */}
+              <View style={styles.textContainer}>
+                <Text style={styles.mensaje}>Mensaje</Text>
+                <Text style={styles.texto}>{descripcion}</Text>
               </View>
             </View>
-          </View>
+          </ScrollView>
         </ImageBackground>
       </View>
     </NativeBaseProvider>
@@ -61,6 +60,10 @@ const DetallePlatillo = () => {
 };
 
 const styles = StyleSheet.create({
+  scrollViewContent: {
+    paddingBottom: 230, // Esto da espacio extra al final para que todo el contenido sea visible al hacer scroll
+    alignItems: 'center',
+  },
   mensaje: {
     marginVertical: 2,
     marginTop: 20,

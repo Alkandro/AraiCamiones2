@@ -53,6 +53,7 @@ import JuevesTomaoka from "./views/Tomaoka/JuevesTomaoka";
 import ViernesTomaoka from "./views/Tomaoka/ViernesTomaoka";
 import SabadoTomaoka from "./views/Tomaoka/SabadoTomaoka";
 import DomingoTomaoka from "./views/Tomaoka/DomingoTomaoka";
+import MensajeTomaoka from "./views/Tomaoka/MensajeTomaoka";
 
 //Oishi
 import LunesOishi from "./views/Oishi/LunesOishi";
@@ -62,6 +63,7 @@ import JuevesOishi from "./views/Oishi/JuevesOishi";
 import ViernesOishi from "./views/Oishi/ViernesOishi";
 import SabadoOishi from "./views/Oishi/SabadoOishi";
 import DomingoOishi from "./views/Oishi/DomingoOishi";
+import MensajeOishi from "./views/Oishi/MensajeOishi";
 
 //Okamoto
 import LunesOkamoto from "./views/Okamoto/LunesOkamoto";
@@ -71,6 +73,7 @@ import JuevesOkamoto from "./views/Okamoto/JuevesOkamoto";
 import ViernesOkamoto from "./views/Okamoto/ViernesOkamoto";
 import SabadoOkamoto from "./views/Okamoto/SabadoOkamoto";
 import DomingoOkamoto from "./views/Okamoto/DomingoOkamoto";
+import MensajeOkamoto from "./views/Okamoto/MensajeOkamoto";
 
 //Yamakado
 import LunesYamakado from "./views/Yamakado/LunesYamakado";
@@ -80,6 +83,7 @@ import JuevesYamakado from "./views/Yamakado/JuevesYamakado";
 import ViernesYamakado from "./views/Yamakado/ViernesYamakado";
 import SabadoYamakado from "./views/Yamakado/SabadoYamakado";
 import DomingoYamakado from "./views/Yamakado/DomingoYamakado";
+import MensajeYamakado from "./views/Yamakado/MensajeYamakado";
 
 //Sklar
 import LunesSklar from "./views/Sklar/LunesSklar";
@@ -89,6 +93,7 @@ import JuevesSklar from "./views/Sklar/JuevesSklar";
 import ViernesSklar from "./views/Sklar/ViernesSklar";
 import SabadoSklar from "./views/Sklar/SabadoSklar";
 import DomingoSklar from "./views/Sklar/DomingoSklar";
+import MensajeSklar from "./views/Sklar/MensajeSklar";
 
 //Enrique
 import LunesEnrique from "./views/Enrique/LunesEnrique";
@@ -98,6 +103,7 @@ import JuevesEnrique from "./views/Enrique/JuevesEnrique";
 import ViernesEnrique from "./views/Enrique/ViernesEnrique";
 import SabadoEnrique from "./views/Enrique/SabadoEnrique";
 import DomingoEnrique from "./views/Enrique/DomingoEnrique";
+import MensajeEnrique from "./views/Enrique/MensajeEnrique";
 
 //User1
 import LunesUser1 from "./views/User1/LunesUser1";
@@ -107,6 +113,7 @@ import JuevesUser1 from "./views/User1/JuevesUser1";
 import ViernesUser1 from "./views/User1/ViernesUser1";
 import SabadoUser1 from "./views/User1/SabadoUser1";
 import DomingoUser1 from "./views/User1/DomingoUser1";
+import MensajeUser1 from "./views/User1/MensajeUser1";
 
 //User2
 import LunesUser2 from "./views/User2/LunesUser2";
@@ -116,6 +123,7 @@ import JuevesUser2 from "./views/User2/JuevesUser2";
 import ViernesUser2 from "./views/User2/ViernesUser2";
 import SabadoUser2 from "./views/User2/SabadoUser2";
 import DomingoUser2 from "./views/User2/DomingoUser2";
+import MensajeUser2 from "./views/User2/MensajeUser2";
 
 //User3
 import LunesUser3 from "./views/User3/LunesUser3";
@@ -125,6 +133,7 @@ import JuevesUser3 from "./views/User3/JuevesUser3";
 import ViernesUser3 from "./views/User3/ViernesUser3";
 import SabadoUser3 from "./views/User3/SabadoUser3";
 import DomingoUser3 from "./views/User3/DomingoUser3";
+import MensajeUser3 from "./views/User3/MensajeUser3";
 
 import LoginScreen from "./views/LoginScreen";
 
@@ -158,6 +167,7 @@ import FirebaseStateTomaokaJueves from "./context/firebase/TomaokaState/Firebase
 import FirebaseStateTomaokaViernes from "./context/firebase/TomaokaState/FirebaseStateTomaokaViernes/firebaseStateTomaokaViernes";
 import FirebaseStateTomaokaSabado from "./context/firebase/TomaokaState/FirebaseStateTomaokaSabado/firebaseStateTomaokaSabado";
 import FirebaseStateTomaokaDomingo from "./context/firebase/TomaokaState/FirebaseStateTomaokaDomingo/firebaseStateTomaokaDomingo";
+import FirebaseStateTomaokaMensaje from "./context/firebase/TomaokaState/FirebaseStateTomaokaMensaje/firebaseStateTomaokaMensaje";
 
 //OISHI
 import FirebaseStateOishi from "./context/firebase/FirebaseStateOishi/firebaseStateOishi";
@@ -167,6 +177,7 @@ import FirebaseStateOishiJueves from "./context/firebase/OishiState/FirebaseStat
 import FirebaseStateOishiViernes from "./context/firebase/OishiState/FirebaseStateOishiViernes/firebaseStateOishiViernes";
 import FirebaseStateOishiSabado from "./context/firebase/OishiState/FirebaseStateOishiSabado/firebaseStateOishiSabado";
 import FirebaseStateOishiDomingo from "./context/firebase/OishiState/FirebaseStateOishiDomingo/firebaseStateOishiDomingo";
+import FirebaseStateOishiMensaje from "./context/firebase/OishiState/FirebaseStateOishiMensaje/firebaseStateOishiMensaje";
 
 //OKAMOTO
 import FirebaseStateOkamoto from "./context/firebase/FirebaseStateOkamoto/firebaseStateOkamoto";
@@ -176,6 +187,7 @@ import FirebaseStateOkamotoJueves from "./context/firebase/OkamotoState/Firebase
 import FirebaseStateOkamotoViernes from "./context/firebase/OkamotoState/FirebaseStateOkamotoViernes/firebaseStateOkamotoViernes";
 import FirebaseStateOkamotoSabado from "./context/firebase/OkamotoState/FirebaseStateOkamotoSabado/firebaseStateOkamotoSabado";
 import FirebaseStateOkamotoDomingo from "./context/firebase/OkamotoState/FirebaseStateOkamotoDomingo/firebaseStateOkamotoDomingo";
+import FirebaseStateOkamotoMensaje from "./context/firebase/OkamotoState/FirebaseStateOkamotoMensaje/firebaseStateOkamotoMensaje";
 
 //YAMAKADO
 import FirebaseStateYamakado from "./context/firebase/FirebaseStateYamakado/firebaseStateYamakado";
@@ -185,6 +197,7 @@ import FirebaseStateYamakadoJueves from "./context/firebase/YamakadoState/Fireba
 import FirebaseStateYamakadoViernes from "./context/firebase/YamakadoState/FirebaseStateYamakadoViernes/firebaseStateYamakadoViernes";
 import FirebaseStateYamakadoSabado from "./context/firebase/YamakadoState/FirebaseStateYamakadoSabado/firebaseStateYamakadoSabado";
 import FirebaseStateYamakadoDomingo from "./context/firebase/YamakadoState/FirebaseStateYamakadoDomingo/firebaseStateYamakadoDomingo";
+import FirebaseStateYamakadoMensaje from "./context/firebase/YamakadoState/FirebaseStateYamakadoMensaje/firebaseStateYamakadoMensaje";
 
 //SKLAR
 import FirebaseStateSklar from "./context/firebase/FirebaseStateSklar/firebaseStateSklar";
@@ -194,6 +207,7 @@ import FirebaseStateSklarJueves from "./context/firebase/SklarState/FirebaseStat
 import FirebaseStateSklarViernes from "./context/firebase/SklarState/FirebaseStateSklarViernes/firebaseStateSklarViernes";
 import FirebaseStateSklarSabado from "./context/firebase/SklarState/FirebaseStateSklarSabado/firebaseStateSklarSabado";
 import FirebaseStateSklarDomingo from "./context/firebase/SklarState/FirebaseStateSklarDomingo/firebaseStateSklarDomingo";
+import FirebaseStateSklarMensaje from "./context/firebase/SklarState/FirebaseStateSklarMensaje/firebaseStateSklarMensaje";
 
 //ENRIQUE
 import FirebaseStateEnrique from "./context/firebase/FirebaseStateEnrique/firebaseStateEnrique";
@@ -203,6 +217,7 @@ import FirebaseStateEnriqueJueves from "./context/firebase/EnriqueState/Firebase
 import FirebaseStateEnriqueViernes from "./context/firebase/EnriqueState/FirebaseStateEnriqueViernes/firebaseStateEnriqueViernes";
 import FirebaseStateEnriqueSabado from "./context/firebase/EnriqueState/FirebaseStateEnriqueSabado/firebaseStateEnriqueSabado";
 import FirebaseStateEnriqueDomingo from "./context/firebase/EnriqueState/FirebaseStateEnriqueDomingo/firebaseStateEnriqueDomingo";
+import FirebaseStateEnriqueMensaje from "./context/firebase/EnriqueState/FirebaseStateEnriqueMensaje/firebaseStateEnriqueMensaje";
 
 //USER1
 import FirebaseStateUser1 from "./context/firebase/FirebaseStateUser1/firebaseStateUser1";
@@ -212,6 +227,7 @@ import FirebaseStateUser1Jueves from "./context/firebase/User1State/FirebaseStat
 import FirebaseStateUser1Viernes from "./context/firebase/User1State/FirebaseStateUser1Viernes/firebaseStateUser1Viernes";
 import FirebaseStateUser1Sabado from "./context/firebase/User1State/FirebaseStateUser1Sabado/firebaseStateUser1Sabado";
 import FirebaseStateUser1Domingo from "./context/firebase/User1State/FirebaseStateUser1Domingo/firebaseStateUser1Domingo";
+import FirebaseStateUser1Mensaje from "./context/firebase/User1State/FirebaseStateUser1Mensaje/firebaseStateUser1Mensaje";
 
 //USER2
 import FirebaseStateUser2 from "./context/firebase/FirebaseStateUser2/firebaseStateUser2";
@@ -221,6 +237,7 @@ import FirebaseStateUser2Jueves from "./context/firebase/User2State/FirebaseStat
 import FirebaseStateUser2Viernes from "./context/firebase/User2State/FirebaseStateUser2Viernes/firebaseStateUser2Viernes";
 import FirebaseStateUser2Sabado from "./context/firebase/User2State/FirebaseStateUser2Sabado/firebaseStateUser2Sabado";
 import FirebaseStateUser2Domingo from "./context/firebase/User2State/FirebaseStateUser2Domingo/firebaseStateUser2Domingo";
+import FirebaseStateUser2Mensaje from "./context/firebase/User2State/FirebaseStateUser2Mensaje/firebaseStateUser2Mensaje";
 
 //USER3
 import FirebaseStateUser3 from "./context/firebase/FirebaseStateUser3/firebaseStateUser3";
@@ -230,6 +247,7 @@ import FirebaseStateUser3Jueves from "./context/firebase/User3State/FirebaseStat
 import FirebaseStateUser3Viernes from "./context/firebase/User3State/FirebaseStateUser3Viernes/firebaseStateUser3Viernes";
 import FirebaseStateUser3Sabado from "./context/firebase/User3State/FirebaseStateUser3Sabado/firebaseStateUser3Sabado";
 import FirebaseStateUser3Domingo from "./context/firebase/User3State/FirebaseStateUser3Domingo/firebaseStateUser3Domingo";
+import FirebaseStateUser3Mensaje from "./context/firebase/User3State/FirebaseStateUser3Mensaje/firebaseStateUser3Mensaje";
 
 import PedidosState from "./context/firebase/pedidos/pedidosState";
 
@@ -1027,6 +1045,36 @@ const TomaokaDrawer = () => {
           },
         }}
       />
+       <Drawer.Screen
+        name="Mensaje"
+        component={MensajeTomaoka}
+        options={{
+          title: "Mensaje",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "envelope" : "envelope"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
     </Drawer.Navigator>
   );
 };
@@ -1245,6 +1293,36 @@ const OishiDrawer = () => {
           drawerIcon: ({ focused, color, size }) => (
             <Icon
               name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+       <Drawer.Screen
+        name="Mensaje"
+        component={MensajeOishi}
+        options={{
+          title: "Mensaje",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "envelope" : "envelope"}
               size={size}
               color={focused ? "#17f502" : color}
             />
@@ -1487,6 +1565,36 @@ const OkamotoDrawer = () => {
           },
         }}
       />
+      <Drawer.Screen
+        name="Mensaje"
+        component={MensajeOkamoto}
+        options={{
+          title: "Mensaje",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "envelope" : "envelope"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
     </Drawer.Navigator>
   );
 };
@@ -1705,6 +1813,36 @@ const YamakadoDrawer = () => {
           drawerIcon: ({ focused, color, size }) => (
             <Icon
               name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Mensaje"
+        component={MensajeYamakado}
+        options={{
+          title: "Mensaje",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "envelope" : "envelope"}
               size={size}
               color={focused ? "#17f502" : color}
             />
@@ -1947,6 +2085,36 @@ const SklarDrawer = () => {
           },
         }}
       />
+       <Drawer.Screen
+        name="Mensaje"
+        component={MensajeSklar}
+        options={{
+          title: "Mensaje",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "envelope" : "envelope"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
     </Drawer.Navigator>
   );
 };
@@ -2165,6 +2333,36 @@ const EnriqueDrawer = () => {
           drawerIcon: ({ focused, color, size }) => (
             <Icon
               name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+       <Drawer.Screen
+        name="Mensaje"
+        component={MensajeEnrique}
+        options={{
+          title: "Mensaje",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "envelope" : "envelope"}
               size={size}
               color={focused ? "#17f502" : color}
             />
@@ -2407,6 +2605,36 @@ const User1Drawer = () => {
           },
         }}
       />
+       <Drawer.Screen
+        name="Mensaje"
+        component={MensajeUser1}
+        options={{
+          title: "Mensaje",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "envelope" : "envelope"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
     </Drawer.Navigator>
   );
 };
@@ -2625,6 +2853,36 @@ const User2Drawer = () => {
           drawerIcon: ({ focused, color, size }) => (
             <Icon
               name={focused ? "truck-fast" : "truck-ramp-box"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Mensaje"
+        component={MensajeUser2}
+        options={{
+          title: "Mensaje",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "envelope" : "envelope"}
               size={size}
               color={focused ? "#17f502" : color}
             />
@@ -2867,6 +3125,36 @@ const User3Drawer = () => {
           },
         }}
       />
+      <Drawer.Screen
+        name="Mensaje"
+        component={MensajeUser3}
+        options={{
+          title: "Mensaje",
+          headerTitleAlign: "center",
+          // Cambiar color de fondo y el estilo del header
+          headerStyle: {
+            backgroundColor: "#3d783c", // Color de fondo del header
+          },
+          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+          headerTitleStyle: {
+            fontWeight: "bold", // Puedes personalizar más el estilo del título
+          },
+          // Cambiar el icono del Drawer
+          drawerIcon: ({ focused, color, size }) => (
+            <Icon
+              name={focused ? "envelope" : "envelope"}
+              size={size}
+              color={focused ? "#17f502" : color}
+            />
+          ),
+          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
+          drawerStyle: {
+            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
+            width: 210,
+            height: "100%",
+          },
+        }}
+      />
     </Drawer.Navigator>
   );
 };
@@ -2888,6 +3176,7 @@ const App = () => {
   }
 
   return (
+    <FirebaseStateUser3Mensaje>
     <FirebaseStateUser3Domingo>
       <FirebaseStateUser3Sabado>
         <FirebaseStateUser3Viernes>
@@ -2895,6 +3184,7 @@ const App = () => {
             <FirebaseStateUser3Miercoles>
               <FirebaseStateUser3Martes>
                 <FirebaseStateUser3>
+                <FirebaseStateUser2Mensaje>
                   <FirebaseStateUser2Domingo>
                     <FirebaseStateUser2Sabado>
                       <FirebaseStateUser2Viernes>
@@ -2902,6 +3192,7 @@ const App = () => {
                           <FirebaseStateUser2Miercoles>
                             <FirebaseStateUser2Martes>
                               <FirebaseStateUser2>
+                              <FirebaseStateUser1Mensaje>
                                 <FirebaseStateUser1Domingo>
                                   <FirebaseStateUser1Sabado>
                                     <FirebaseStateUser1Viernes>
@@ -2909,6 +3200,7 @@ const App = () => {
                                         <FirebaseStateUser1Miercoles>
                                           <FirebaseStateUser1Martes>
                                             <FirebaseStateUser1>
+                                            <FirebaseStateEnriqueMensaje>
                                               <FirebaseStateEnriqueDomingo>
                                                 <FirebaseStateEnriqueSabado>
                                                   <FirebaseStateEnriqueViernes>
@@ -2916,6 +3208,7 @@ const App = () => {
                                                       <FirebaseStateEnriqueMiercoles>
                                                         <FirebaseStateEnriqueMartes>
                                                           <FirebaseStateEnrique>
+                                                          <FirebaseStateSklarMensaje>
                                                             <FirebaseStateSklarDomingo>
                                                               <FirebaseStateSklarSabado>
                                                                 <FirebaseStateSklarViernes>
@@ -2923,6 +3216,7 @@ const App = () => {
                                                                     <FirebaseStateSklarMiercoles>
                                                                       <FirebaseStateSklarMartes>
                                                                         <FirebaseStateSklar>
+                                                                        <FirebaseStateYamakadoMensaje>
                                                                           <FirebaseStateYamakadoDomingo>
                                                                             <FirebaseStateYamakadoSabado>
                                                                               <FirebaseStateYamakadoViernes>
@@ -2930,6 +3224,7 @@ const App = () => {
                                                                                   <FirebaseStateYamakadoMiercoles>
                                                                                     <FirebaseStateYamakadoMartes>
                                                                                       <FirebaseStateYamakado>
+                                                                                      <FirebaseStateOkamotoMensaje>
                                                                                         <FirebaseStateOkamotoDomingo>
                                                                                           <FirebaseStateOkamotoSabado>
                                                                                             <FirebaseStateOkamotoViernes>
@@ -2937,6 +3232,7 @@ const App = () => {
                                                                                                 <FirebaseStateOkamotoMiercoles>
                                                                                                   <FirebaseStateOkamotoMartes>
                                                                                                     <FirebaseStateOkamoto>
+                                                                                                    <FirebaseStateOishiMensaje>
                                                                                                       <FirebaseStateOishiDomingo>
                                                                                                         <FirebaseStateOishiSabado>
                                                                                                           <FirebaseStateOishiViernes>
@@ -2944,6 +3240,7 @@ const App = () => {
                                                                                                               <FirebaseStateOishiMiercoles>
                                                                                                                 <FirebaseStateOishiMartes>
                                                                                                                   <FirebaseStateOishi>
+                                                                                                                  <FirebaseStateTomaokaMensaje>
                                                                                                                     <FirebaseStateTomaokaDomingo>
                                                                                                                       <FirebaseStateTomaokaSabado>
                                                                                                                         <FirebaseStateTomaokaViernes>
@@ -3181,6 +3478,7 @@ const App = () => {
                                                                                                                         </FirebaseStateTomaokaViernes>
                                                                                                                       </FirebaseStateTomaokaSabado>
                                                                                                                     </FirebaseStateTomaokaDomingo>
+                                                                                                                    </FirebaseStateTomaokaMensaje>
                                                                                                                   </FirebaseStateOishi>
                                                                                                                 </FirebaseStateOishiMartes>
                                                                                                               </FirebaseStateOishiMiercoles>
@@ -3188,6 +3486,7 @@ const App = () => {
                                                                                                           </FirebaseStateOishiViernes>
                                                                                                         </FirebaseStateOishiSabado>
                                                                                                       </FirebaseStateOishiDomingo>
+                                                                                                      </FirebaseStateOishiMensaje>
                                                                                                     </FirebaseStateOkamoto>
                                                                                                   </FirebaseStateOkamotoMartes>
                                                                                                 </FirebaseStateOkamotoMiercoles>
@@ -3195,6 +3494,7 @@ const App = () => {
                                                                                             </FirebaseStateOkamotoViernes>
                                                                                           </FirebaseStateOkamotoSabado>
                                                                                         </FirebaseStateOkamotoDomingo>
+                                                                                        </FirebaseStateOkamotoMensaje>
                                                                                       </FirebaseStateYamakado>
                                                                                     </FirebaseStateYamakadoMartes>
                                                                                   </FirebaseStateYamakadoMiercoles>
@@ -3202,6 +3502,7 @@ const App = () => {
                                                                               </FirebaseStateYamakadoViernes>
                                                                             </FirebaseStateYamakadoSabado>
                                                                           </FirebaseStateYamakadoDomingo>
+                                                                          </FirebaseStateYamakadoMensaje>
                                                                         </FirebaseStateSklar>
                                                                       </FirebaseStateSklarMartes>
                                                                     </FirebaseStateSklarMiercoles>
@@ -3209,6 +3510,7 @@ const App = () => {
                                                                 </FirebaseStateSklarViernes>
                                                               </FirebaseStateSklarSabado>
                                                             </FirebaseStateSklarDomingo>
+                                                            </FirebaseStateSklarMensaje>
                                                           </FirebaseStateEnrique>
                                                         </FirebaseStateEnriqueMartes>
                                                       </FirebaseStateEnriqueMiercoles>
@@ -3216,6 +3518,7 @@ const App = () => {
                                                   </FirebaseStateEnriqueViernes>
                                                 </FirebaseStateEnriqueSabado>
                                               </FirebaseStateEnriqueDomingo>
+                                              </FirebaseStateEnriqueMensaje>
                                             </FirebaseStateUser1>
                                           </FirebaseStateUser1Martes>
                                         </FirebaseStateUser1Miercoles>
@@ -3223,6 +3526,7 @@ const App = () => {
                                     </FirebaseStateUser1Viernes>
                                   </FirebaseStateUser1Sabado>
                                 </FirebaseStateUser1Domingo>
+                                </FirebaseStateUser1Mensaje>
                               </FirebaseStateUser2>
                             </FirebaseStateUser2Martes>
                           </FirebaseStateUser2Miercoles>
@@ -3230,6 +3534,7 @@ const App = () => {
                       </FirebaseStateUser2Viernes>
                     </FirebaseStateUser2Sabado>
                   </FirebaseStateUser2Domingo>
+                  </FirebaseStateUser2Mensaje>
                 </FirebaseStateUser3>
               </FirebaseStateUser3Martes>
             </FirebaseStateUser3Miercoles>
@@ -3237,6 +3542,7 @@ const App = () => {
         </FirebaseStateUser3Viernes>
       </FirebaseStateUser3Sabado>
     </FirebaseStateUser3Domingo>
+    </FirebaseStateUser3Mensaje>
   );
 };
 
