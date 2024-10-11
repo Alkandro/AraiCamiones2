@@ -8,6 +8,7 @@ import {
   ScrollView,
   Pressable,
   Checkbox,
+  Switch, // Importa Switch de NativeBase
 } from "native-base";
 import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
@@ -15,9 +16,7 @@ import { useContext, useEffect, useState } from "react";
 import { StyleSheet, Alert } from "react-native";
 import firebaseContextSklarMensaje from "../../context/firebase/SklarState/FirebaseStateSklarMensaje/firebaseContextSklarMensaje";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
-import { parseISO, format } from "date-fns";
-
-
+import firebase from "../../firebase/firebase";
 
 const Sklar = () => {
   const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(
@@ -37,6 +36,7 @@ const Sklar = () => {
   const categorias = { [categoriaDeseada]: platillosFiltrados };
 
   const [selectedPlatillos, setSelectedPlatillos] = useState({});
+  const [leidoStatus, setLeidoStatus] = useState({});
 
   const handleCheckboxChange = (platilloId, isChecked) => {
     setSelectedPlatillos((prevState) => ({
@@ -45,7 +45,22 @@ const Sklar = () => {
     }));
   };
 
-  // Función para eliminar un platillo seleccionado
+  const handleSwitchChange = async (platilloId, value) => {
+    const isLeido = value;
+    setLeidoStatus((prevState) => ({
+      ...prevState,
+      [platilloId]: isLeido,
+    }));
+
+    try {
+      await firebase.db.collection("sklarMensaje").doc(platilloId).update({
+        leido: isLeido,
+      });
+    } catch (error) {
+      console.error("Error actualizando el estado leído:", error);
+    }
+  };
+
   const eliminarProducto = async (platilloId) => {
     try {
       await eliminarProductoFirebase(platilloId);
@@ -55,9 +70,7 @@ const Sklar = () => {
     }
   };
 
-  // Función para confirmar y eliminar los platillos seleccionados
   const eliminarSeleccionados = () => {
-    // Verificar si hay algún platillo seleccionado
     const platillosIds = Object.keys(selectedPlatillos);
     if (platillosIds.length === 0) {
       Alert.alert(
@@ -67,7 +80,7 @@ const Sklar = () => {
       return;
     }
     Alert.alert(
-      "Si confirmas que leiste el mensaje se eliminará",
+      "Si confirmas que leíste el mensaje se eliminará",
       "Una vez eliminados no se puede recuperar",
       [
         {
@@ -99,18 +112,18 @@ const Sklar = () => {
       onChange={onChange}
       accessibilityLabel={ariaLabel}
       _checked={{
-        bg: "green.500", // Color de fondo cuando está checkeado
-        borderColor: "blue.500", // Color del borde cuando está checkeado
+        bg: "green.500",
+        borderColor: "blue.500",
         _icon: {
-          color: "white", // Color del ícono cuando está checkeado
+          color: "white",
         },
       }}
       _unchecked={{
-        bg: "transparent", // Color de fondo cuando no está checkeado
-        borderColor: "black", // Color del borde cuando no está checkeado
+        bg: "transparent",
+        borderColor: "black",
       }}
     >
-      <Text color="white">✓</Text> {/* Color del texto dentro del Checkbox */}
+      <Text color="white">✓</Text>
     </Checkbox>
   );
 
@@ -138,13 +151,14 @@ const Sklar = () => {
                       seleccionarPlatillo(platillo2);
                       navigation.navigate("DetalleMensaje");
                     }}
+                    style={{ flex: 1 }}
                   >
                     <List
                       style={{
                         flexDirection: "row",
                         alignItems: "center",
-                        justifyContent: "space-between", // Distribuir elementos
-                        backgroundColor: "#FFF5EE", // Fondo de cada platillo
+                        justifyContent: "space-between",
+                        backgroundColor: "#FFF5EE",
                         borderRadius: 15,
                         marginBottom: 10,
                         borderWidth: 4,
@@ -163,16 +177,8 @@ const Sklar = () => {
                           borderRadius={16}
                         />
                       </View>
+                      
                       <View style={{ flex: 1 }}>
-                        <View
-                          style={{
-                            flexDirection: "row",
-                            justifyContent: "space-between",
-                          }}
-                        >
-                         
-                        </View>
-                        
                         <Text>
                           <Text
                             numberOfLines={3}
@@ -181,20 +187,47 @@ const Sklar = () => {
                           >
                             Mensaje:
                           </Text>
-                          {""} {platillo.descripcion}
+                          {platillo.descripcion}
                         </Text>
-                        
                       </View>
 
-                      {/* Checkbox para eliminar */}
-                      <View style={{ marginLeft: "auto", marginRight: 10 }}>
-                        <CustomCheckbox
-                          isChecked={!!selectedPlatillos[platillo.id]}
-                          onChange={(isChecked) =>
-                            handleCheckboxChange(platillo.id, isChecked)
-                          }
-                          ariaLabel={`Eliminar ${platillo.nombre}`}
-                        />
+                      {/* Contenedor de Checkbox y Switch en columna */}
+                      <View
+                        style={{
+                          flexDirection: "column",
+                          marginLeft: "auto",
+                          marginRight: 10,
+                        }}
+                      >
+                        {/* Checkbox para eliminar */}
+                        <View style={{ marginBottom: 10 }}>
+                          <CustomCheckbox
+                            isChecked={!!selectedPlatillos[platillo.id]}
+                            onChange={(isChecked) =>
+                              handleCheckboxChange(platillo.id, isChecked)
+                            }
+                            ariaLabel={`Eliminar ${platillo.nombre}`}
+                          />
+                        </View>
+
+                        {/* Switch para marcar como leído */}
+                        <View pointerEvents="auto">
+                          <Switch
+                            isChecked={!!leidoStatus[platillo.id]}
+                            onToggle={(value) =>
+                              handleSwitchChange(platillo.id, value)
+                            }
+                          />
+                          <Text
+                            style={{
+                              color: platillo.leido ? "green" : "red",
+                              fontWeight: "bold",
+                              marginTop: 8,
+                            }}
+                          >
+                            {platillo.leido ? "Leído" : ""}
+                          </Text>
+                        </View>
                       </View>
                     </List>
                   </Pressable>
@@ -223,13 +256,12 @@ const Sklar = () => {
 
 const styles = StyleSheet.create({
   separador: {
-    backgroundColor: "#000", // Color de fondo del separador de categorías
+    backgroundColor: "#000",
   },
   descripcion: {
     maxWidth: 140,
     lineHeight: 15,
   },
-  
   separadorTexto: {
     marginLeft: 10,
     color: "#FFDA00",
@@ -243,5 +275,3 @@ const styles = StyleSheet.create({
 });
 
 export default Sklar;
-
-
