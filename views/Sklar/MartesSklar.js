@@ -1,5 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
-import {NativeBaseProvider,View,Image,Text,List,ScrollView,Pressable,Checkbox,} from "native-base";
+import {
+  NativeBaseProvider,
+  View,
+  Image,
+  Text,
+  List,
+  Icon,
+  ScrollView,
+  Pressable,
+  Checkbox,
+} from "native-base";
+import { FontAwesome } from "@expo/vector-icons";
 import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
 import { useContext, useEffect, useState } from "react";
@@ -49,6 +60,7 @@ const Sklar = () => {
   );
   const { seleccionarPlatillo } = useContext(PedidoContext);
   const navigation = useNavigation();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     obtenerProductos();
@@ -81,7 +93,6 @@ const Sklar = () => {
 
   // Función para confirmar y eliminar los platillos seleccionados
   const eliminarSeleccionados = () => {
-    // Verificar si hay algún platillo seleccionado
     const platillosIds = Object.keys(selectedPlatillos);
     if (platillosIds.length === 0) {
       Alert.alert(
@@ -90,6 +101,7 @@ const Sklar = () => {
       );
       return;
     }
+
     Alert.alert(
       "Si confirmas la entrega se eliminará",
       "Una vez eliminados no se pueden recuperar",
@@ -97,6 +109,7 @@ const Sklar = () => {
         {
           text: "Confirmar",
           onPress: async () => {
+            setIsLoading(true); // Mostrar el spinner de carga
             try {
               const idsAEliminar = Object.keys(selectedPlatillos).filter(
                 (id) => selectedPlatillos[id]
@@ -105,6 +118,8 @@ const Sklar = () => {
               setSelectedPlatillos({});
             } catch (error) {
               console.error("Error eliminando productos:", error);
+            } finally {
+              setIsLoading(false); // Ocultar el spinner de carga
             }
           },
         },
@@ -112,7 +127,6 @@ const Sklar = () => {
       ]
     );
   };
-
   const CustomCheckbox = ({ isChecked, onChange, ariaLabel }) => (
     <Checkbox
       boxSize={8}
@@ -277,8 +291,17 @@ const Sklar = () => {
             shadow={9}
             marginBottom={5}
           >
-            <Pressable onPress={eliminarSeleccionados}>
-              <Text style={styles.eliminarTexto}>Eliminar seleccionados</Text>
+            <Pressable onPress={isLoading ? null : eliminarSeleccionados}>
+              {isLoading ? (
+                <Text style={styles.eliminarTexto}>Eliminando...</Text>
+              ) : (
+                <Icon
+                  as={FontAwesome}
+                  name="trash"
+                  size="lg" // Tamaño del ícono
+                  color="white" // Color del ícono
+                />
+              )}
             </Pressable>
           </View>
         </BlurView>

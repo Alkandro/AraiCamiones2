@@ -5,11 +5,13 @@ import {
   Image,
   Text,
   List,
+  Icon,
   ScrollView,
   Pressable,
   Checkbox,
-  Switch, // Importa Switch de NativeBase
+  Switch,
 } from "native-base";
+import { FontAwesome } from "@expo/vector-icons";
 import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
 import { useContext, useEffect, useState } from "react";
@@ -17,6 +19,33 @@ import { StyleSheet, Alert } from "react-native";
 import firebaseContextSklarMensaje from "../../context/firebase/SklarState/FirebaseStateSklarMensaje/firebaseContextSklarMensaje";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import firebase from "../../firebase/firebase";
+import { parseISO, format } from "date-fns";
+
+const formatFechaEntrega = (fechaEntrega) => {
+  try {
+    if (!fechaEntrega) {
+      return "NG";
+    }
+    if (typeof fechaEntrega === "string") {
+      const parsedDate = Date.parse(fechaEntrega);
+      if (!isNaN(parsedDate)) {
+        fechaEntrega = new Date(parsedDate);
+      } else {
+        return "Fecha no válida";
+      }
+    }
+    if (!(fechaEntrega instanceof Date) || isNaN(fechaEntrega.getTime())) {
+      return "Fecha no válida";
+    }
+    if (fechaEntrega.seconds) {
+      fechaEntrega = new Date(fechaEntrega.seconds * 1000);
+    }
+    return format(fechaEntrega, "dd/MM/yyyy");
+  } catch (error) {
+    console.error("Error al formatear la fecha:", error);
+    return "Fecha no válida";
+  }
+};
 
 const Sklar = () => {
   const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(
@@ -24,6 +53,7 @@ const Sklar = () => {
   );
   const { seleccionarPlatillo } = useContext(PedidoContext);
   const navigation = useNavigation();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     obtenerProductos();
@@ -37,6 +67,8 @@ const Sklar = () => {
 
   const [selectedPlatillos, setSelectedPlatillos] = useState({});
   const [leidoStatus, setLeidoStatus] = useState({});
+  const [isSwitchDisabled, setIsSwitchDisabled] = useState({});
+  const [expandedMessages, setExpandedMessages] = useState({}); // Estado para manejar mensajes expandidos
 
   const handleCheckboxChange = (platilloId, isChecked) => {
     setSelectedPlatillos((prevState) => ({
@@ -46,18 +78,26 @@ const Sklar = () => {
   };
 
   const handleSwitchChange = async (platilloId, value) => {
-    const isLeido = value;
-    setLeidoStatus((prevState) => ({
-      ...prevState,
-      [platilloId]: isLeido,
-    }));
+    if (!isSwitchDisabled[platilloId]) {
+      const isLeido = value;
+      setLeidoStatus((prevState) => ({
+        ...prevState,
+        [platilloId]: isLeido,
+      }));
 
-    try {
-      await firebase.db.collection("sklarMensaje").doc(platilloId).update({
-        leido: isLeido,
-      });
-    } catch (error) {
-      console.error("Error actualizando el estado leído:", error);
+      try {
+        await firebase.db.collection("sklarMensaje").doc(platilloId).update({
+          leido: isLeido,
+        });
+        if (isLeido) {
+          setIsSwitchDisabled((prevState) => ({
+            ...prevState,
+            [platilloId]: true,
+          }));
+        }
+      } catch (error) {
+        console.error("Error actualizando el estado leído:", error);
+      }
     }
   };
 
@@ -70,37 +110,41 @@ const Sklar = () => {
     }
   };
 
-  const eliminarSeleccionados = () => {
-    const platillosIds = Object.keys(selectedPlatillos);
-    if (platillosIds.length === 0) {
+    const eliminarSeleccionados = () => {
+      const platillosIds = Object.keys(selectedPlatillos);
+      if (platillosIds.length === 0) {
+        Alert.alert(
+          "No hay nada seleccionado",
+          "Por favor, selecciona al menos uno."
+        );
+        return;
+      }
+  
       Alert.alert(
-        "No hay nada seleccionado",
-        "Por favor, selecciona al menos un mensaje."
-      );
-      return;
-    }
-    Alert.alert(
-      "Si confirmas que leíste el mensaje se eliminará",
-      "Una vez eliminados no se puede recuperar",
-      [
-        {
-          text: "Confirmar",
-          onPress: async () => {
-            try {
-              const idsAEliminar = Object.keys(selectedPlatillos).filter(
-                (id) => selectedPlatillos[id]
-              );
-              await Promise.all(idsAEliminar.map((id) => eliminarProducto(id)));
-              setSelectedPlatillos({});
-            } catch (error) {
-              console.error("Error eliminando productos:", error);
-            }
+        "Si confirmas la entrega se eliminará",
+        "Una vez eliminados no se pueden recuperar",
+        [
+          {
+            text: "Confirmar",
+            onPress: async () => {
+              setIsLoading(true); // Mostrar el spinner de carga
+              try {
+                const idsAEliminar = Object.keys(selectedPlatillos).filter(
+                  (id) => selectedPlatillos[id]
+                );
+                await Promise.all(idsAEliminar.map((id) => eliminarProducto(id)));
+                setSelectedPlatillos({});
+              } catch (error) {
+                console.error("Error eliminando productos:", error);
+              } finally {
+                setIsLoading(false); // Ocultar el spinner de carga
+              }
+            },
           },
-        },
-        { text: "Cancelar", style: "cancel" },
-      ]
-    );
-  };
+          { text: "Cancelar", style: "cancel" },
+        ]
+      );
+    };
 
   const CustomCheckbox = ({ isChecked, onChange, ariaLabel }) => (
     <Checkbox
@@ -126,6 +170,13 @@ const Sklar = () => {
       <Text color="white">✓</Text>
     </Checkbox>
   );
+
+  const toggleMessageExpansion = (platilloId) => {
+    setExpandedMessages((prevState) => ({
+      ...prevState,
+      [platilloId]: !prevState[platilloId],
+    }));
+  };
 
   return (
     <NativeBaseProvider style={globalStyles.contenedor}>
@@ -156,7 +207,7 @@ const Sklar = () => {
                     <List
                       style={{
                         flexDirection: "row",
-                        alignItems: "center",
+                        alignItems:"flex-start", // Cambia a flex-start para alinear arriba
                         justifyContent: "space-between",
                         backgroundColor: "#FFF5EE",
                         borderRadius: 15,
@@ -165,7 +216,7 @@ const Sklar = () => {
                         borderColor: "black",
                       }}
                     >
-                      <View mx={3}>
+                      <View mx={3} style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                         <Image
                           source={
                             platillo.imagen
@@ -177,17 +228,47 @@ const Sklar = () => {
                           borderRadius={16}
                         />
                       </View>
-                      
-                      <View style={{ flex: 1 }}>
-                        <Text>
+
+                      {/* Contenedor para la fecha y el mensaje */}
+                      <View style={styles.fechaYMensajeContainer}>
+                        <View
+                          marginRight={1}
+                          margin={1}
+                          style={styles.fechaBox}
+                        >
+                          <Text>
+                            <Text style={{ fontWeight: "bold" }}>Fecha:</Text>
+                            {""} {formatFechaEntrega(platillo.fecha)}
+                          </Text>
+                        </View>
+
+                        {/* Mensaje centrado */}
+                        <Text style={styles.mensajeCentrado}>
                           <Text
-                            numberOfLines={3}
+                            numberOfLines={2}
                             fontWeight="bold"
                             style={styles.descripcion}
                           >
                             Mensaje:
                           </Text>
-                          {platillo.descripcion}
+                          {/* Mensaje truncado */}
+                          {expandedMessages[platillo.id] ? (
+                            platillo.descripcion
+                          ) : (
+                            <Text>
+                              {platillo.descripcion.length > 100
+                                ? platillo.descripcion.slice(0, 100) + "..."
+                                : platillo.descripcion}
+                            </Text>
+                          )}
+                          <Text
+                            onPress={() => toggleMessageExpansion(platillo.id)}
+                            style={styles.leerMas}
+                          >
+                            {expandedMessages[platillo.id]
+                              ? " Leer menos"
+                              : " Leer más..."}
+                          </Text>
                         </Text>
                       </View>
 
@@ -199,7 +280,6 @@ const Sklar = () => {
                           marginRight: 10,
                         }}
                       >
-                        {/* Checkbox para eliminar */}
                         <View style={{ marginBottom: 10 }}>
                           <CustomCheckbox
                             isChecked={!!selectedPlatillos[platillo.id]}
@@ -210,13 +290,13 @@ const Sklar = () => {
                           />
                         </View>
 
-                        {/* Switch para marcar como leído */}
                         <View pointerEvents="auto">
                           <Switch
                             isChecked={!!leidoStatus[platillo.id]}
                             onToggle={(value) =>
                               handleSwitchChange(platillo.id, value)
                             }
+                            isDisabled={!!isSwitchDisabled[platillo.id]}
                           />
                           <Text
                             style={{
@@ -237,18 +317,27 @@ const Sklar = () => {
           </View>
         </ScrollView>
         <BlurView intensity={90}>
-          <View
-            paddingY={4}
-            alignItems="center"
-            safeAreaBottom
-            shadow={9}
-            marginBottom={5}
-          >
-            <Pressable onPress={eliminarSeleccionados}>
-              <Text style={styles.eliminarTexto}>Eliminar seleccionados</Text>
-            </Pressable>
-          </View>
-        </BlurView>
+  <View
+    paddingY={4}
+    alignItems="center"
+    safeAreaBottom
+    shadow={9}
+    marginBottom={5}
+  >
+    <Pressable onPress={isLoading ? null : eliminarSeleccionados}>
+      {isLoading ? (
+        <Text style={styles.eliminarTexto}>Eliminando...</Text>
+      ) : (
+        <Icon
+          as={FontAwesome}
+          name="trash"
+          size="lg"  // Tamaño del ícono
+          color="white"  // Color del ícono
+        />
+      )}
+    </Pressable>
+  </View>
+</BlurView>
       </View>
     </NativeBaseProvider>
   );
@@ -258,9 +347,17 @@ const styles = StyleSheet.create({
   separador: {
     backgroundColor: "#000",
   },
+  fechaYMensajeContainer: {
+    flex: 1, // Para que ocupe el espacio disponible
+    flexDirection: "column", // Apila la fecha y el mensaje
+    justifyContent: "flex-start", // Alinea al inicio
+    paddingHorizontal: 3, // Espacio interno
+    overflow: "hidden", // Evita el desbordamiento
+  },
   descripcion: {
     maxWidth: 140,
     lineHeight: 15,
+    fontWeight: "bold",
   },
   separadorTexto: {
     marginLeft: 10,
@@ -271,6 +368,34 @@ const styles = StyleSheet.create({
   eliminarTexto: {
     color: "white",
     fontWeight: "bold",
+  },
+  fechaContainer: {
+    marginTop: -150,
+    marginLeft: 5,
+    height: 20, // Altura fija para evitar que se mueva
+    justifyContent: 'center', // Centra verticalmente
+    
+  },
+  fechaBox: {
+    padding: 2,
+    borderWidth: 2,
+    borderColor: "green",
+    justifyContent: "center",
+    alignItems: "center", // Asegúrate de que el contenedor pueda centrar su contenido
+    borderRadius: 6,
+    maxWidth: 140, // Limita el ancho máximo
+    
+  },
+  mensajeCentrado: {
+    textAlign: "center",
+    marginTop: 20,
+    maxWidth: 200, // Ajusta el ancho máximo
+  },
+  leerMas: {
+    color: "blue",
+    fontSize: 12,
+    marginTop: 5,
+    // textDecorationLine: "underline",
   },
 });
 
