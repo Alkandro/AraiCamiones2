@@ -7,7 +7,11 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
+<<<<<<< HEAD
       
+=======
+      "image": "./assets/splash.png",
+>>>>>>> 7f80b80e4243b1a6ccf8c37dd9a9f11601422c70
       "resizeMode": "cover",
       "backgroundColor": "#000000"
     },

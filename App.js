@@ -2,6 +2,7 @@ import "react-native-gesture-handler";
 import * as React from "react";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+<<<<<<< HEAD
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -20,6 +21,11 @@ import Icon1 from "react-native-vector-icons/MaterialCommunityIcons";
 // Importa la imagen desde los activos
 import avatar from "./assets/fotos/avatar.png";
 import Icon from "react-native-vector-icons/FontAwesome6";
+=======
+import { Button, StatusBar } from "react-native";
+
+import { useNavigation } from "@react-navigation/native";
+>>>>>>> 7f80b80e4243b1a6ccf8c37dd9a9f11601422c70
 
 
 import DetallePlatillo from "./views/DetallePlatillo";
@@ -137,6 +143,12 @@ import MensajeUser3 from "./views/User3/MensajeUser3";
 
 import LoginScreen from "./views/LoginScreen";
 
+<<<<<<< HEAD
+=======
+import LoginScreen from "./views/LoginScreen";
+
+//importar state de context
+>>>>>>> 7f80b80e4243b1a6ccf8c37dd9a9f11601422c70
 import FirebaseState from "./context/firebase/firebaseState";
 
 //HOSHINO
@@ -3176,6 +3188,7 @@ const App = () => {
   }
 
   return (
+<<<<<<< HEAD
     <FirebaseStateUser3Mensaje>
     <FirebaseStateUser3Domingo>
       <FirebaseStateUser3Sabado>
@@ -3543,6 +3556,113 @@ const App = () => {
       </FirebaseStateUser3Sabado>
     </FirebaseStateUser3Domingo>
     </FirebaseStateUser3Mensaje>
+=======
+    <>
+      <FirebaseState>
+        <PedidosState>
+          <NavigationContainer>
+            <Stack.Navigator
+              screenOptions={{
+                headerTitleAlign: "center",
+                headerStyle: {
+                  backgroundColor: "#FFDA00",
+                },
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                },
+                headerTintColor: "#000",
+              }}
+            >
+              {/* <Stack.Screen
+                name="LoginScreen"
+                component={LoginScreen}
+                options={{
+                  title: "Login",
+                  headerShown: false,
+                }}
+              /> */}
+
+              <Stack.Screen
+                name="NuevaOrden"
+                component={NuevaOrden}
+                options={{
+                  headerBackTitle: "Salir",
+                  headerBackTitleStyle: {
+                    fontSize: 20,color:'red',
+                    fontVariant: "proportional-nums",
+                  },
+                }}
+              />
+
+              <Stack.Screen
+                name="Menu"
+                component={Menu}
+                options={{
+                  title: "Menu",
+                  headerBackTitleStyle: {
+                    fontSize: 15,color:'green',fontStyle:'italic',
+                    
+                  },
+                  //boton a la derecha arriba con aletra
+                  // headerRight: () => (
+                  //   <Button
+                  //     onPress={() => alert("This is a button!")}
+                  //     title="Ir al Pedido"
+                  //     color="#000"
+                  //   />
+                  // ),
+                }}
+              />
+
+              <Stack.Screen
+                name="DetallePlatillo"
+                component={DetallePlatillo}
+                options={{
+                  title: null,
+                  
+                    headerBackTitle: "Menu",
+                    headerBackTitleStyle: {
+                      fontSize: 20,
+                      color:'green',fontStyle:'italic',
+                    },
+                  
+                }}
+              />
+
+              <Stack.Screen
+                name="FormularioPlatillo"
+                component={FormularioPlatillo}
+                options={{
+                  title: "Ordenar Platillo",
+                  headerBackTitle: "Detalle",
+                  headerBackTitleStyle: {
+                    fontSize: 20,
+                    color:'green',fontStyle:'italic',
+                  },
+                }}
+              />
+
+              <Stack.Screen
+                name="ResumenPedido"
+                component={ResumenPedido}
+                options={{
+                  title: "Resumen del Pedido",
+                }}
+              />
+
+              <Stack.Screen
+                name="ProgresoPedido"
+                component={ProgresoPedido}
+                options={{
+                  title: "Progreso del Pedido",
+                }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </PedidosState>
+      </FirebaseState>
+    </>
+>>>>>>> 7f80b80e4243b1a6ccf8c37dd9a9f11601422c70
   );
 };
 

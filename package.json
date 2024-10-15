@@ -6,6 +6,7 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
+    "postinstall": "sh postinstall.sh",
     "web": "expo start --web"
   },
   "dependencies": {
@@ -21,12 +22,16 @@
     "@react-native-community/segmented-control": "^2.2.2",
     "@react-native-community/slider": "4.5.2",
     "@react-native-firebase/auth": "^19.0.1",
+<<<<<<< HEAD
     "@react-navigation/drawer": "^6.7.2",
+=======
+>>>>>>> 7f80b80e4243b1a6ccf8c37dd9a9f11601422c70
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/stack": "^6.3.20",
     "@rneui/base": "^4.0.0-rc.8",
     "@rneui/themed": "^4.0.0-rc.8",
     "antd": "^5.14.1",
+<<<<<<< HEAD
     "date-fns": "^3.6.0",
     "eas-cli": "12.5.1",
     "expo": "51.0.37",
@@ -35,19 +40,37 @@
     "expo-splash-screen": "0.27.6",
     "expo-status-bar": "~1.12.1",
     "expo-updates": "0.25.27",
+=======
+    "expo": "51.0.8",
+    "expo-blur": "~13.0.2",
+    "expo-image-picker": "15.0.5",
+    "expo-splash-screen": "~0.27.4",
+    "expo-status-bar": "~1.12.1",
+    "expo-updates": "0.25.14",
+>>>>>>> 7f80b80e4243b1a6ccf8c37dd9a9f11601422c70
     "firebase": "^10.7.1",
     "native-base": "^3.4.28",
     "react": "18.2.0",
     "react-countdown": "^2.3.5",
     "react-countdown-circle-timer": "^3.2.1",
+<<<<<<< HEAD
     "react-dom": "18.2.0",
     "react-native": "0.74.5",
+=======
+    "react-native": "0.74.1",
+>>>>>>> 7f80b80e4243b1a6ccf8c37dd9a9f11601422c70
     "react-native-animatable": "^1.3.3",
+    "react-native-bouncy-checkbox": "2.1.1",
     "react-native-easy-grid-view": "^0.1.1",
     "react-native-gesture-handler": "~2.16.1",
     "react-native-navigation": "^7.37.2",
+<<<<<<< HEAD
     "react-native-reanimated": "3.10.1",
     "react-native-safe-area-context": "4.10.5",
+=======
+    "react-native-reanimated": "~3.10.1",
+    "react-native-safe-area-context": "4.10.1",
+>>>>>>> 7f80b80e4243b1a6ccf8c37dd9a9f11601422c70
     "react-native-screens": "3.31.1",
     "react-native-svg": "15.2.0",
     "react-native-vector-icons": "^10.0.3",
@@ -57,7 +80,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
+<<<<<<< HEAD
     "@babel/helper-create-regexp-features-plugin": "^7.25.2",
+=======
+>>>>>>> 7f80b80e4243b1a6ccf8c37dd9a9f11601422c70
     "react-native-dotenv": "^3.4.9"
   },
   "private": true,
