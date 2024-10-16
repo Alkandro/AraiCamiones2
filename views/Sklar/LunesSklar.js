@@ -293,7 +293,7 @@ const Sklar = () => {
                         />
 
                         <Text style={styles.checkboxText}>
-                          Check for Delete
+                          Check for Deleteee
                         </Text>
                       </View>
                     </List>
