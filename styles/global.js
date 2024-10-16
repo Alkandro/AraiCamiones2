@@ -11,14 +11,6 @@ const globalStyles = StyleSheet.create({
     flex: 1,
     
   },
-  boton: {
-    backgroundColor: "#FFDA00",
-  },
-  botonTexto: {
-    textTransform: "uppercase",
-    fontWeight: "bold",
-    color: "#000",
-  },
   titulo: {
     textAlign: "center",
     marginTop: 40,
