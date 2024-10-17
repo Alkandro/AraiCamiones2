@@ -185,7 +185,7 @@ const Sklar = () => {
                         backgroundColor: "white", // Fondo de cada platillo
                         borderRadius: 6,
                         marginBottom: 10,
-                        borderWidth: 6,
+                        borderWidth: 3,
                         borderColor: "black",
                         padding: 20, // Añade más espacio interno
                         minHeight: 280, // Aumenta la altura mínima
@@ -239,38 +239,38 @@ const Sklar = () => {
 
                         {/* Parte inferior: Detalles ocupando todo el ancho */}
                         <View style={{ width: "100%" }}>
-                          <Text>
-                            <Text style={{ fontWeight: "bold" }}>Salida:</Text>{" "}
-                            {platillo.precio}
-                          </Text>
-                          <Text>
-                            <Text style={{ fontWeight: "bold" }}>Empresa:</Text>{" "}
-                            {platillo.nombre}
-                          </Text>
-                          <Text>
-                            <Text
-                              numberOfLines={3}
-                              fontWeight="bold"
-                              style={styles.descripcion}
-                            >
+                          <View style={styles.infoContainer}>
+                            <Text style={styles.boldText}>Salida:</Text>
+                            <Text>{platillo.precio}</Text>
+                          </View>
+
+                          <View style={styles.infoContainer}>
+                            <Text style={styles.boldText}>Empresa:</Text>
+                            <Text>{platillo.nombre}</Text>
+                          </View>
+
+                          <View style={styles.infoContainer}>
+                            <Text style={styles.boldText}>
                               Dirección de carga:
-                            </Text>{" "}
-                            {platillo.descripcion}
-                          </Text>
-                          <Text>
-                            <Text
-                              numberOfLines={3}
-                              fontWeight="bold"
-                              style={styles.descripcion2}
-                            >
+                            </Text>
+                            <Text numberOfLines={3} style={styles.descripcion}>
+                              {platillo.descripcion}
+                            </Text>
+                          </View>
+
+                          <View style={styles.infoContainer}>
+                            <Text style={styles.boldText}>
                               Dirección de descarga:
-                            </Text>{" "}
-                            {platillo.descripcion2}
-                          </Text>
-                          <Text>
-                            <Text style={{ fontWeight: "bold" }}>Entrega:</Text>{" "}
-                            {formatFechaEntrega(platillo.fecha)}
-                          </Text>
+                            </Text>
+                            <Text numberOfLines={3} style={styles.descripcion2}>
+                              {platillo.descripcion2}
+                            </Text>
+                          </View>
+
+                          <View style={styles.infoContainer}>
+                            <Text style={styles.boldText}>Entrega:</Text>
+                            <Text>{formatFechaEntrega(platillo.fecha)}</Text>
+                          </View>
                         </View>
                       </View>
 
@@ -280,7 +280,7 @@ const Sklar = () => {
                           flexDirection: "column", // Coloca el checkbox y el texto en una fila
                           alignItems: "center", // Alinea verticalmente el checkbox y el texto
                           marginLeft: "auto", // Empuja la fila hacia la derecha si es necesario
-                          marginTop: -50, // Ajusta según el diseño que necesitas
+                          marginTop: -180, // Ajusta según el diseño que necesitas
                           marginRight: 35,
                         }}
                       >
@@ -308,8 +308,9 @@ const Sklar = () => {
             paddingY={4}
             alignItems="center"
             safeAreaBottom
-            shadow={9}
-            marginBottom={5}
+            height={20}
+            marginBottom={0}
+            backgroundColor="black"
           >
             <Pressable onPress={isLoading ? null : eliminarSeleccionados}>
               {isLoading ? (
@@ -319,7 +320,7 @@ const Sklar = () => {
                   as={FontAwesome}
                   name="trash"
                   size="lg" // Tamaño del ícono
-                  color="black" // Color del ícono
+                  color="white" // Color del ícono
                 />
               )}
             </Pressable>
@@ -356,8 +357,21 @@ const styles = StyleSheet.create({
     marginLeft: -13, // Ajusta la distancia del texto con respecto al checkbox
     fontSize: 12, // Tamaño de la fuente del texto
     color: "black", // Color del texto
-    marginTop:2,
-   
+    marginTop: 2,
+  },
+  infoContainer: {
+    flexDirection: "column", // Coloca los elementos uno debajo del otro
+    marginVertical: 5, // Espaciado entre las secciones
+  },
+  boldText: {
+    fontWeight: "bold",
+    marginBottom: 1, // Espacio debajo del título
+  },
+  descripcion: {
+    color: "#555", // Estilo para la descripción (puedes personalizarlo)
+  },
+  descripcion2: {
+    color: "#777", // Estilo diferente si lo deseas para la segunda descripción
   },
 });
 

@@ -8,19 +8,25 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
-import { View, Text, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Button,
+} from "react-native";
 import { BlurView } from "expo-blur";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { useEffect, useState } from "react";
 import AppSplashScreen from "./SplashScreen";
-
 
 import Icon1 from "react-native-vector-icons/MaterialCommunityIcons";
 
 // Importa la imagen desde los activos
 import avatar from "./assets/fotos/avatar.png";
 import Icon from "react-native-vector-icons/FontAwesome6";
-
 
 import DetallePlatillo from "./views/DetallePlatillo";
 import DetalleMensaje from "./views/DetalleMensaje";
@@ -323,7 +329,7 @@ const HoshinoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -353,7 +359,7 @@ const HoshinoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -383,7 +389,7 @@ const HoshinoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -413,7 +419,7 @@ const HoshinoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -443,7 +449,7 @@ const HoshinoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -473,7 +479,7 @@ const HoshinoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -503,7 +509,7 @@ const HoshinoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -533,7 +539,7 @@ const HoshinoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -583,7 +589,7 @@ const MatsushimaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -613,7 +619,7 @@ const MatsushimaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -643,7 +649,7 @@ const MatsushimaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -673,7 +679,7 @@ const MatsushimaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -703,7 +709,7 @@ const MatsushimaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -733,7 +739,7 @@ const MatsushimaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -763,7 +769,7 @@ const MatsushimaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -793,7 +799,7 @@ const MatsushimaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -843,7 +849,7 @@ const TomaokaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -873,7 +879,7 @@ const TomaokaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -903,7 +909,7 @@ const TomaokaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -933,7 +939,7 @@ const TomaokaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -963,7 +969,7 @@ const TomaokaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -993,7 +999,7 @@ const TomaokaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1023,7 +1029,7 @@ const TomaokaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1045,7 +1051,7 @@ const TomaokaDrawer = () => {
           },
         }}
       />
-       <Drawer.Screen
+      <Drawer.Screen
         name="Mensaje"
         component={MensajeTomaoka}
         options={{
@@ -1053,7 +1059,7 @@ const TomaokaDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1103,7 +1109,7 @@ const OishiDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1133,7 +1139,7 @@ const OishiDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1163,7 +1169,7 @@ const OishiDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1193,7 +1199,7 @@ const OishiDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1223,7 +1229,7 @@ const OishiDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1253,7 +1259,7 @@ const OishiDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1283,7 +1289,7 @@ const OishiDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1305,7 +1311,7 @@ const OishiDrawer = () => {
           },
         }}
       />
-       <Drawer.Screen
+      <Drawer.Screen
         name="Mensaje"
         component={MensajeOishi}
         options={{
@@ -1313,7 +1319,7 @@ const OishiDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1363,7 +1369,7 @@ const OkamotoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1393,7 +1399,7 @@ const OkamotoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1423,7 +1429,7 @@ const OkamotoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1453,7 +1459,7 @@ const OkamotoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1483,7 +1489,7 @@ const OkamotoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1513,7 +1519,7 @@ const OkamotoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1543,7 +1549,7 @@ const OkamotoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1573,7 +1579,7 @@ const OkamotoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1623,7 +1629,7 @@ const YamakadoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1653,7 +1659,7 @@ const YamakadoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1683,7 +1689,7 @@ const YamakadoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1713,7 +1719,7 @@ const YamakadoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1743,7 +1749,7 @@ const YamakadoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1773,7 +1779,7 @@ const YamakadoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1803,7 +1809,7 @@ const YamakadoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1833,7 +1839,7 @@ const YamakadoDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1883,7 +1889,7 @@ const SklarDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1913,7 +1919,7 @@ const SklarDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1943,7 +1949,7 @@ const SklarDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -1973,7 +1979,7 @@ const SklarDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2003,7 +2009,7 @@ const SklarDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2033,7 +2039,7 @@ const SklarDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2063,7 +2069,7 @@ const SklarDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2085,7 +2091,7 @@ const SklarDrawer = () => {
           },
         }}
       />
-       <Drawer.Screen
+      <Drawer.Screen
         name="Mensaje"
         component={MensajeSklar}
         options={{
@@ -2093,7 +2099,7 @@ const SklarDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2143,7 +2149,7 @@ const EnriqueDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2173,7 +2179,7 @@ const EnriqueDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2203,7 +2209,7 @@ const EnriqueDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2233,7 +2239,7 @@ const EnriqueDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2263,7 +2269,7 @@ const EnriqueDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2293,7 +2299,7 @@ const EnriqueDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2323,7 +2329,7 @@ const EnriqueDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2345,7 +2351,7 @@ const EnriqueDrawer = () => {
           },
         }}
       />
-       <Drawer.Screen
+      <Drawer.Screen
         name="Mensaje"
         component={MensajeEnrique}
         options={{
@@ -2353,7 +2359,7 @@ const EnriqueDrawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2403,7 +2409,7 @@ const User1Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2433,7 +2439,7 @@ const User1Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2463,7 +2469,7 @@ const User1Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2493,7 +2499,7 @@ const User1Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2523,7 +2529,7 @@ const User1Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2553,7 +2559,7 @@ const User1Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2583,7 +2589,7 @@ const User1Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2605,7 +2611,7 @@ const User1Drawer = () => {
           },
         }}
       />
-       <Drawer.Screen
+      <Drawer.Screen
         name="Mensaje"
         component={MensajeUser1}
         options={{
@@ -2613,7 +2619,7 @@ const User1Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2663,7 +2669,7 @@ const User2Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2693,7 +2699,7 @@ const User2Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2723,7 +2729,7 @@ const User2Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2753,7 +2759,7 @@ const User2Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2783,7 +2789,7 @@ const User2Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2813,7 +2819,7 @@ const User2Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2843,7 +2849,7 @@ const User2Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2873,7 +2879,7 @@ const User2Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2923,7 +2929,7 @@ const User3Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2953,7 +2959,7 @@ const User3Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -2983,7 +2989,7 @@ const User3Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -3013,7 +3019,7 @@ const User3Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -3043,7 +3049,7 @@ const User3Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -3073,7 +3079,7 @@ const User3Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -3103,7 +3109,7 @@ const User3Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -3133,7 +3139,7 @@ const User3Drawer = () => {
           headerTitleAlign: "center",
           // Cambiar color de fondo y el estilo del header
           headerStyle: {
-            backgroundColor: "#3d783c", // Color de fondo del header
+            backgroundColor: "black", // Color de fondo del header
           },
           headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
           headerTitleStyle: {
@@ -3177,371 +3183,405 @@ const App = () => {
 
   return (
     <FirebaseStateUser3Mensaje>
-    <FirebaseStateUser3Domingo>
-      <FirebaseStateUser3Sabado>
-        <FirebaseStateUser3Viernes>
-          <FirebaseStateUser3Jueves>
-            <FirebaseStateUser3Miercoles>
-              <FirebaseStateUser3Martes>
-                <FirebaseStateUser3>
-                <FirebaseStateUser2Mensaje>
-                  <FirebaseStateUser2Domingo>
-                    <FirebaseStateUser2Sabado>
-                      <FirebaseStateUser2Viernes>
-                        <FirebaseStateUser2Jueves>
-                          <FirebaseStateUser2Miercoles>
-                            <FirebaseStateUser2Martes>
-                              <FirebaseStateUser2>
-                              <FirebaseStateUser1Mensaje>
-                                <FirebaseStateUser1Domingo>
-                                  <FirebaseStateUser1Sabado>
-                                    <FirebaseStateUser1Viernes>
-                                      <FirebaseStateUser1Jueves>
-                                        <FirebaseStateUser1Miercoles>
-                                          <FirebaseStateUser1Martes>
-                                            <FirebaseStateUser1>
-                                            <FirebaseStateEnriqueMensaje>
-                                              <FirebaseStateEnriqueDomingo>
-                                                <FirebaseStateEnriqueSabado>
-                                                  <FirebaseStateEnriqueViernes>
-                                                    <FirebaseStateEnriqueJueves>
-                                                      <FirebaseStateEnriqueMiercoles>
-                                                        <FirebaseStateEnriqueMartes>
-                                                          <FirebaseStateEnrique>
-                                                          <FirebaseStateSklarMensaje>
-                                                            <FirebaseStateSklarDomingo>
-                                                              <FirebaseStateSklarSabado>
-                                                                <FirebaseStateSklarViernes>
-                                                                  <FirebaseStateSklarJueves>
-                                                                    <FirebaseStateSklarMiercoles>
-                                                                      <FirebaseStateSklarMartes>
-                                                                        <FirebaseStateSklar>
-                                                                        <FirebaseStateYamakadoMensaje>
-                                                                          <FirebaseStateYamakadoDomingo>
-                                                                            <FirebaseStateYamakadoSabado>
-                                                                              <FirebaseStateYamakadoViernes>
-                                                                                <FirebaseStateYamakadoJueves>
-                                                                                  <FirebaseStateYamakadoMiercoles>
-                                                                                    <FirebaseStateYamakadoMartes>
-                                                                                      <FirebaseStateYamakado>
-                                                                                      <FirebaseStateOkamotoMensaje>
-                                                                                        <FirebaseStateOkamotoDomingo>
-                                                                                          <FirebaseStateOkamotoSabado>
-                                                                                            <FirebaseStateOkamotoViernes>
-                                                                                              <FirebaseStateOkamotoJueves>
-                                                                                                <FirebaseStateOkamotoMiercoles>
-                                                                                                  <FirebaseStateOkamotoMartes>
-                                                                                                    <FirebaseStateOkamoto>
-                                                                                                    <FirebaseStateOishiMensaje>
-                                                                                                      <FirebaseStateOishiDomingo>
-                                                                                                        <FirebaseStateOishiSabado>
-                                                                                                          <FirebaseStateOishiViernes>
-                                                                                                            <FirebaseStateOishiJueves>
-                                                                                                              <FirebaseStateOishiMiercoles>
-                                                                                                                <FirebaseStateOishiMartes>
-                                                                                                                  <FirebaseStateOishi>
-                                                                                                                  <FirebaseStateTomaokaMensaje>
-                                                                                                                    <FirebaseStateTomaokaDomingo>
-                                                                                                                      <FirebaseStateTomaokaSabado>
-                                                                                                                        <FirebaseStateTomaokaViernes>
-                                                                                                                          <FirebaseStateTomaokaJueves>
-                                                                                                                            <FirebaseStateTomaokaMiercoles>
-                                                                                                                              <FirebaseStateTomaokaMartes>
-                                                                                                                                <FirebaseStateTomaoka>
-                                                                                                                                  <FirebaseStateMatsushimaMensaje>
-                                                                                                                                    <FirebaseStateMatsushimaDomingo>
-                                                                                                                                      <FirebaseStateMatsushimaSabado>
-                                                                                                                                        <FirebaseStateMatsushimaViernes>
-                                                                                                                                          <FirebaseStateMatsushimaJueves>
-                                                                                                                                            <FirebaseStateMatsushimaMiercoles>
-                                                                                                                                              <FirebaseStateMatsushimaMartes>
-                                                                                                                                                <FirebaseStateMatsushima>
-                                                                                                                                                  <FirebaseStateHoshinoMensaje>
-                                                                                                                                                    <FirebaseStateHoshinoDomingo>
-                                                                                                                                                      <FirebaseStateHoshinoSabado>
-                                                                                                                                                        <FirebaseStateHoshinoViernes>
-                                                                                                                                                          <FirebaseStateHoshinoJueves>
-                                                                                                                                                            <FirebaseStateHoshinoMiercoles>
-                                                                                                                                                              <FirebaseStateHoshinoMartes>
-                                                                                                                                                                <FirebaseStateHoshino>
-                                                                                                                                                                  <FirebaseState>
-                                                                                                                                                                    <PedidosState>
-                                                                                                                                                                      <NavigationContainer>
-                                                                                                                                                                        <Stack.Navigator initialRouteName="LoginScreen">
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="LoginScreen"
-                                                                                                                                                                            component={
-                                                                                                                                                                              LoginScreen
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "LoginScreen",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
+      <FirebaseStateUser3Domingo>
+        <FirebaseStateUser3Sabado>
+          <FirebaseStateUser3Viernes>
+            <FirebaseStateUser3Jueves>
+              <FirebaseStateUser3Miercoles>
+                <FirebaseStateUser3Martes>
+                  <FirebaseStateUser3>
+                    <FirebaseStateUser2Mensaje>
+                      <FirebaseStateUser2Domingo>
+                        <FirebaseStateUser2Sabado>
+                          <FirebaseStateUser2Viernes>
+                            <FirebaseStateUser2Jueves>
+                              <FirebaseStateUser2Miercoles>
+                                <FirebaseStateUser2Martes>
+                                  <FirebaseStateUser2>
+                                    <FirebaseStateUser1Mensaje>
+                                      <FirebaseStateUser1Domingo>
+                                        <FirebaseStateUser1Sabado>
+                                          <FirebaseStateUser1Viernes>
+                                            <FirebaseStateUser1Jueves>
+                                              <FirebaseStateUser1Miercoles>
+                                                <FirebaseStateUser1Martes>
+                                                  <FirebaseStateUser1>
+                                                    <FirebaseStateEnriqueMensaje>
+                                                      <FirebaseStateEnriqueDomingo>
+                                                        <FirebaseStateEnriqueSabado>
+                                                          <FirebaseStateEnriqueViernes>
+                                                            <FirebaseStateEnriqueJueves>
+                                                              <FirebaseStateEnriqueMiercoles>
+                                                                <FirebaseStateEnriqueMartes>
+                                                                  <FirebaseStateEnrique>
+                                                                    <FirebaseStateSklarMensaje>
+                                                                      <FirebaseStateSklarDomingo>
+                                                                        <FirebaseStateSklarSabado>
+                                                                          <FirebaseStateSklarViernes>
+                                                                            <FirebaseStateSklarJueves>
+                                                                              <FirebaseStateSklarMiercoles>
+                                                                                <FirebaseStateSklarMartes>
+                                                                                  <FirebaseStateSklar>
+                                                                                    <FirebaseStateYamakadoMensaje>
+                                                                                      <FirebaseStateYamakadoDomingo>
+                                                                                        <FirebaseStateYamakadoSabado>
+                                                                                          <FirebaseStateYamakadoViernes>
+                                                                                            <FirebaseStateYamakadoJueves>
+                                                                                              <FirebaseStateYamakadoMiercoles>
+                                                                                                <FirebaseStateYamakadoMartes>
+                                                                                                  <FirebaseStateYamakado>
+                                                                                                    <FirebaseStateOkamotoMensaje>
+                                                                                                      <FirebaseStateOkamotoDomingo>
+                                                                                                        <FirebaseStateOkamotoSabado>
+                                                                                                          <FirebaseStateOkamotoViernes>
+                                                                                                            <FirebaseStateOkamotoJueves>
+                                                                                                              <FirebaseStateOkamotoMiercoles>
+                                                                                                                <FirebaseStateOkamotoMartes>
+                                                                                                                  <FirebaseStateOkamoto>
+                                                                                                                    <FirebaseStateOishiMensaje>
+                                                                                                                      <FirebaseStateOishiDomingo>
+                                                                                                                        <FirebaseStateOishiSabado>
+                                                                                                                          <FirebaseStateOishiViernes>
+                                                                                                                            <FirebaseStateOishiJueves>
+                                                                                                                              <FirebaseStateOishiMiercoles>
+                                                                                                                                <FirebaseStateOishiMartes>
+                                                                                                                                  <FirebaseStateOishi>
+                                                                                                                                    <FirebaseStateTomaokaMensaje>
+                                                                                                                                      <FirebaseStateTomaokaDomingo>
+                                                                                                                                        <FirebaseStateTomaokaSabado>
+                                                                                                                                          <FirebaseStateTomaokaViernes>
+                                                                                                                                            <FirebaseStateTomaokaJueves>
+                                                                                                                                              <FirebaseStateTomaokaMiercoles>
+                                                                                                                                                <FirebaseStateTomaokaMartes>
+                                                                                                                                                  <FirebaseStateTomaoka>
+                                                                                                                                                    <FirebaseStateMatsushimaMensaje>
+                                                                                                                                                      <FirebaseStateMatsushimaDomingo>
+                                                                                                                                                        <FirebaseStateMatsushimaSabado>
+                                                                                                                                                          <FirebaseStateMatsushimaViernes>
+                                                                                                                                                            <FirebaseStateMatsushimaJueves>
+                                                                                                                                                              <FirebaseStateMatsushimaMiercoles>
+                                                                                                                                                                <FirebaseStateMatsushimaMartes>
+                                                                                                                                                                  <FirebaseStateMatsushima>
+                                                                                                                                                                    <FirebaseStateHoshinoMensaje>
+                                                                                                                                                                      <FirebaseStateHoshinoDomingo>
+                                                                                                                                                                        <FirebaseStateHoshinoSabado>
+                                                                                                                                                                          <FirebaseStateHoshinoViernes>
+                                                                                                                                                                            <FirebaseStateHoshinoJueves>
+                                                                                                                                                                              <FirebaseStateHoshinoMiercoles>
+                                                                                                                                                                                <FirebaseStateHoshinoMartes>
+                                                                                                                                                                                  <FirebaseStateHoshino>
+                                                                                                                                                                                    <FirebaseState>
+                                                                                                                                                                                      <PedidosState>
+                                                                                                                                                                                        <NavigationContainer>
+                                                                                                                                                                                          <Stack.Navigator initialRouteName="LoginScreen">
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="LoginScreen"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                LoginScreen
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "LoginScreen",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
 
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="MatsushimaDrawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              MatsushimaDrawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "Matsushima",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="TomaokaDrawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              TomaokaDrawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "Tomaoka",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="HoshinoDrawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              HoshinoDrawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "Hoshino",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="OishiDrawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              OishiDrawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "Oishi",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="OkamotoDrawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              OkamotoDrawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "Okamoto",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="YamakadoDrawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              YamakadoDrawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "Yamakado",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="SklarDrawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              SklarDrawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "Sklar",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="EnriqueDrawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              EnriqueDrawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "Enrique",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="User1Drawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              User1Drawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "User1",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="User2Drawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              User2Drawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "User2",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="User3Drawer"
-                                                                                                                                                                            component={
-                                                                                                                                                                              User3Drawer
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "User3",
-                                                                                                                                                                              headerShown: false,
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="DetallePlatillo"
-                                                                                                                                                                            component={
-                                                                                                                                                                              DetallePlatillo
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "DetallePlatillo",
-                                                                                                                                                                              headerBackTitle:
-                                                                                                                                                                                "Menu",
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                          <Stack.Screen
-                                                                                                                                                                            name="DetalleMensaje"
-                                                                                                                                                                            component={
-                                                                                                                                                                              DetalleMensaje
-                                                                                                                                                                            }
-                                                                                                                                                                            options={{
-                                                                                                                                                                              title:
-                                                                                                                                                                                "Mensaje",
-                                                                                                                                                                              headerBackTitle:
-                                                                                                                                                                                "Menu",
-                                                                                                                                                                              headerTitleAlign:
-                                                                                                                                                                                "center",
-                                                                                                                                                                            }}
-                                                                                                                                                                          />
-                                                                                                                                                                        </Stack.Navigator>
-                                                                                                                                                                      </NavigationContainer>
-                                                                                                                                                                    </PedidosState>
-                                                                                                                                                                  </FirebaseState>
-                                                                                                                                                                </FirebaseStateHoshino>
-                                                                                                                                                              </FirebaseStateHoshinoMartes>
-                                                                                                                                                            </FirebaseStateHoshinoMiercoles>
-                                                                                                                                                          </FirebaseStateHoshinoJueves>
-                                                                                                                                                        </FirebaseStateHoshinoViernes>
-                                                                                                                                                      </FirebaseStateHoshinoSabado>
-                                                                                                                                                    </FirebaseStateHoshinoDomingo>
-                                                                                                                                                  </FirebaseStateHoshinoMensaje>
-                                                                                                                                                </FirebaseStateMatsushima>
-                                                                                                                                              </FirebaseStateMatsushimaMartes>
-                                                                                                                                            </FirebaseStateMatsushimaMiercoles>
-                                                                                                                                          </FirebaseStateMatsushimaJueves>
-                                                                                                                                        </FirebaseStateMatsushimaViernes>
-                                                                                                                                      </FirebaseStateMatsushimaSabado>
-                                                                                                                                    </FirebaseStateMatsushimaDomingo>
-                                                                                                                                  </FirebaseStateMatsushimaMensaje>
-                                                                                                                                </FirebaseStateTomaoka>
-                                                                                                                              </FirebaseStateTomaokaMartes>
-                                                                                                                            </FirebaseStateTomaokaMiercoles>
-                                                                                                                          </FirebaseStateTomaokaJueves>
-                                                                                                                        </FirebaseStateTomaokaViernes>
-                                                                                                                      </FirebaseStateTomaokaSabado>
-                                                                                                                    </FirebaseStateTomaokaDomingo>
-                                                                                                                    </FirebaseStateTomaokaMensaje>
-                                                                                                                  </FirebaseStateOishi>
-                                                                                                                </FirebaseStateOishiMartes>
-                                                                                                              </FirebaseStateOishiMiercoles>
-                                                                                                            </FirebaseStateOishiJueves>
-                                                                                                          </FirebaseStateOishiViernes>
-                                                                                                        </FirebaseStateOishiSabado>
-                                                                                                      </FirebaseStateOishiDomingo>
-                                                                                                      </FirebaseStateOishiMensaje>
-                                                                                                    </FirebaseStateOkamoto>
-                                                                                                  </FirebaseStateOkamotoMartes>
-                                                                                                </FirebaseStateOkamotoMiercoles>
-                                                                                              </FirebaseStateOkamotoJueves>
-                                                                                            </FirebaseStateOkamotoViernes>
-                                                                                          </FirebaseStateOkamotoSabado>
-                                                                                        </FirebaseStateOkamotoDomingo>
-                                                                                        </FirebaseStateOkamotoMensaje>
-                                                                                      </FirebaseStateYamakado>
-                                                                                    </FirebaseStateYamakadoMartes>
-                                                                                  </FirebaseStateYamakadoMiercoles>
-                                                                                </FirebaseStateYamakadoJueves>
-                                                                              </FirebaseStateYamakadoViernes>
-                                                                            </FirebaseStateYamakadoSabado>
-                                                                          </FirebaseStateYamakadoDomingo>
-                                                                          </FirebaseStateYamakadoMensaje>
-                                                                        </FirebaseStateSklar>
-                                                                      </FirebaseStateSklarMartes>
-                                                                    </FirebaseStateSklarMiercoles>
-                                                                  </FirebaseStateSklarJueves>
-                                                                </FirebaseStateSklarViernes>
-                                                              </FirebaseStateSklarSabado>
-                                                            </FirebaseStateSklarDomingo>
-                                                            </FirebaseStateSklarMensaje>
-                                                          </FirebaseStateEnrique>
-                                                        </FirebaseStateEnriqueMartes>
-                                                      </FirebaseStateEnriqueMiercoles>
-                                                    </FirebaseStateEnriqueJueves>
-                                                  </FirebaseStateEnriqueViernes>
-                                                </FirebaseStateEnriqueSabado>
-                                              </FirebaseStateEnriqueDomingo>
-                                              </FirebaseStateEnriqueMensaje>
-                                            </FirebaseStateUser1>
-                                          </FirebaseStateUser1Martes>
-                                        </FirebaseStateUser1Miercoles>
-                                      </FirebaseStateUser1Jueves>
-                                    </FirebaseStateUser1Viernes>
-                                  </FirebaseStateUser1Sabado>
-                                </FirebaseStateUser1Domingo>
-                                </FirebaseStateUser1Mensaje>
-                              </FirebaseStateUser2>
-                            </FirebaseStateUser2Martes>
-                          </FirebaseStateUser2Miercoles>
-                        </FirebaseStateUser2Jueves>
-                      </FirebaseStateUser2Viernes>
-                    </FirebaseStateUser2Sabado>
-                  </FirebaseStateUser2Domingo>
-                  </FirebaseStateUser2Mensaje>
-                </FirebaseStateUser3>
-              </FirebaseStateUser3Martes>
-            </FirebaseStateUser3Miercoles>
-          </FirebaseStateUser3Jueves>
-        </FirebaseStateUser3Viernes>
-      </FirebaseStateUser3Sabado>
-    </FirebaseStateUser3Domingo>
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="MatsushimaDrawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                MatsushimaDrawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "Matsushima",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="TomaokaDrawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                TomaokaDrawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "Tomaoka",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="HoshinoDrawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                HoshinoDrawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "Hoshino",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="OishiDrawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                OishiDrawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "Oishi",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="OkamotoDrawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                OkamotoDrawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "Okamoto",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="YamakadoDrawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                YamakadoDrawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "Yamakado",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="SklarDrawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                SklarDrawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "Sklar",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="EnriqueDrawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                EnriqueDrawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "Enrique",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="User1Drawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                User1Drawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "User1",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="User2Drawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                User2Drawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "User2",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="User3Drawer"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                User3Drawer
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "User3",
+                                                                                                                                                                                                headerShown: false,
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="DetallePlatillo"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                DetallePlatillo
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={({
+                                                                                                                                                                                                navigation,
+                                                                                                                                                                                              }) => ({
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "DetallePlatillo",
+                                                                                                                                                                                                headerBackTitle:
+                                                                                                                                                                                                  null, // Asegúrate de que esto sea null
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                                headerStyle:
+                                                                                                                                                                                                  {
+                                                                                                                                                                                                    backgroundColor:
+                                                                                                                                                                                                      "#4CAF50",
+                                                                                                                                                                                                  },
+                                                                                                                                                                                                headerTintColor:
+                                                                                                                                                                                                  "#fff",
+                                                                                                                                                                                                headerTitleStyle:
+                                                                                                                                                                                                  {
+                                                                                                                                                                                                    fontWeight:
+                                                                                                                                                                                                      "bold",
+                                                                                                                                                                                                  },
+                                                                                                                                                                                                headerLeft:
+                                                                                                                                                                                                  () => (
+                                                                                                                                                                                                    <TouchableOpacity
+                                                                                                                                                                                                      onPress={() =>
+                                                                                                                                                                                                        navigation.goBack()
+                                                                                                                                                                                                      }
+                                                                                                                                                                                                      style={{
+                                                                                                                                                                                                        padding: 10,
+                                                                                                                                                                                                      }}
+                                                                                                                                                                                                    >
+                                                                                                                                                                                                      <Icon name="angles-left" size={20} color="#fff" />
+                                                                                                                                                                                                    </TouchableOpacity>
+                                                                                                                                                                                                  ),
+                                                                                                                                                                                              })}
+                                                                                                                                                                                            />
+                                                                                                                                                                                            <Stack.Screen
+                                                                                                                                                                                              name="DetalleMensaje"
+                                                                                                                                                                                              component={
+                                                                                                                                                                                                DetalleMensaje
+                                                                                                                                                                                              }
+                                                                                                                                                                                              options={{
+                                                                                                                                                                                                title:
+                                                                                                                                                                                                  "Mensaje",
+                                                                                                                                                                                                headerBackTitle:
+                                                                                                                                                                                                  "Menu",
+                                                                                                                                                                                                headerTitleAlign:
+                                                                                                                                                                                                  "center",
+                                                                                                                                                                                                headerStyle:
+                                                                                                                                                                                                  {
+                                                                                                                                                                                                    backgroundColor:
+                                                                                                                                                                                                      "black", // Cambia este valor al color que quieras
+                                                                                                                                                                                                  },
+                                                                                                                                                                                                headerTintColor:
+                                                                                                                                                                                                  "#fff", // Cambia el color del texto y los íconos en el header
+                                                                                                                                                                                              }}
+                                                                                                                                                                                            />
+                                                                                                                                                                                          </Stack.Navigator>
+                                                                                                                                                                                        </NavigationContainer>
+                                                                                                                                                                                      </PedidosState>
+                                                                                                                                                                                    </FirebaseState>
+                                                                                                                                                                                  </FirebaseStateHoshino>
+                                                                                                                                                                                </FirebaseStateHoshinoMartes>
+                                                                                                                                                                              </FirebaseStateHoshinoMiercoles>
+                                                                                                                                                                            </FirebaseStateHoshinoJueves>
+                                                                                                                                                                          </FirebaseStateHoshinoViernes>
+                                                                                                                                                                        </FirebaseStateHoshinoSabado>
+                                                                                                                                                                      </FirebaseStateHoshinoDomingo>
+                                                                                                                                                                    </FirebaseStateHoshinoMensaje>
+                                                                                                                                                                  </FirebaseStateMatsushima>
+                                                                                                                                                                </FirebaseStateMatsushimaMartes>
+                                                                                                                                                              </FirebaseStateMatsushimaMiercoles>
+                                                                                                                                                            </FirebaseStateMatsushimaJueves>
+                                                                                                                                                          </FirebaseStateMatsushimaViernes>
+                                                                                                                                                        </FirebaseStateMatsushimaSabado>
+                                                                                                                                                      </FirebaseStateMatsushimaDomingo>
+                                                                                                                                                    </FirebaseStateMatsushimaMensaje>
+                                                                                                                                                  </FirebaseStateTomaoka>
+                                                                                                                                                </FirebaseStateTomaokaMartes>
+                                                                                                                                              </FirebaseStateTomaokaMiercoles>
+                                                                                                                                            </FirebaseStateTomaokaJueves>
+                                                                                                                                          </FirebaseStateTomaokaViernes>
+                                                                                                                                        </FirebaseStateTomaokaSabado>
+                                                                                                                                      </FirebaseStateTomaokaDomingo>
+                                                                                                                                    </FirebaseStateTomaokaMensaje>
+                                                                                                                                  </FirebaseStateOishi>
+                                                                                                                                </FirebaseStateOishiMartes>
+                                                                                                                              </FirebaseStateOishiMiercoles>
+                                                                                                                            </FirebaseStateOishiJueves>
+                                                                                                                          </FirebaseStateOishiViernes>
+                                                                                                                        </FirebaseStateOishiSabado>
+                                                                                                                      </FirebaseStateOishiDomingo>
+                                                                                                                    </FirebaseStateOishiMensaje>
+                                                                                                                  </FirebaseStateOkamoto>
+                                                                                                                </FirebaseStateOkamotoMartes>
+                                                                                                              </FirebaseStateOkamotoMiercoles>
+                                                                                                            </FirebaseStateOkamotoJueves>
+                                                                                                          </FirebaseStateOkamotoViernes>
+                                                                                                        </FirebaseStateOkamotoSabado>
+                                                                                                      </FirebaseStateOkamotoDomingo>
+                                                                                                    </FirebaseStateOkamotoMensaje>
+                                                                                                  </FirebaseStateYamakado>
+                                                                                                </FirebaseStateYamakadoMartes>
+                                                                                              </FirebaseStateYamakadoMiercoles>
+                                                                                            </FirebaseStateYamakadoJueves>
+                                                                                          </FirebaseStateYamakadoViernes>
+                                                                                        </FirebaseStateYamakadoSabado>
+                                                                                      </FirebaseStateYamakadoDomingo>
+                                                                                    </FirebaseStateYamakadoMensaje>
+                                                                                  </FirebaseStateSklar>
+                                                                                </FirebaseStateSklarMartes>
+                                                                              </FirebaseStateSklarMiercoles>
+                                                                            </FirebaseStateSklarJueves>
+                                                                          </FirebaseStateSklarViernes>
+                                                                        </FirebaseStateSklarSabado>
+                                                                      </FirebaseStateSklarDomingo>
+                                                                    </FirebaseStateSklarMensaje>
+                                                                  </FirebaseStateEnrique>
+                                                                </FirebaseStateEnriqueMartes>
+                                                              </FirebaseStateEnriqueMiercoles>
+                                                            </FirebaseStateEnriqueJueves>
+                                                          </FirebaseStateEnriqueViernes>
+                                                        </FirebaseStateEnriqueSabado>
+                                                      </FirebaseStateEnriqueDomingo>
+                                                    </FirebaseStateEnriqueMensaje>
+                                                  </FirebaseStateUser1>
+                                                </FirebaseStateUser1Martes>
+                                              </FirebaseStateUser1Miercoles>
+                                            </FirebaseStateUser1Jueves>
+                                          </FirebaseStateUser1Viernes>
+                                        </FirebaseStateUser1Sabado>
+                                      </FirebaseStateUser1Domingo>
+                                    </FirebaseStateUser1Mensaje>
+                                  </FirebaseStateUser2>
+                                </FirebaseStateUser2Martes>
+                              </FirebaseStateUser2Miercoles>
+                            </FirebaseStateUser2Jueves>
+                          </FirebaseStateUser2Viernes>
+                        </FirebaseStateUser2Sabado>
+                      </FirebaseStateUser2Domingo>
+                    </FirebaseStateUser2Mensaje>
+                  </FirebaseStateUser3>
+                </FirebaseStateUser3Martes>
+              </FirebaseStateUser3Miercoles>
+            </FirebaseStateUser3Jueves>
+          </FirebaseStateUser3Viernes>
+        </FirebaseStateUser3Sabado>
+      </FirebaseStateUser3Domingo>
     </FirebaseStateUser3Mensaje>
   );
 };

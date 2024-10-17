@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { NativeBaseProvider, Text, View, Image, ScrollView } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import PedidosContext from "../context/firebase/pedidos/pedidosContext";
-import { Platform, StyleSheet, ImageBackground } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 const DetallePlatillo = () => {
   const { platillo } = useContext(PedidosContext);
@@ -15,7 +15,7 @@ const DetallePlatillo = () => {
     navigation.setOptions({
       title: "Mensaje", // Título personalizado
       headerStyle: {
-        backgroundColor: "#3d783c", // Color de fondo del header
+        backgroundColor: "black", // Color de fondo del header
       },
       headerTintColor: "white", // Color del texto e íconos del header
     });
@@ -23,13 +23,9 @@ const DetallePlatillo = () => {
 
   return (
     <NativeBaseProvider>
-      <View flex={1} justifyContent="center" justifyItems="center">
-        <ImageBackground
-          source={require("../assets/fotos/smoke.jpg")}
-          resizeMode="cover"
-          style={styles.imagen4}
-          imageStyle={styles.image}
-        >
+      <View flex={1} 
+       background="black">
+       
           <ScrollView contentContainerStyle={styles.scrollViewContent}>
             <View>
               <Image
@@ -53,7 +49,6 @@ const DetallePlatillo = () => {
               </View>
             </View>
           </ScrollView>
-        </ImageBackground>
       </View>
     </NativeBaseProvider>
   );

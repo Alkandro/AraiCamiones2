@@ -13,7 +13,7 @@ const DetallePlatillo = () => {
     navigation.setOptions({
       title: nombre,
       headerStyle: {
-        backgroundColor: "#3d783c",
+        backgroundColor: "black",
       },
       headerTintColor: "white",
     });
@@ -31,15 +31,15 @@ const DetallePlatillo = () => {
 
   return (
     <NativeBaseProvider>
-      <View flex={1}>
-        <ImageBackground
+      <View flex={1} background="black">
+        {/* <ImageBackground
           source={require("../assets/fotos/smoke.jpg")}
           resizeMode="cover"
           style={styles.imagen4}
           imageStyle={styles.image}
-        >
+        > */}
           <ScrollView contentContainerStyle={styles.scrollViewContent}>
-            <View paddingTop={20}>
+            <View paddingTop={5}>
               <Image
                 style={
                   Platform.OS === "ios"
@@ -80,7 +80,7 @@ const DetallePlatillo = () => {
               </View>
             </View>
           </ScrollView>
-        </ImageBackground>
+        {/* </ImageBackground> */}
       </View>
     </NativeBaseProvider>
   );
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: "white",
+    textDecorationLine:"underline"
   },
   precio3: {
     marginVertical: 2,
