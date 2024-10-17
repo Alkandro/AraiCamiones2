@@ -180,10 +180,10 @@ const Sklar = () => {
 
   return (
     <NativeBaseProvider style={globalStyles.contenedor}>
-      <View flex={1} backgroundColor="#3d783c">
+      <View flex={1} backgroundColor="white">
         <ScrollView
           style={{
-            backgroundColor: "#3d783c",
+            backgroundColor: "white",
             shadow: 9,
             borderColor: "black",
           }}
@@ -209,7 +209,7 @@ const Sklar = () => {
                         flexDirection: "row",
                         alignItems:"flex-start", // Cambia a flex-start para alinear arriba
                         justifyContent: "space-between",
-                        backgroundColor: "#FFF5EE",
+                        backgroundColor: "white",
                         borderRadius: 15,
                         marginBottom: 10,
                         borderWidth: 4,
@@ -321,8 +321,9 @@ const Sklar = () => {
     paddingY={4}
     alignItems="center"
     safeAreaBottom
-    shadow={9}
-    marginBottom={5}
+    height={20}
+    marginBottom={0}
+    backgroundColor="black"
   >
     <Pressable onPress={isLoading ? null : eliminarSeleccionados}>
       {isLoading ? (

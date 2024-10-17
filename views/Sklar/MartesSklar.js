@@ -154,10 +154,10 @@ const Sklar = () => {
 
   return (
     <NativeBaseProvider style={globalStyles.contenedor}>
-      <View flex={1} backgroundColor="#3d783c">
+      <View flex={1} backgroundColor="white">
         <ScrollView
           style={{
-            backgroundColor: "#3d783c",
+            backgroundColor: "white",
             shadow: 9,
             borderColor: "black",
           }}
@@ -182,92 +182,108 @@ const Sklar = () => {
                         flexDirection: "row",
                         alignItems: "center",
                         justifyContent: "space-between", // Distribuir elementos
-                        backgroundColor: "#FFF5EE", // Fondo de cada platillo
-                        borderRadius: 15,
+                        backgroundColor: "white", // Fondo de cada platillo
+                        borderRadius: 6,
                         marginBottom: 10,
-                        borderWidth: 4,
+                        borderWidth: 3,
                         borderColor: "black",
+                        padding: 20, // Añade más espacio interno
+                        minHeight: 280, // Aumenta la altura mínima
                       }}
                     >
-                      <View mx={3}>
-                        <Image
-                          source={
-                            platillo.imagen
-                              ? { uri: platillo.imagen }
-                              : require("../../assets/fotos/autos.jpeg")
-                          }
-                          alt="desde firebase"
-                          size={70}
-                          borderRadius={16}
-                        />
-                      </View>
                       <View style={{ flex: 1 }}>
+                        {/* Parte superior: Imagen y Fecha en fila */}
                         <View
                           style={{
-                            flexDirection: "row",
-                            justifyContent: "space-between",
+                            flexDirection: "row", // Poner imagen y fecha en fila
+                            justifyContent: "space-between", // Distribuye el espacio entre ambos
+                            alignItems: "center", // Alinea verticalmente en el centro
+                            marginBottom: 10, // Espacio entre la parte superior y los detalles
                           }}
                         >
-                          <Text>
-                            <Text style={{ fontWeight: "bold" }}>Salida:</Text>{" "}
-                            {platillo.precio}
-                          </Text>
+                          {/* Imagen */}
+                          <View style={{ marginRight: 10 }}>
+                            <Image
+                              source={
+                                platillo.imagen
+                                  ? { uri: platillo.imagen }
+                                  : require("../../assets/fotos/autos.jpeg")
+                              }
+                              alt="desde firebase"
+                              size={150}
+                              borderRadius={10}
+                              borderColor="black"
+                              borderWidth={2}
+                            />
+                          </View>
+
+                          {/* Fecha */}
                           <View
-                            marginRight={-10}
-                            marginBottom={1}
                             style={{
-                              padding: 2,
+                              marginTop: -100,
+                              padding: 5,
                               justifyContent: "center",
                               alignItems: "center",
                               borderWidth: 2,
                               borderColor: "green",
                               borderRadius: 6,
-                              position: "relative",
                             }}
                           >
                             <Text>
-                              <Text style={{ fontWeight: "bold" }}>Fecha:</Text>
-
+                              <Text style={{ fontWeight: "bold" }}>Fecha:</Text>{" "}
                               {""}
                               {formatFechaEntrega(platillo.fecha2)}
                             </Text>
                           </View>
                         </View>
-                        <Text>
-                          <Text style={{ fontWeight: "bold" }}>Empresa:</Text>{" "}
-                          {""}
-                          {platillo.nombre}{" "}
-                        </Text>
-                        <Text>
-                          <Text
-                            numberOfLines={3}
-                            fontWeight="bold"
-                            style={styles.descripcion}
-                          >
-                            Dirección de carga:
-                          </Text>
-                          {""} {platillo.descripcion}
-                        </Text>
-                        <Text>
-                          <Text
-                            numberOfLines={3}
-                            fontWeight="bold"
-                            style={styles.descripcion2}
-                          >
-                            Dirección de descarga:
-                          </Text>
-                          {""} {platillo.descripcion2}
-                        </Text>
 
-                        <Text>
-                          <Text style={{ fontWeight: "bold" }}>Entrega:</Text>{" "}
-                          {""}
-                          {formatFechaEntrega(platillo.fecha)}
-                        </Text>
+                        {/* Parte inferior: Detalles ocupando todo el ancho */}
+                        <View style={{ width: "100%" }}>
+                          <View style={styles.infoContainer}>
+                            <Text style={styles.boldText}>Salida:</Text>
+                            <Text>{platillo.precio}</Text>
+                          </View>
+
+                          <View style={styles.infoContainer}>
+                            <Text style={styles.boldText}>Empresa:</Text>
+                            <Text>{platillo.nombre}</Text>
+                          </View>
+
+                          <View style={styles.infoContainer}>
+                            <Text style={styles.boldText}>
+                              Dirección de carga:
+                            </Text>
+                            <Text numberOfLines={3} style={styles.descripcion}>
+                              {platillo.descripcion}
+                            </Text>
+                          </View>
+
+                          <View style={styles.infoContainer}>
+                            <Text style={styles.boldText}>
+                              Dirección de descarga:
+                            </Text>
+                            <Text numberOfLines={3} style={styles.descripcion2}>
+                              {platillo.descripcion2}
+                            </Text>
+                          </View>
+
+                          <View style={styles.infoContainer}>
+                            <Text style={styles.boldText}>Entrega:</Text>
+                            <Text>{formatFechaEntrega(platillo.fecha)}</Text>
+                          </View>
+                        </View>
                       </View>
 
                       {/* Checkbox para eliminar */}
-                      <View style={{ marginLeft: "auto", marginRight: 10 }}>
+                      <View
+                        style={{
+                          flexDirection: "column", // Coloca el checkbox y el texto en una fila
+                          alignItems: "center", // Alinea verticalmente el checkbox y el texto
+                          marginLeft: "auto", // Empuja la fila hacia la derecha si es necesario
+                          marginTop: -180, // Ajusta según el diseño que necesitas
+                          marginRight: 35,
+                        }}
+                      >
                         <CustomCheckbox
                           isChecked={!!selectedPlatillos[platillo.id]}
                           onChange={(isChecked) =>
@@ -275,6 +291,10 @@ const Sklar = () => {
                           }
                           ariaLabel={`Eliminar ${platillo.nombre}`}
                         />
+
+                        <Text style={styles.checkboxText}>
+                          Check for Delete
+                        </Text>
                       </View>
                     </List>
                   </Pressable>
@@ -288,8 +308,9 @@ const Sklar = () => {
             paddingY={4}
             alignItems="center"
             safeAreaBottom
-            shadow={9}
-            marginBottom={5}
+            height={20}
+            marginBottom={0}
+            backgroundColor="black"
           >
             <Pressable onPress={isLoading ? null : eliminarSeleccionados}>
               {isLoading ? (
@@ -331,6 +352,26 @@ const styles = StyleSheet.create({
   eliminarTexto: {
     color: "white",
     fontWeight: "bold",
+  },
+  checkboxText: {
+    marginLeft: -13, // Ajusta la distancia del texto con respecto al checkbox
+    fontSize: 12, // Tamaño de la fuente del texto
+    color: "black", // Color del texto
+    marginTop: 2,
+  },
+  infoContainer: {
+    flexDirection: "column", // Coloca los elementos uno debajo del otro
+    marginVertical: 5, // Espaciado entre las secciones
+  },
+  boldText: {
+    fontWeight: "bold",
+    marginBottom: 1, // Espacio debajo del título
+  },
+  descripcion: {
+    color: "#555", // Estilo para la descripción (puedes personalizarlo)
+  },
+  descripcion2: {
+    color: "#777", // Estilo diferente si lo deseas para la segunda descripción
   },
 });
 
