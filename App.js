@@ -289,7 +289,7 @@ const CustomDrawerContent = ({ drawerTitle, ...props }) => {
         <Image source={avatar} style={styles.drawerImage} />
         <Text style={styles.drawerTitle}>{drawerTitle}</Text>
       </View>
-      <DrawerContentScrollView {...props}>
+      <View {...props}>
         <DrawerItemList {...props} />
         <DrawerItem
           label="Logout"
@@ -299,7 +299,7 @@ const CustomDrawerContent = ({ drawerTitle, ...props }) => {
           onPress={handleLogout}
           labelStyle={styles.logoutLabel}
         />
-      </DrawerContentScrollView>
+      </View>
     </View>
   );
 };
@@ -317,6 +317,7 @@ const HoshinoDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -577,6 +578,7 @@ const MatsushimaDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -837,6 +839,7 @@ const TomaokaDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -1097,6 +1100,7 @@ const OishiDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -1357,6 +1361,7 @@ const OkamotoDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -1617,6 +1622,7 @@ const YamakadoDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -1877,6 +1883,7 @@ const SklarDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -2137,6 +2144,7 @@ const EnriqueDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -2397,6 +2405,7 @@ const User1Drawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -2657,6 +2666,7 @@ const User2Drawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -2917,6 +2927,7 @@ const User3Drawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
+          margin:-5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}

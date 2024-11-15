@@ -157,9 +157,9 @@ const Sklar = () => {
       <View flex={1} backgroundColor="white">
         <ScrollView
           style={{
-            backgroundColor: "white",
+            backgroundColor: "black",
             shadow: 9,
-            borderColor: "black",
+            borderColor: "green",
           }}
         >
           <View>

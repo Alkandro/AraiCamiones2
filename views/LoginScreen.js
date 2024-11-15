@@ -23,55 +23,7 @@ export default function Login(props) {
   const [password, setPassword] = useState();
 
   const logueo = async () => {
-    // if (email === "T" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("TomaokaDrawer");
-    // } else if (email === "M" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("MatsushimaDrawer");
-    // } else if (email === "H" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("HoshinoDrawer");
-    // } else if (email === "O" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("OishiDrawer");
-    // } else if (email === "Ok" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("OkamotoDrawer");
-    // } else if (email === "Y" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("YamakadoDrawer");
-    // } else if (email === "S" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("SklarDrawer");
-    // } else if (email === "E" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("EnriqueDrawer");
-    // } else if (email === "U1" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("User1Drawer");
-    // } else if (email === "U2" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("User2Drawer");
-    // } else if (email === "U3" && password === "1") {
-    //   Alert.alert("Iniciando sesion", "Accediendo...");
-    //   props.navigation.navigate("User3Drawer");
-    // } else {
-    //   Alert.alert("Error!", "El usuario o la contrasena son incorrectas");
-    //   props.navigation.navigate("LoginScreen");
-    // }
-
-
-  //   try {
-  //     await signInWithEmailAndPassword(auth, email, password);
-  //     Alert.alert("Iniciando sesion", "Accediendo...");
-  //     props.navigation.navigate("MatsushimaDrawer");
-  //   } catch (error) {
-  //     console.log(error);
-  //     Alert.alert("Error!", "El usuario o la contrasena son incorrectas");
-  //   }
-  // };
-
+  
   try {
     // Lógica de autenticación (puedes omitir esta parte si no usas Firebase para la autenticación)
     await signInWithEmailAndPassword(auth, email, password);
