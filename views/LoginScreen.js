@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { BlurView } from "expo-blur";
 
-import appFirebase from "../credenciales";
+import appFirebase from "../firebase/auth";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth(appFirebase);
 
