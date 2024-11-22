@@ -17,11 +17,11 @@ import {
   Button,
 } from "react-native";
 import { BlurView } from "expo-blur";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./Redux/store";
 import { useEffect, useState } from "react";
 import AppSplashScreen from "./SplashScreen";
-
 import Icon1 from "react-native-vector-icons/MaterialCommunityIcons";
 
 // Importa la imagen desde los activos
@@ -256,6 +256,8 @@ import FirebaseStateUser3Domingo from "./context/firebase/User3State/FirebaseSta
 import FirebaseStateUser3Mensaje from "./context/firebase/User3State/FirebaseStateUser3Mensaje/firebaseStateUser3Mensaje";
 
 import PedidosState from "./context/firebase/pedidos/pedidosState";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 import { getAuth, signOut } from "firebase/auth";
 
@@ -263,6 +265,10 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const auth = getAuth();
+
+AsyncStorage.getItem('persist:session').then((data) => {
+  console.log('Estado persistido:', JSON.parse(data));
+});
 
 // Componente personalizado para el contenido del Drawer con efecto Blur
 const CustomDrawerContent = ({ drawerTitle, ...props }) => {
@@ -304,7 +310,7 @@ const CustomDrawerContent = ({ drawerTitle, ...props }) => {
   );
 };
 
-const HoshinoDrawer = () => {
+export const HoshinoDrawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -317,7 +323,7 @@ const HoshinoDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -565,7 +571,7 @@ const HoshinoDrawer = () => {
     </Drawer.Navigator>
   );
 };
-const MatsushimaDrawer = () => {
+export const MatsushimaDrawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -578,7 +584,7 @@ const MatsushimaDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -826,7 +832,7 @@ const MatsushimaDrawer = () => {
     </Drawer.Navigator>
   );
 };
-const TomaokaDrawer = () => {
+export const TomaokaDrawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -839,7 +845,7 @@ const TomaokaDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -1087,7 +1093,7 @@ const TomaokaDrawer = () => {
     </Drawer.Navigator>
   );
 };
-const OishiDrawer = () => {
+export const OishiDrawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -1100,7 +1106,7 @@ const OishiDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -1348,7 +1354,7 @@ const OishiDrawer = () => {
     </Drawer.Navigator>
   );
 };
-const OkamotoDrawer = () => {
+export const OkamotoDrawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -1361,7 +1367,7 @@ const OkamotoDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -1609,7 +1615,7 @@ const OkamotoDrawer = () => {
     </Drawer.Navigator>
   );
 };
-const YamakadoDrawer = () => {
+export const YamakadoDrawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -1622,7 +1628,7 @@ const YamakadoDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -1870,7 +1876,7 @@ const YamakadoDrawer = () => {
     </Drawer.Navigator>
   );
 };
-const SklarDrawer = () => {
+export const SklarDrawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -1883,7 +1889,7 @@ const SklarDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -2131,7 +2137,7 @@ const SklarDrawer = () => {
     </Drawer.Navigator>
   );
 };
-const EnriqueDrawer = () => {
+export const EnriqueDrawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -2144,7 +2150,7 @@ const EnriqueDrawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -2392,7 +2398,7 @@ const EnriqueDrawer = () => {
     </Drawer.Navigator>
   );
 };
-const User1Drawer = () => {
+export const User1Drawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -2405,7 +2411,7 @@ const User1Drawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -2653,7 +2659,7 @@ const User1Drawer = () => {
     </Drawer.Navigator>
   );
 };
-const User2Drawer = () => {
+export const User2Drawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -2666,7 +2672,7 @@ const User2Drawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -2914,7 +2920,7 @@ const User2Drawer = () => {
     </Drawer.Navigator>
   );
 };
-const User3Drawer = () => {
+export const User3Drawer = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
@@ -2927,7 +2933,7 @@ const User3Drawer = () => {
           color: "#fcfcfc",
           fontSize: 14,
           fontWeight: "bold",
-          margin:-5,
+          margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
       }}
@@ -3283,259 +3289,274 @@ const App = () => {
                                                                                                                                                                                   <FirebaseStateHoshino>
                                                                                                                                                                                     <FirebaseState>
                                                                                                                                                                                       <PedidosState>
-                                                                                                                                                                                        <NavigationContainer>
-                                                                                                                                                                                          <Stack.Navigator initialRouteName="LoginScreen">
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="LoginScreen"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                LoginScreen
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "LoginScreen",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
+                                                                                                                                                                                        <Provider
+                                                                                                                                                                                          store={
+                                                                                                                                                                                            store
+                                                                                                                                                                                          }
+                                                                                                                                                                                        >
+                                                                                                                                                                                          <PersistGate
+                                                                                                                                                                                            loading={
+                                                                                                                                                                                              null
+                                                                                                                                                                                            }
+                                                                                                                                                                                            persistor={
+                                                                                                                                                                                              persistor
+                                                                                                                                                                                            }
+                                                                                                                                                                                          >
+                                                                                                                                                                                            <NavigationContainer>
+                                                                                                                                                                                              <Stack.Navigator initialRouteName="LoginScreen">
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="LoginScreen"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    LoginScreen
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "LoginScreen",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
 
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="MatsushimaDrawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                MatsushimaDrawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "Matsushima",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="TomaokaDrawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                TomaokaDrawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "Tomaoka",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="HoshinoDrawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                HoshinoDrawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "Hoshino",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="OishiDrawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                OishiDrawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "Oishi",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="OkamotoDrawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                OkamotoDrawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "Okamoto",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="YamakadoDrawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                YamakadoDrawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "Yamakado",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="SklarDrawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                SklarDrawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "Sklar",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="EnriqueDrawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                EnriqueDrawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "Enrique",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="User1Drawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                User1Drawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "User1",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="User2Drawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                User2Drawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "User2",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="User3Drawer"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                User3Drawer
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={{
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "User3",
-                                                                                                                                                                                                headerShown: false,
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                              }}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="DetallePlatillo"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                DetallePlatillo
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={({
-                                                                                                                                                                                                navigation,
-                                                                                                                                                                                              }) => ({
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "DetallePlatillo",
-                                                                                                                                                                                                headerBackTitle:
-                                                                                                                                                                                                  null, // Asegúrate de que esto sea null
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                                headerStyle:
-                                                                                                                                                                                                  {
-                                                                                                                                                                                                    backgroundColor:
-                                                                                                                                                                                                      "#4CAF50",
-                                                                                                                                                                                                  },
-                                                                                                                                                                                                headerTintColor:
-                                                                                                                                                                                                  "#fff",
-                                                                                                                                                                                                headerTitleStyle:
-                                                                                                                                                                                                  {
-                                                                                                                                                                                                    fontWeight:
-                                                                                                                                                                                                      "bold",
-                                                                                                                                                                                                  },
-                                                                                                                                                                                                headerLeft:
-                                                                                                                                                                                                  () => (
-                                                                                                                                                                                                    <TouchableOpacity
-                                                                                                                                                                                                      onPress={() =>
-                                                                                                                                                                                                        navigation.goBack()
-                                                                                                                                                                                                      }
-                                                                                                                                                                                                      style={{
-                                                                                                                                                                                                        padding: 10,
-                                                                                                                                                                                                      }}
-                                                                                                                                                                                                    >
-                                                                                                                                                                                                      <Icon
-                                                                                                                                                                                                        name="angles-left"
-                                                                                                                                                                                                        size={
-                                                                                                                                                                                                          20
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                        color="#fff"
-                                                                                                                                                                                                      />
-                                                                                                                                                                                                    </TouchableOpacity>
-                                                                                                                                                                                                  ),
-                                                                                                                                                                                              })}
-                                                                                                                                                                                            />
-                                                                                                                                                                                            <Stack.Screen
-                                                                                                                                                                                              name="DetalleMensaje"
-                                                                                                                                                                                              component={
-                                                                                                                                                                                                DetalleMensaje
-                                                                                                                                                                                              }
-                                                                                                                                                                                              options={({
-                                                                                                                                                                                                navigation,
-                                                                                                                                                                                              }) => ({
-                                                                                                                                                                                                title:
-                                                                                                                                                                                                  "Mensaje",
-                                                                                                                                                                                                headerBackTitle:
-                                                                                                                                                                                                  null, // Asegúrate de que esto sea null
-                                                                                                                                                                                                headerTitleAlign:
-                                                                                                                                                                                                  "center",
-                                                                                                                                                                                                headerStyle:
-                                                                                                                                                                                                  {
-                                                                                                                                                                                                    backgroundColor:
-                                                                                                                                                                                                      "#4CAF50",
-                                                                                                                                                                                                  },
-                                                                                                                                                                                                headerTintColor:
-                                                                                                                                                                                                  "#fff",
-                                                                                                                                                                                                headerTitleStyle:
-                                                                                                                                                                                                  {
-                                                                                                                                                                                                    fontWeight:
-                                                                                                                                                                                                      "bold",
-                                                                                                                                                                                                  },
-                                                                                                                                                                                                headerLeft:
-                                                                                                                                                                                                  () => (
-                                                                                                                                                                                                    <TouchableOpacity
-                                                                                                                                                                                                      onPress={() =>
-                                                                                                                                                                                                        navigation.goBack()
-                                                                                                                                                                                                      }
-                                                                                                                                                                                                      style={{
-                                                                                                                                                                                                        padding: 10,
-                                                                                                                                                                                                      }}
-                                                                                                                                                                                                    >
-                                                                                                                                                                                                      <Icon
-                                                                                                                                                                                                        name="angles-left"
-                                                                                                                                                                                                        size={
-                                                                                                                                                                                                          20
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                        color="#fff"
-                                                                                                                                                                                                      />
-                                                                                                                                                                                                    </TouchableOpacity>
-                                                                                                                                                                                                  ),
-                                                                                                                                                                                              })}
-                                                                                                                                                                                            />
-                                                                                                                                                                                          </Stack.Navigator>
-                                                                                                                                                                                        </NavigationContainer>
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="MatsushimaDrawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    MatsushimaDrawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "Matsushima",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="TomaokaDrawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    TomaokaDrawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "Tomaoka",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="HoshinoDrawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    HoshinoDrawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "Hoshino",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="OishiDrawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    OishiDrawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "Oishi",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="OkamotoDrawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    OkamotoDrawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "Okamoto",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="YamakadoDrawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    YamakadoDrawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "Yamakado",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="SklarDrawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    SklarDrawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "Sklar",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="EnriqueDrawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    EnriqueDrawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "Enrique",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="User1Drawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    User1Drawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "User1",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="User2Drawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    User2Drawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "User2",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="User3Drawer"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    User3Drawer
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "User3",
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="DetallePlatillo"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    DetallePlatillo
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={({
+                                                                                                                                                                                                    navigation,
+                                                                                                                                                                                                  }) => ({
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "DetallePlatillo",
+                                                                                                                                                                                                    headerBackTitle:
+                                                                                                                                                                                                      null, // Asegúrate de que esto sea null
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                    headerStyle:
+                                                                                                                                                                                                      {
+                                                                                                                                                                                                        backgroundColor:
+                                                                                                                                                                                                          "#4CAF50",
+                                                                                                                                                                                                      },
+                                                                                                                                                                                                    headerTintColor:
+                                                                                                                                                                                                      "#fff",
+                                                                                                                                                                                                    headerTitleStyle:
+                                                                                                                                                                                                      {
+                                                                                                                                                                                                        fontWeight:
+                                                                                                                                                                                                          "bold",
+                                                                                                                                                                                                      },
+                                                                                                                                                                                                    headerLeft:
+                                                                                                                                                                                                      () => (
+                                                                                                                                                                                                        <TouchableOpacity
+                                                                                                                                                                                                          onPress={() =>
+                                                                                                                                                                                                            navigation.goBack()
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          style={{
+                                                                                                                                                                                                            padding: 10,
+                                                                                                                                                                                                          }}
+                                                                                                                                                                                                        >
+                                                                                                                                                                                                          <Icon
+                                                                                                                                                                                                            name="angles-left"
+                                                                                                                                                                                                            size={
+                                                                                                                                                                                                              20
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                            color="#fff"
+                                                                                                                                                                                                          />
+                                                                                                                                                                                                        </TouchableOpacity>
+                                                                                                                                                                                                      ),
+                                                                                                                                                                                                  })}
+                                                                                                                                                                                                />
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="DetalleMensaje"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    DetalleMensaje
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={({
+                                                                                                                                                                                                    navigation,
+                                                                                                                                                                                                  }) => ({
+                                                                                                                                                                                                    title:
+                                                                                                                                                                                                      "Mensaje",
+                                                                                                                                                                                                    headerBackTitle:
+                                                                                                                                                                                                      null, // Asegúrate de que esto sea null
+                                                                                                                                                                                                    headerTitleAlign:
+                                                                                                                                                                                                      "center",
+                                                                                                                                                                                                    headerStyle:
+                                                                                                                                                                                                      {
+                                                                                                                                                                                                        backgroundColor:
+                                                                                                                                                                                                          "#4CAF50",
+                                                                                                                                                                                                      },
+                                                                                                                                                                                                    headerTintColor:
+                                                                                                                                                                                                      "#fff",
+                                                                                                                                                                                                    headerTitleStyle:
+                                                                                                                                                                                                      {
+                                                                                                                                                                                                        fontWeight:
+                                                                                                                                                                                                          "bold",
+                                                                                                                                                                                                      },
+                                                                                                                                                                                                    headerLeft:
+                                                                                                                                                                                                      () => (
+                                                                                                                                                                                                        <TouchableOpacity
+                                                                                                                                                                                                          onPress={() =>
+                                                                                                                                                                                                            navigation.goBack()
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          style={{
+                                                                                                                                                                                                            padding: 10,
+                                                                                                                                                                                                          }}
+                                                                                                                                                                                                        >
+                                                                                                                                                                                                          <Icon
+                                                                                                                                                                                                            name="angles-left"
+                                                                                                                                                                                                            size={
+                                                                                                                                                                                                              20
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                            color="#fff"
+                                                                                                                                                                                                          />
+                                                                                                                                                                                                        </TouchableOpacity>
+                                                                                                                                                                                                      ),
+                                                                                                                                                                                                  })}
+                                                                                                                                                                                                />
+                                                                                                                                                                                              </Stack.Navigator>
+                                                                                                                                                                                            </NavigationContainer>
+                                                                                                                                                                                          </PersistGate>
+                                                                                                                                                                                        </Provider>
                                                                                                                                                                                       </PedidosState>
                                                                                                                                                                                     </FirebaseState>
                                                                                                                                                                                   </FirebaseStateHoshino>

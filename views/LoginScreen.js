@@ -11,34 +11,45 @@ import {
   StatusBar,
   Alert,
 } from "react-native";
-import { BlurView } from "expo-blur";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../Redux/sessionSlice"; // Asegúrate de que la ruta sea correcta
 
 import appFirebase from "../firebase/auth";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { BlurView } from "expo-blur"; // Asegúrate de importar BlurView si lo estás usando
+
 const auth = getAuth(appFirebase);
 
-export default function Login(props) {
-  //crear la variable de estado
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+export default function LoginScreen(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch(); // Hook para enviar datos al estado global
 
   const logueo = async () => {
-  
-  try {
-    // Lógica de autenticación (puedes omitir esta parte si no usas Firebase para la autenticación)
-    await signInWithEmailAndPassword(auth, email, password);
-  
-    Alert.alert("Iniciando sesión", "Accediendo...");
-  
-    // Lógica de navegación según el valor de 'email' y 'password'
-    switch (email) {
-      case "tomaoka@arai.co.jp":
-        if (password === "123456") {
+    try {
+      // Autenticación con Firebase
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Guardar usuario en Redux
+      dispatch(
+        setUser({
+          user: { email: user.email, uid: user.uid },
+          token: await user.getIdToken(),
+        })
+      );
+
+      Alert.alert("Iniciando sesión", "Accediendo...");
+
+      // Redirigir según el email
+      switch (email) {
+        case "tomaoka@arai.co.jp":
+          if (password === "123456") {
           props.navigation.navigate("TomaokaDrawer");
         } else {
-          Alert.alert("Error!", "Contraseña incorrecta para Tomaoka");
+          Alert.alert("Error!", "Contraseña incorrecta para Matsushima");
         }
-        break;
+          break;
       case "matsushima@arai.co.jp":
         if (password === "123456") {
           props.navigation.navigate("MatsushimaDrawer");
@@ -266,3 +277,5 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
 });
+
+
