@@ -23,13 +23,16 @@ import { store, persistor } from "./Redux/store";
 import { useEffect, useState } from "react";
 import AppSplashScreen from "./SplashScreen";
 import Icon1 from "react-native-vector-icons/MaterialCommunityIcons";
-
-// Importa la imagen desde los activos
-import avatar from "./assets/fotos/avatar.png";
+import PedidosState from "./context/firebase/pedidos/pedidosState";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAuth, signOut } from "firebase/auth";
 import Icon from "react-native-vector-icons/FontAwesome6";
+import LoginScreen from "./views/LoginScreen";
+import avatar from "./assets/fotos/avatar.png";
 
 import DetallePlatillo from "./views/DetallePlatillo";
 import DetalleMensaje from "./views/DetalleMensaje";
+import FirebaseState from "./context/firebase/firebaseState";
 
 //Hoshino
 import LunesHoshino from "./views/Hoshino/LunesHoshino";
@@ -141,9 +144,7 @@ import SabadoUser3 from "./views/User3/SabadoUser3";
 import DomingoUser3 from "./views/User3/DomingoUser3";
 import MensajeUser3 from "./views/User3/MensajeUser3";
 
-import LoginScreen from "./views/LoginScreen";
 
-import FirebaseState from "./context/firebase/firebaseState";
 
 //HOSHINO
 import FirebaseStateHoshino from "./context/firebase/FirebaseStateHoshino/firebaseStateHoshino";
@@ -255,11 +256,7 @@ import FirebaseStateUser3Sabado from "./context/firebase/User3State/FirebaseStat
 import FirebaseStateUser3Domingo from "./context/firebase/User3State/FirebaseStateUser3Domingo/firebaseStateUser3Domingo";
 import FirebaseStateUser3Mensaje from "./context/firebase/User3State/FirebaseStateUser3Mensaje/firebaseStateUser3Mensaje";
 
-import PedidosState from "./context/firebase/pedidos/pedidosState";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-import { getAuth, signOut } from "firebase/auth";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
