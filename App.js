@@ -14,6 +14,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  Platform,
   Button,
 } from "react-native";
 import { BlurView } from "expo-blur";
@@ -323,6 +324,14 @@ export const HoshinoDrawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
@@ -584,6 +593,14 @@ export const MatsushimaDrawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
@@ -845,6 +862,14 @@ export const TomaokaDrawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
@@ -1106,6 +1131,14 @@ export const OishiDrawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
@@ -1367,6 +1400,14 @@ export const OkamotoDrawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
@@ -1628,6 +1669,14 @@ export const YamakadoDrawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
@@ -1889,6 +1938,14 @@ export const SklarDrawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
@@ -2150,6 +2207,14 @@ export const EnriqueDrawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
@@ -2411,6 +2476,14 @@ export const User1Drawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
@@ -2672,6 +2745,14 @@ export const User2Drawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
@@ -2933,6 +3014,14 @@ export const User3Drawer = () => {
           margin: -5,
         },
         drawerItemStyle: { marginVertical: 10 },
+        // Configuración diferente para Android e iOS
+        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
+        overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
+        drawerStyle: {
+          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
+          width: 210,
+          height: "100%",
+        },
       }}
     >
       <Drawer.Screen
