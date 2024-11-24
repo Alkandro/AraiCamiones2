@@ -4,12 +4,11 @@
     "slug": "restaurantApp2",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      
       "resizeMode": "cover",
-      "backgroundColor": "#000000"
+      "backgroundColor": "#000000",
+      "icon": "./assets/icon.png"
     },
     "assetBundlePatterns": [
       "**/*"
