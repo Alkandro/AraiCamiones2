@@ -13,7 +13,6 @@ import {
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../Redux/sessionSlice"; // Asegúrate de que la ruta sea correcta
-
 import appFirebase from "../firebase/auth";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { BlurView } from "expo-blur"; // Asegúrate de importar BlurView si lo estás usando

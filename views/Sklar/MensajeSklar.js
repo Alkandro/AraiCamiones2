@@ -110,41 +110,41 @@ const Sklar = () => {
     }
   };
 
-    const eliminarSeleccionados = () => {
-      const platillosIds = Object.keys(selectedPlatillos);
-      if (platillosIds.length === 0) {
-        Alert.alert(
-          "No hay nada seleccionado",
-          "Por favor, selecciona al menos uno."
-        );
-        return;
-      }
-  
+  const eliminarSeleccionados = () => {
+    const platillosIds = Object.keys(selectedPlatillos);
+    if (platillosIds.length === 0) {
       Alert.alert(
-        "Si confirmas la entrega se eliminará",
-        "Una vez eliminados no se pueden recuperar",
-        [
-          {
-            text: "Confirmar",
-            onPress: async () => {
-              setIsLoading(true); // Mostrar el spinner de carga
-              try {
-                const idsAEliminar = Object.keys(selectedPlatillos).filter(
-                  (id) => selectedPlatillos[id]
-                );
-                await Promise.all(idsAEliminar.map((id) => eliminarProducto(id)));
-                setSelectedPlatillos({});
-              } catch (error) {
-                console.error("Error eliminando productos:", error);
-              } finally {
-                setIsLoading(false); // Ocultar el spinner de carga
-              }
-            },
-          },
-          { text: "Cancelar", style: "cancel" },
-        ]
+        "No hay nada seleccionado",
+        "Por favor, selecciona al menos uno."
       );
-    };
+      return;
+    }
+
+    Alert.alert(
+      "Si confirmas la entrega se eliminará",
+      "Una vez eliminados no se pueden recuperar",
+      [
+        {
+          text: "Confirmar",
+          onPress: async () => {
+            setIsLoading(true); // Mostrar el spinner de carga
+            try {
+              const idsAEliminar = Object.keys(selectedPlatillos).filter(
+                (id) => selectedPlatillos[id]
+              );
+              await Promise.all(idsAEliminar.map((id) => eliminarProducto(id)));
+              setSelectedPlatillos({});
+            } catch (error) {
+              console.error("Error eliminando productos:", error);
+            } finally {
+              setIsLoading(false); // Ocultar el spinner de carga
+            }
+          },
+        },
+        { text: "Cancelar", style: "cancel" },
+      ]
+    );
+  };
 
   const CustomCheckbox = ({ isChecked, onChange, ariaLabel }) => (
     <Checkbox
@@ -183,7 +183,7 @@ const Sklar = () => {
       <View flex={1} backgroundColor="white">
         <ScrollView
           style={{
-            backgroundColor: "white",
+            backgroundColor: "black",
             shadow: 9,
             borderColor: "black",
           }}
@@ -207,16 +207,23 @@ const Sklar = () => {
                     <List
                       style={{
                         flexDirection: "row",
-                        alignItems:"flex-start", // Cambia a flex-start para alinear arriba
+                        alignItems: "flex-start", // Cambia a flex-start para alinear arriba
                         justifyContent: "space-between",
                         backgroundColor: "white",
                         borderRadius: 15,
                         marginBottom: 10,
                         borderWidth: 4,
                         borderColor: "black",
+                        minHeight: 250,
                       }}
                     >
-                      <View mx={3} style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                      <View
+                        mx={3}
+                        style={{
+                          flexDirection: "row",
+                          alignItems: "flex-start",
+                        }}
+                      >
                         <Image
                           source={
                             platillo.imagen
@@ -242,36 +249,40 @@ const Sklar = () => {
                           </Text>
                         </View>
 
-                        {/* Mensaje centrado */}
-                        <Text style={styles.mensajeCentrado}>
-                          <Text
-                            numberOfLines={2}
-                            fontWeight="bold"
-                            style={styles.descripcion}
-                          >
-                            Mensaje:
-                          </Text>
-                          {/* Mensaje truncado */}
-                          {expandedMessages[platillo.id] ? (
-                            platillo.descripcion
-                          ) : (
-                            <Text>
-                              {platillo.descripcion.length > 100
-                                ? platillo.descripcion.slice(0, 100) + "..."
-                                : platillo.descripcion}
+                        <View style={styles.mensajeCentrado}>
+                          {/* Mensaje centrado */}
+                          <Text>
+                            <Text
+                              numberOfLines={2}
+                              fontWeight="bold"
+                              style={styles.descripcion}
+                            >
+                              Mensaje:
                             </Text>
-                          )}
-                          <Text
-                            onPress={() => toggleMessageExpansion(platillo.id)}
-                            style={styles.leerMas}
-                          >
-                            {expandedMessages[platillo.id]
-                              ? " Leer menos"
-                              : " Leer más..."}
-                          </Text>
-                        </Text>
-                      </View>
+                            {/* Mensaje truncado */}
+                            {expandedMessages[platillo.id] ? (
+                              platillo.descripcion
+                            ) : (
+                              <Text>
+                                {platillo.descripcion.length > 100
+                                  ? platillo.descripcion.slice(0, 100) + "..."
+                                  : platillo.descripcion}
+                              </Text>
+                            )}
 
+                            <Text
+                              onPress={() =>
+                                toggleMessageExpansion(platillo.id)
+                              }
+                              style={styles.leerMas}
+                            >
+                              {expandedMessages[platillo.id]
+                                ? " Leer menos"
+                                : " Leer más..."}
+                            </Text>
+                          </Text>
+                        </View>
+                      </View>
                       {/* Contenedor de Checkbox y Switch en columna */}
                       <View
                         style={{
@@ -280,7 +291,7 @@ const Sklar = () => {
                           marginRight: 10,
                         }}
                       >
-                        <View style={{ marginBottom: 10 }}>
+                        <View style={{ marginBottom: 80 }}>
                           <CustomCheckbox
                             isChecked={!!selectedPlatillos[platillo.id]}
                             onChange={(isChecked) =>
@@ -290,23 +301,25 @@ const Sklar = () => {
                           />
                         </View>
 
-                        <View pointerEvents="auto">
-                          <Switch
-                            isChecked={!!leidoStatus[platillo.id]}
-                            onToggle={(value) =>
-                              handleSwitchChange(platillo.id, value)
-                            }
-                            isDisabled={!!isSwitchDisabled[platillo.id]}
-                          />
-                          <Text
-                            style={{
-                              color: platillo.leido ? "green" : "red",
-                              fontWeight: "bold",
-                              marginTop: 8,
-                            }}
-                          >
-                            {platillo.leido ? "Leído" : ""}
-                          </Text>
+                        <View marginTop={9}>
+                          <View pointerEvents="auto">
+                            <Switch
+                              isChecked={!!leidoStatus[platillo.id]}
+                              onToggle={(value) =>
+                                handleSwitchChange(platillo.id, value)
+                              }
+                              isDisabled={!!isSwitchDisabled[platillo.id]}
+                            />
+                            <Text
+                              style={{
+                                color: platillo.leido ? "green" : "red",
+                                fontWeight: "bold",
+                                marginTop: 8,
+                              }}
+                            >
+                              {platillo.leido ? "Leído" : ""}
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </List>
@@ -317,28 +330,28 @@ const Sklar = () => {
           </View>
         </ScrollView>
         <BlurView intensity={90}>
-  <View
-    paddingY={4}
-    alignItems="center"
-    safeAreaBottom
-    height={20}
-    marginBottom={0}
-    backgroundColor="black"
-  >
-    <Pressable onPress={isLoading ? null : eliminarSeleccionados}>
-      {isLoading ? (
-        <Text style={styles.eliminarTexto}>Eliminando...</Text>
-      ) : (
-        <Icon
-          as={FontAwesome}
-          name="trash"
-          size="lg"  // Tamaño del ícono
-          color="white"  // Color del ícono
-        />
-      )}
-    </Pressable>
-  </View>
-</BlurView>
+          <View
+            paddingY={4}
+            alignItems="center"
+            safeAreaBottom
+            height={20}
+            marginBottom={0}
+            backgroundColor="black"
+          >
+            <Pressable onPress={isLoading ? null : eliminarSeleccionados}>
+              {isLoading ? (
+                <Text style={styles.eliminarTexto}>Eliminando...</Text>
+              ) : (
+                <Icon
+                  as={FontAwesome}
+                  name="trash"
+                  size="lg" // Tamaño del ícono
+                  color="white" // Color del ícono
+                />
+              )}
+            </Pressable>
+          </View>
+        </BlurView>
       </View>
     </NativeBaseProvider>
   );
@@ -357,8 +370,9 @@ const styles = StyleSheet.create({
   },
   descripcion: {
     maxWidth: 140,
-    lineHeight: 15,
+    lineHeight: 20,
     fontWeight: "bold",
+    textAlign: "left", // Asegura que el texto quede a la izquierda
   },
   separadorTexto: {
     marginLeft: 10,
@@ -374,8 +388,7 @@ const styles = StyleSheet.create({
     marginTop: -150,
     marginLeft: 5,
     height: 20, // Altura fija para evitar que se mueva
-    justifyContent: 'center', // Centra verticalmente
-    
+    justifyContent: "center", // Centra verticalmente
   },
   fechaBox: {
     padding: 2,
@@ -385,18 +398,17 @@ const styles = StyleSheet.create({
     alignItems: "center", // Asegúrate de que el contenedor pueda centrar su contenido
     borderRadius: 6,
     maxWidth: 140, // Limita el ancho máximo
-    
   },
   mensajeCentrado: {
-    textAlign: "center",
-    marginTop: 20,
-    maxWidth: 200, // Ajusta el ancho máximo
+    alignItems: "flex-start", // Alinea el contenido a la izquierda
+    maxWidth: 350, // Controla el ancho máximo del contenedor
+    marginTop: 37,
   },
   leerMas: {
     color: "blue",
     fontSize: 12,
     marginTop: 5,
-    // textDecorationLine: "underline",
+    textAlign: "left", // Alinea el texto a la izquierda
   },
 });
 
