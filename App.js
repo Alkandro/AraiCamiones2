@@ -8,6 +8,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./Redux/store";
 import { useEffect, useState } from "react";
 import AppSplashScreen from "./SplashScreen";
+import { FirebaseProvider } from "./views/FirebaseContext";
+import AuthLoadingScreen from "./views/AuthLoadingScreen";
 
 import PedidosState from "./context/firebase/pedidos/pedidosState";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -143,9 +145,8 @@ import { User3Drawer } from "./Drawers";
 
 const Stack = createStackNavigator();
 AsyncStorage.getItem("persist:session").then((data) => {
-    console.log("Estado persistido:", JSON.parse(data));
-  });
-
+  console.log("Estado persistido:", JSON.parse(data));
+});
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -162,7 +163,7 @@ const App = () => {
   if (isLoading) {
     return <AppSplashScreen />; // Muestra el SplashScreen mientras se carga la app
   }
-  
+
   return (
     <FirebaseStateUser3Mensaje>
       <FirebaseStateUser3Domingo>
@@ -267,8 +268,19 @@ const App = () => {
                                                                                                                                                                                               persistor
                                                                                                                                                                                             }
                                                                                                                                                                                           >
+                                                                                                                                                                                            <FirebaseProvider>
                                                                                                                                                                                             <NavigationContainer>
-                                                                                                                                                                                              <Stack.Navigator initialRouteName="LoginScreen">
+                                                                                                                                                                                              <Stack.Navigator initialRouteName="AuthLoadingScreen">
+                                                                                                                                                                                                <Stack.Screen
+                                                                                                                                                                                                  name="AuthLoadingScreen"
+                                                                                                                                                                                                  component={
+                                                                                                                                                                                                    AuthLoadingScreen
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  options={{
+                                                                                                                                                                                                    headerShown: false,
+                                                                                                                                                                                                  }}
+                                                                                                                                                                                                />
+
                                                                                                                                                                                                 <Stack.Screen
                                                                                                                                                                                                   name="LoginScreen"
                                                                                                                                                                                                   component={
@@ -520,6 +532,7 @@ const App = () => {
                                                                                                                                                                                                 />
                                                                                                                                                                                               </Stack.Navigator>
                                                                                                                                                                                             </NavigationContainer>
+                                                                                                                                                                                            </FirebaseProvider>
                                                                                                                                                                                           </PersistGate>
                                                                                                                                                                                         </Provider>
                                                                                                                                                                                       </PedidosState>
