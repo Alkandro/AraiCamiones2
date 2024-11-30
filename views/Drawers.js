@@ -240,16 +240,31 @@ const Drawer = createDrawerNavigator();
 const CustomDrawerContent = ({ drawerTitle, ...props }) => {
   const navigation = useNavigation();
 
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        navigation.reset({
-          index: 0,
-          routes: [{ name: "LoginScreen" }],
-        });
-      })
-      .catch((error) => console.error("Logout error", error));
+  const handleLogout = async () => {
+    const auth = getAuth(); // Asegúrate de que Firebase Auth esté correctamente inicializado
+  
+    try {
+      // Cerrar sesión en Firebase
+      await signOut(auth);
+  
+      // Eliminar datos persistentes en AsyncStorage
+      await AsyncStorage.clear();
+  
+      // Limpia el estado global si usas Redux (opcional)
+      if (dispatch) {
+        dispatch(clearUser()); // Esto depende de cómo manejas tu Redux
+      }
+  
+      // Redirigir al LoginScreen
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "LoginScreen" }],
+      });
+    } catch (error) {
+      console.error("Error al cerrar sesión", error);
+    }
   };
+  
 
   return (
     <View style={styles.drawerContainer}>
@@ -329,8 +344,7 @@ export const MatsushimaDrawer = () => {
       ))}
     </Drawer.Navigator>
   );
-};
-     
+};     
 export const TomaokaDrawer = () => {
   return (
     <Drawer.Navigator
@@ -565,6 +579,7 @@ export const User3Drawer = () => {
   </Drawer.Navigator>
 );
 };
+
 const drawerScreenOptions = {
   drawerActiveTintColor: "#17f502",
   drawerInactiveTintColor: "#fcfcfc",

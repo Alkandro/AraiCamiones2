@@ -27,7 +27,11 @@ export default function LoginScreen(props) {
   const logueo = async () => {
     try {
       // Autenticación con Firebase
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
 
       // Guardar usuario en Redux
@@ -44,96 +48,94 @@ export default function LoginScreen(props) {
       switch (email) {
         case "tomaoka@arai.co.jp":
           if (password === "123456") {
-          props.navigation.navigate("TomaokaDrawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para Matsushima");
-        }
+            props.navigation.navigate("TomaokaDrawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para Matsushima");
+          }
           break;
-      case "matsushima@arai.co.jp":
-        if (password === "123456") {
-          props.navigation.navigate("MatsushimaDrawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para Matsushima");
-        }
-        break;
-      case "hoshino@arai.co.jp":
-        if (password === "123456") {
-          props.navigation.navigate("HoshinoDrawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para Hoshino");
-        }
-        break;
-      case "oishi@arai.co.jp":
-        if (password === "123456") {
-          props.navigation.navigate("OishiDrawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para Oishi");
-        }
-        break;
-      case "okamoto@arai.co.jp":
-        if (password === "123456") {
-          props.navigation.navigate("OkamotoDrawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para Okamoto");
-        }
-        break;
-      case "yamakado@arai.co.jp":
-        if (password === "123456") {
-          props.navigation.navigate("YamakadoDrawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para Yamakado");
-        }
-        break;
-      case "sklar@arai.co.jp":
-        if (password === "123456") {
-          props.navigation.navigate("SklarDrawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para Sklar");
-        }
-        break;
-      case "enrique@arai.co.jp":
-        if (password === "123456") {
-          props.navigation.navigate("EnriqueDrawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para Enrique");
-        }
-        break;
-      case "user1@arai.co.jp":
-        if (password === "123456") {
-          props.navigation.navigate("User1Drawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para User1");
-        }
-        break;
-      case "user2@arai.co.jp":
-        if (password === "123456") {
-          props.navigation.navigate("User2Drawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para User2");
-        }
-        break;
-      case "user3@arai.co.jp":
-        if (password === "123456") {
-          props.navigation.navigate("User3Drawer");
-        } else {
-          Alert.alert("Error!", "Contraseña incorrecta para User3");
-        }
-        break;
-      default:
-        Alert.alert("Error!", "El usuario no tiene acceso a ninguna sección.");
-        props.navigation.navigate("LoginScreen");
-        break;
+        case "matsushima@arai.co.jp":
+          if (password === "123456") {
+            props.navigation.navigate("MatsushimaDrawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para Matsushima");
+          }
+          break;
+        case "hoshino@arai.co.jp":
+          if (password === "123456") {
+            props.navigation.navigate("HoshinoDrawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para Hoshino");
+          }
+          break;
+        case "oishi@arai.co.jp":
+          if (password === "123456") {
+            props.navigation.navigate("OishiDrawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para Oishi");
+          }
+          break;
+        case "okamoto@arai.co.jp":
+          if (password === "123456") {
+            props.navigation.navigate("OkamotoDrawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para Okamoto");
+          }
+          break;
+        case "yamakado@arai.co.jp":
+          if (password === "123456") {
+            props.navigation.navigate("YamakadoDrawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para Yamakado");
+          }
+          break;
+        case "sklar@arai.co.jp":
+          if (password === "123456") {
+            props.navigation.navigate("SklarDrawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para Sklar");
+          }
+          break;
+        case "enrique@arai.co.jp":
+          if (password === "123456") {
+            props.navigation.navigate("EnriqueDrawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para Enrique");
+          }
+          break;
+        case "user1@arai.co.jp":
+          if (password === "123456") {
+            props.navigation.navigate("User1Drawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para User1");
+          }
+          break;
+        case "user2@arai.co.jp":
+          if (password === "123456") {
+            props.navigation.navigate("User2Drawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para User2");
+          }
+          break;
+        case "user3@arai.co.jp":
+          if (password === "123456") {
+            props.navigation.navigate("User3Drawer");
+          } else {
+            Alert.alert("Error!", "Contraseña incorrecta para User3");
+          }
+          break;
+        default:
+          Alert.alert(
+            "Error!",
+            "El usuario no tiene acceso a ninguna sección."
+          );
+          props.navigation.navigate("LoginScreen");
+          break;
+      }
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Error!", "Hubo un problema con la autenticación");
     }
-  } catch (error) {
-    console.log(error);
-    Alert.alert("Error!", "Hubo un problema con la autenticación");
-  }
-};
-
-  
-
-
-
+  };
 
   return (
     <View style={styles.container}>
@@ -172,7 +174,7 @@ export default function LoginScreen(props) {
                   style={styles.input}
                   placeholder="user@gmail.com"
                   onChangeText={(text) => setEmail(text)}
-                  autoCapitalize="none"  // Evita que la primera letra se capitalice
+                  autoCapitalize="none" // Evita que la primera letra se capitalice
                 />
               </View>
               <View>
@@ -276,5 +278,3 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
 });
-
-
