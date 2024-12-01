@@ -5,11 +5,10 @@ import {
   Image,
   Pressable,
   ScrollView,
-  Alert,
   List,
   Checkbox,
 } from "native-base";
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform, Alert } from "react-native";
 import { format } from "date-fns";
 import { BlurView } from "expo-blur";
 import { FontAwesome } from "@expo/vector-icons";
@@ -50,32 +49,47 @@ const EnviosList = ({
     }));
   };
 
-  const eliminarSeleccionados = async () => {
-    const idsAEliminar = Object.keys(selectedPlatillos).filter(
-      (id) => selectedPlatillos[id]
-    );
-    if (idsAEliminar.length === 0) {
-      Alert.alert("Error", "Por favor selecciona al menos un elemento.");
+  
+
+  // Función para eliminar un platillo seleccionado
+  const eliminarProducto = async (platilloId) => {
+    try {
+      await eliminarProductoFirebase(platilloId);
+      obtenerProductos();
+    } catch (error) {
+      console.error("Error eliminando producto:", error);
+    }
+  };
+
+  // Función para confirmar y eliminar los platillos seleccionados
+  const eliminarSeleccionados = () => {
+    const platillosIds = Object.keys(selectedPlatillos);
+    if (platillosIds.length === 0) {
+      Alert.alert(
+        "No hay nada seleccionado",
+        "Por favor, selecciona al menos uno."
+      );
       return;
     }
+
     Alert.alert(
-      "Confirmar eliminación",
-      "¿Eliminar los elementos seleccionados?",
+      "Si confirmas la entrega se eliminará",
+      "Una vez eliminados no se pueden recuperar",
       [
         {
-          text: "Eliminar",
+          text: "Confirmar",
           onPress: async () => {
-            setIsLoading(true);
+            setIsLoading(true); // Mostrar el spinner de carga
             try {
-              await Promise.all(
-                idsAEliminar.map((id) => eliminarProductoFirebase(id))
+              const idsAEliminar = Object.keys(selectedPlatillos).filter(
+                (id) => selectedPlatillos[id]
               );
+              await Promise.all(idsAEliminar.map((id) => eliminarProducto(id)));
               setSelectedPlatillos({});
-              obtenerProductos();
             } catch (error) {
-              console.error(error);
+              console.error("Error eliminando productos:", error);
             } finally {
-              setIsLoading(false);
+              setIsLoading(false); // Ocultar el spinner de carga
             }
           },
         },
@@ -83,6 +97,32 @@ const EnviosList = ({
       ]
     );
   };
+
+
+  const CustomCheckbox = ({ isChecked, onChange, ariaLabel }) => (
+    <Checkbox
+      boxSize={8}
+      borderColor="black"
+      shadow={9}
+      marginRight={-7}
+      isChecked={isChecked}
+      onChange={onChange}
+      accessibilityLabel={ariaLabel}
+      _checked={{
+        bg: "green.500", // Color de fondo cuando está checkeado
+        borderColor: "blue.500", // Color del borde cuando está checkeado
+        _icon: {
+          color: "white", // Color del ícono cuando está checkeado
+        },
+      }}
+      _unchecked={{
+        bg: "transparent", // Color de fondo cuando no está checkeado
+        borderColor: "black", // Color del borde cuando no está checkeado
+      }}
+    >
+      <Text color="white">✓</Text> {/* Color del texto dentro del Checkbox */}
+    </Checkbox>
+  );
 
   return (
     <View flex={1} backgroundColor="white">
@@ -149,7 +189,7 @@ const EnviosList = ({
                         borderWidth: 2,
                         borderColor: "green",
                         borderRadius: 6,
-                        marginHorizontal: 15,
+                        marginHorizontal: 5,
                       }}
                     >
                       <Text>
@@ -200,33 +240,23 @@ const EnviosList = ({
                     flexDirection: "column",
                     alignItems: "center",
                     marginLeft: "auto" , // Cambia el margen según la plataforma
-                    marginTop: Platform.OS === "ios" ? -180 : -160,
-                    marginRight: Platform.OS === "ios" ? 50 : 40,
+                    marginTop: Platform.OS === "ios" ? -180 : -180,
+                    marginRight: Platform.OS === "ios" ? 50 : 35,
                   }}
                 >
-                  <Checkbox
-                    isChecked={!!selectedPlatillos[platillo.id]}
-                    onChange={(isChecked) =>
-                      handleCheckboxChange(platillo.id, isChecked)
-                    }
-                    accessibilityLabel={`Eliminar ${platillo.nombre}`}
-                    _checked={{
-                      bg: "green.500",
-                      borderColor: "blue.500",
-                      _icon: { color: "white" },
-                    }}
-                    _unchecked={{
-                      bg: "transparent",
-                      borderColor: "black",
-                    }}
-                    
-                  >
-                  <Text color={"white"}>✓</Text>
-                  </Checkbox>
+                   <CustomCheckbox
+                   isChecked={!!selectedPlatillos[platillo.id]}
+                   onChange={(isChecked) =>
+                     handleCheckboxChange(platillo.id, isChecked)
+                   }
+                   ariaLabel={`Eliminar ${platillo.nombre}`}
+                 />
 
-                  <Text style={styles.checkboxText}>Check for Delete</Text>
-                </View>
-              </List>
+                 <Text style={styles.checkboxText}>
+                   Check for Delete
+                 </Text>
+               </View>
+             </List>
             </Pressable>
           ))}
         </View>
