@@ -452,7 +452,7 @@ export const YamakadoDrawer = () => {
 export const SklarDrawer = () => {
   return (
     <Drawer.Navigator
-    drawerContent={(props) => <CustomDrawerContent {...props} drawerTitle="Sklarr" />}
+    drawerContent={(props) => <CustomDrawerContent {...props} drawerTitle="Sklarrrr" />}
     screenOptions={drawerScreenOptions}
   >
     {usersConfig.sklar.map((screen) => (

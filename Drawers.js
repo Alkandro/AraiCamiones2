@@ -122,6 +122,120 @@ import MensajeUser3 from "./views/User3/MensajeUser3";
 const Drawer = createDrawerNavigator();
 const auth = getAuth();
 
+const usersConfig = {
+
+    hoshino : [
+        { name: "Lunes", component: LunesHoshino, iconName: "truck-fast" },
+        { name: "Martes", component: MartesHoshino, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesHoshino, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesHoshino, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesHoshino, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoHoshino, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoHoshino, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeHoshino, iconName: "envelope" }
+      ],
+      matsushima : [
+        { name: "Lunes", component: LunesMatsushima, iconName: "truck-fast" },
+        { name: "Martes", component: MartesMatsushima, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesMatsushima, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesMatsushima, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesMatsushima, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoMatsushima, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoMatsushima, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeMatsushima, iconName: "envelope" }
+      ],
+      tomaoka : [
+        { name: "Lunes", component: LunesTomaoka, iconName: "truck-fast" },
+        { name: "Martes", component: MartesTomaoka, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesTomaoka, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesTomaoka, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesTomaoka, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoTomaoka, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoTomaoka, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeTomaoka, iconName: "envelope" }
+      ],
+       oishi : [
+        { name: "Lunes", component: LunesOishi, iconName: "truck-fast" },
+        { name: "Martes", component: MartesOishi, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesOishi, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesOishi, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesOishi, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoOishi, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoOishi, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeOishi, iconName: "envelope" }
+      ],
+      okamoto : [
+        { name: "Lunes", component: LunesOkamoto, iconName: "truck-fast" },
+        { name: "Martes", component: MartesOkamoto, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesOkamoto, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesOkamoto, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesOkamoto, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoOkamoto, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoOkamoto, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeOkamoto, iconName: "envelope" }
+      ],
+       yamakado :[
+        { name: "Lunes", component: LunesYamakado, iconName: "truck-fast" },
+        { name: "Martes", component: MartesYamakado, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesYamakado, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesYamakado, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesYamakado, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoYamakado, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoYamakado, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeYamakado, iconName: "envelope" }
+      ],
+      sklar : [
+        { name: "Lunes", component: LunesSklar, iconName: "truck-fast" },
+        { name: "Martes", component: MartesSklar, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesSklar, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesSklar, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesSklar, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoSklar, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoSklar, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeSklar, iconName: "envelope" }
+      ],
+      enrique : [
+        { name: "Lunes", component: LunesEnrique, iconName: "truck-fast" },
+        { name: "Martes", component: MartesEnrique, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesEnrique, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesEnrique, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesEnrique, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoEnrique, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoEnrique, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeEnrique, iconName: "envelope" }
+      ],
+       user1 : [
+        { name: "Lunes", component: LunesUser1, iconName: "truck-fast" },
+        { name: "Martes", component: MartesUser1, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesUser1, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesUser1, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesUser1, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoUser1, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoUser1, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeUser1, iconName: "envelope" }
+      ],
+       user2 : [
+        { name: "Lunes", component: LunesUser2, iconName: "truck-fast" },
+        { name: "Martes", component: MartesUser2, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesUser2, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesUser2, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesUser2, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoUser2, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoUser2, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeUser2, iconName: "envelope" }
+      ],
+       user3 : [
+        { name: "Lunes", component: LunesUser3, iconName: "truck-fast" },
+        { name: "Martes", component: MartesUser3, iconName: "truck-fast" },
+        { name: "Miercoles", component: MiercolesUser3, iconName: "truck-fast" },
+        { name: "Jueves", component: JuevesUser3, iconName: "truck-fast" },
+        { name: "Viernes", component: ViernesUser3, iconName: "truck-fast" },
+        { name: "Sabado", component: SabadoUser3, iconName: "truck-fast" },
+        { name: "Domingo", component: DomingoUser3, iconName: "truck-fast" },
+        { name: "Mensaje", component: MensajeUser3, iconName: "envelope" }
+      ],
+    };
+
 // Componente personalizado para el contenido del Drawer con efecto Blur
 const CustomDrawerContent = ({ drawerTitle, ...props }) => {
   const navigation = useNavigation();
@@ -1785,273 +1899,41 @@ export const YamakadoDrawer = () => {
 export const SklarDrawer = () => {
   return (
     <Drawer.Navigator
-      drawerContent={(props) => (
-        <CustomDrawerContent {...props} drawerTitle="Sklar" />
-      )}
-      screenOptions={{
-        drawerActiveTintColor: "#17f502",
-        drawerInactiveTintColor: "#fcfcfc",
-        drawerLabelStyle: {
-          color: "#fcfcfc",
-          fontSize: 14,
-          fontWeight: "bold",
-          margin: -5,
-        },
-        drawerItemStyle: { marginVertical: 10 },
-        // Configuración diferente para Android e iOS
-        drawerType: Platform.OS === "ios" ? "front" : "front", // iOS empuja la pantalla, Android muestra transparente
-        overlayColor:
-          Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent", // Fondo traslúcido en iOS
-        drawerStyle: {
-          backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent", // Color de fondo según la plataforma
-          width: 210,
-          height: "100%",
-        },
-      }}
+      drawerContent={(props) => 
+            <CustomDrawerContent {...props} drawerTitle="Sklar" />}
+        screenOptions={drawerScreenOptions}
+     
     >
-      <Drawer.Screen
-        name="Lunes"
-        component={LunesSklar}
-        options={{
-          title: "Lunes",
-          headerTitleAlign: "center",
-          // Cambiar color de fondo y el estilo del header
-          headerStyle: {
-            backgroundColor: "black", // Color de fondo del header
-          },
-          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
-          headerTitleStyle: {
-            fontWeight: "bold", // Puedes personalizar más el estilo del título
-          },
-          // Cambiar el icono del Drawer
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
-          drawerStyle: {
-            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
-            width: 210,
-            height: "100%",
-          },
-        }}
-      />
-      <Drawer.Screen
-        name="Martes"
-        component={MartesSklar}
-        options={{
-          title: "Martes",
-          headerTitleAlign: "center",
-          // Cambiar color de fondo y el estilo del header
-          headerStyle: {
-            backgroundColor: "black", // Color de fondo del header
-          },
-          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
-          headerTitleStyle: {
-            fontWeight: "bold", // Puedes personalizar más el estilo del título
-          },
-          // Cambiar el icono del Drawer
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
-          drawerStyle: {
-            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
-            width: 210,
-            height: "100%",
-          },
-        }}
-      />
-      <Drawer.Screen
-        name="Miercoles"
-        component={MiercolesSklar}
-        options={{
-          title: "Miercoles",
-          headerTitleAlign: "center",
-          // Cambiar color de fondo y el estilo del header
-          headerStyle: {
-            backgroundColor: "black", // Color de fondo del header
-          },
-          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
-          headerTitleStyle: {
-            fontWeight: "bold", // Puedes personalizar más el estilo del título
-          },
-          // Cambiar el icono del Drawer
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
-          drawerStyle: {
-            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
-            width: 210,
-            height: "100%",
-          },
-        }}
-      />
-      <Drawer.Screen
-        name="Jueves"
-        component={JuevesSklar}
-        options={{
-          title: "Jueves",
-          headerTitleAlign: "center",
-          // Cambiar color de fondo y el estilo del header
-          headerStyle: {
-            backgroundColor: "black", // Color de fondo del header
-          },
-          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
-          headerTitleStyle: {
-            fontWeight: "bold", // Puedes personalizar más el estilo del título
-          },
-          // Cambiar el icono del Drawer
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
-          drawerStyle: {
-            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
-            width: 210,
-            height: "100%",
-          },
-        }}
-      />
-      <Drawer.Screen
-        name="Viernes"
-        component={ViernesSklar}
-        options={{
-          title: "Viernes",
-          headerTitleAlign: "center",
-          // Cambiar color de fondo y el estilo del header
-          headerStyle: {
-            backgroundColor: "black", // Color de fondo del header
-          },
-          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
-          headerTitleStyle: {
-            fontWeight: "bold", // Puedes personalizar más el estilo del título
-          },
-          // Cambiar el icono del Drawer
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
-          drawerStyle: {
-            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
-            width: 210,
-            height: "100%",
-          },
-        }}
-      />
-      <Drawer.Screen
-        name="Sabado"
-        component={SabadoSklar}
-        options={{
-          title: "Sabado",
-          headerTitleAlign: "center",
-          // Cambiar color de fondo y el estilo del header
-          headerStyle: {
-            backgroundColor: "black", // Color de fondo del header
-          },
-          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
-          headerTitleStyle: {
-            fontWeight: "bold", // Puedes personalizar más el estilo del título
-          },
-          // Cambiar el icono del Drawer
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
-          drawerStyle: {
-            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
-            width: 210,
-            height: "100%",
-          },
-        }}
-      />
-      <Drawer.Screen
-        name="Domingo"
-        component={DomingoSklar}
-        options={{
-          title: "Domingo",
-          headerTitleAlign: "center",
-          // Cambiar color de fondo y el estilo del header
-          headerStyle: {
-            backgroundColor: "black", // Color de fondo del header
-          },
-          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
-          headerTitleStyle: {
-            fontWeight: "bold", // Puedes personalizar más el estilo del título
-          },
-          // Cambiar el icono del Drawer
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "truck-fast" : "truck-ramp-box"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
-          drawerStyle: {
-            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
-            width: 210,
-            height: "100%",
-          },
-        }}
-      />
-      <Drawer.Screen
-        name="Mensaje"
-        component={MensajeSklar}
-        options={{
-          title: "Mensaje",
-          headerTitleAlign: "center",
-          // Cambiar color de fondo y el estilo del header
-          headerStyle: {
-            backgroundColor: "black", // Color de fondo del header
-          },
-          headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
-          headerTitleStyle: {
-            fontWeight: "bold", // Puedes personalizar más el estilo del título
-          },
-          // Cambiar el icono del Drawer
-          drawerIcon: ({ focused, color, size }) => (
-            <Icon
-              name={focused ? "envelope" : "envelope"}
-              size={size}
-              color={focused ? "#17f502" : color}
-            />
-          ),
-          // Cambiar el fondo del Drawer (aplica a todo el Drawer, no solo a este Screen)
-          drawerStyle: {
-            backgroundColor: "transparent", // Cambia el color de fondo del Drawer
-            width: 210,
-            height: "100%",
-          },
-        }}
-      />
+    {usersConfig.sklar.map((screen) => (
+        <Drawer.Screen
+          key={screen.name}
+          name={screen.name}
+          component={screen.component}
+          options={{
+            title: screen.name,
+            headerTitleAlign: "center",
+            // Cambiar color de fondo y el estilo del header
+            headerStyle: {
+              backgroundColor: "black", // Color de fondo del header
+            },
+            headerTintColor: "#FFFFFF", // Color del texto y los íconos en el header
+            headerTitleStyle: {
+              fontWeight: "bold", // Puedes personalizar más el estilo del título
+            },
+            drawerIcon: ({ focused, color, size }) => (
+              <Icon
+                name={focused ? screen.iconName : "truck-ramp-box"}
+                size={size}
+                color={focused ? "#17f502" : color}
+              />
+            ),
+          }}
+        />
+      ))}
     </Drawer.Navigator>
   );
-};
+  };
+     
 export const EnriqueDrawer = () => {
   return (
     <Drawer.Navigator
@@ -3132,6 +3014,25 @@ export const User3Drawer = () => {
     </Drawer.Navigator>
   );
 };
+
+const drawerScreenOptions = {
+    drawerActiveTintColor: "#17f502",
+    drawerInactiveTintColor: "#fcfcfc",
+    drawerLabelStyle: {
+      color: "#fcfcfc",
+      fontSize: 14,
+      fontWeight: "bold",
+      margin: -5,
+    },
+    drawerItemStyle: { marginVertical: 10 },
+    drawerType: Platform.OS === "ios" ? "front" : "front",
+    overlayColor: Platform.OS === "ios" ? "rgba(0, 0, 0, 0.5)" : "transparent",
+    drawerStyle: {
+      backgroundColor: Platform.OS === "ios" ? "#ffffff" : "transparent",
+      width: 210,
+      height: "100%",
+    },
+  };
 
 const styles = StyleSheet.create({
   drawerContainer: {
