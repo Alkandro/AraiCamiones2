@@ -131,17 +131,17 @@ import FirebaseStateUser3Sabado from "./context/firebase/User3State/FirebaseStat
 import FirebaseStateUser3Domingo from "./context/firebase/User3State/FirebaseStateUser3Domingo/firebaseStateUser3Domingo";
 import FirebaseStateUser3Mensaje from "./context/firebase/User3State/FirebaseStateUser3Mensaje/firebaseStateUser3Mensaje";
 
-import { HoshinoDrawer } from "./Drawers";
-import { MatsushimaDrawer } from "./Drawers";
-import { TomaokaDrawer } from "./Drawers";
-import { SklarDrawer } from "./Drawers";
-import { YamakadoDrawer } from "./Drawers";
-import { OishiDrawer } from "./Drawers";
-import { OkamotoDrawer } from "./Drawers";
-import { EnriqueDrawer } from "./Drawers";
-import { User1Drawer } from "./Drawers";
-import { User2Drawer } from "./Drawers";
-import { User3Drawer } from "./Drawers";
+import { HoshinoDrawer } from "./components/Drawers";
+import { MatsushimaDrawer } from "./components/Drawers";
+import { TomaokaDrawer } from "./components/Drawers";
+import { SklarDrawer } from "./components/Drawers";
+import { YamakadoDrawer } from "./components/Drawers";
+import { OishiDrawer } from "./components/Drawers";
+import { OkamotoDrawer } from "./components/Drawers";
+import { EnriqueDrawer } from "./components/Drawers";
+import { User1Drawer } from "./components/Drawers";
+import { User2Drawer } from "./components/Drawers";
+import { User3Drawer } from "./components/Drawers";
 
 const Stack = createStackNavigator();
 AsyncStorage.getItem("persist:session").then((data) => {
