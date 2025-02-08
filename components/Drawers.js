@@ -188,7 +188,7 @@ const usersConfig = {
     { name: "Mensaje", component: MensajeYamakado, iconName: "envelope" },
   ],
   sklar: [
-    { name: "　　月", component: LunesSklar, iconName: "truck-fast" },
+    { name: "月", component: LunesSklar, iconName: "truck-fast" },
     { name: "火", component: MartesSklar, iconName: "truck-fast" },
     { name: "Miercoles", component: MiercolesSklar, iconName: "truck-fast" },
     { name: "Jueves", component: JuevesSklar, iconName: "truck-fast" },

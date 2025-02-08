@@ -1,3 +1,5 @@
+// EnviosList.js
+
 import React, { useState } from "react";
 import {
   View,
@@ -5,13 +7,18 @@ import {
   Image,
   Pressable,
   ScrollView,
+  Box, // Reemplazado List por Box
   List,
   Checkbox,
+  ActivityIndicator,
 } from "native-base";
-import { StyleSheet, Platform, Alert } from "react-native";
+import { StyleSheet, Platform, Alert } from "react-native"; // Alert solo desde react-native
 import { format } from "date-fns";
 import { BlurView } from "expo-blur";
 import { FontAwesome } from "@expo/vector-icons";
+import * as FileSystem from "expo-file-system";
+import * as Sharing from "expo-sharing";
+import * as MediaLibrary from "expo-media-library";
 
 const formatFechaEntrega = (fechaEntrega) => {
   if (!fechaEntrega) return "NG";
@@ -39,6 +46,7 @@ const EnviosList = ({
 }) => {
   const [selectedPlatillos, setSelectedPlatillos] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [downloadingPlatillos, setDownloadingPlatillos] = useState({});
 
   const platillosFiltrados = menu.filter((p) => p.categoria === categoria);
 
@@ -49,9 +57,6 @@ const EnviosList = ({
     }));
   };
 
-  
-
-  // Función para eliminar un platillo seleccionado
   const eliminarProducto = async (platilloId) => {
     try {
       await eliminarProductoFirebase(platilloId);
@@ -61,7 +66,6 @@ const EnviosList = ({
     }
   };
 
-  // Función para confirmar y eliminar los platillos seleccionados
   const eliminarSeleccionados = () => {
     const platillosIds = Object.keys(selectedPlatillos);
     if (platillosIds.length === 0) {
@@ -73,13 +77,13 @@ const EnviosList = ({
     }
 
     Alert.alert(
-      "Si confirmas la entrega se eliminará",
-      "Una vez eliminados no se pueden recuperar",
+      "Confirmar Eliminación",
+      "Si confirmas, los platillos seleccionados se eliminarán y no se podrán recuperar.",
       [
         {
           text: "Confirmar",
           onPress: async () => {
-            setIsLoading(true); // Mostrar el spinner de carga
+            setIsLoading(true);
             try {
               const idsAEliminar = Object.keys(selectedPlatillos).filter(
                 (id) => selectedPlatillos[id]
@@ -89,7 +93,7 @@ const EnviosList = ({
             } catch (error) {
               console.error("Error eliminando productos:", error);
             } finally {
-              setIsLoading(false); // Ocultar el spinner de carga
+              setIsLoading(false);
             }
           },
         },
@@ -98,6 +102,61 @@ const EnviosList = ({
     );
   };
 
+  const descargarPdf = async (platillo) => {
+    if (!platillo.pdf) {
+      Alert.alert("No hay PDF disponible", "Este platillo no tiene un PDF asociado.");
+      return;
+    }
+
+    try {
+      // Solicitar permisos en Android
+      if (Platform.OS === "android") {
+        const { status } = await MediaLibrary.requestPermissionsAsync();
+        if (status !== "granted") {
+          Alert.alert(
+            "Permiso Denegado",
+            "No tienes permisos para guardar archivos en tu dispositivo."
+          );
+          return;
+        }
+      }
+
+      // Mostrar indicador de descarga
+      setDownloadingPlatillos((prevState) => ({
+        ...prevState,
+        [platillo.id]: true,
+      }));
+
+      // Definir el nombre y la ubicación del archivo
+      const fileName = `${platillo.nombre.replace(/\s+/g, "_")}_${platillo.id}.pdf`;
+      const fileUri = FileSystem.documentDirectory + fileName;
+
+      // Descargar el archivo
+      const { uri } = await FileSystem.downloadAsync(platillo.pdf, fileUri);
+
+      // Compartir el archivo (opcional)
+      if (await Sharing.isAvailableAsync()) {
+        await Sharing.shareAsync(uri);
+      } else {
+        // Guardar el archivo en la galería (solo Android)
+        if (Platform.OS === "android") {
+          await MediaLibrary.saveToLibraryAsync(uri);
+          Alert.alert("Archivo Guardado", "El PDF se ha guardado en tu dispositivo.");
+        } else {
+          Alert.alert("Archivo Descargado", "El PDF se ha descargado correctamente.");
+        }
+      }
+    } catch (error) {
+      console.error("Error descargando PDF:", error);
+      Alert.alert("Error", "Hubo un problema al descargar el PDF.");
+    } finally {
+      // Ocultar indicador de descarga
+      setDownloadingPlatillos((prevState) => ({
+        ...prevState,
+        [platillo.id]: false,
+      }));
+    }
+  };
 
   const CustomCheckbox = ({ isChecked, onChange, ariaLabel }) => (
     <Checkbox
@@ -109,26 +168,24 @@ const EnviosList = ({
       onChange={onChange}
       accessibilityLabel={ariaLabel}
       _checked={{
-        bg: "green.500", // Color de fondo cuando está checkeado
-        borderColor: "blue.500", // Color del borde cuando está checkeado
+        bg: "green.500",
+        borderColor: "blue.500",
         _icon: {
-          color: "white", // Color del ícono cuando está checkeado
+          color: "white",
         },
       }}
       _unchecked={{
-        bg: "transparent", // Color de fondo cuando no está checkeado
-        borderColor: "black", // Color del borde cuando no está checkeado
+        bg: "transparent",
+        borderColor: "black",
       }}
     >
-      <Text color="white">✓</Text> {/* Color del texto dentro del Checkbox */}
+      <Text color="white">✓</Text>
     </Checkbox>
   );
 
   return (
     <View flex={1} backgroundColor="white">
-      <ScrollView
-        style={{ backgroundColor: "black", shadow: 9, borderColor: "green" }}
-      >
+      <ScrollView style={{ backgroundColor: "black", shadow: 9, borderColor: "green" }}>
         <View>
           <View style={styles.separador}>
             <Text style={styles.separadorTexto}>{categoria}</Text>
@@ -156,7 +213,7 @@ const EnviosList = ({
                   minHeight: 280,
                 }}
               >
-                <View style={{ flex: 1 }}>
+                <View flex={1}>
                   {/* Imagen y Fecha */}
                   <View
                     style={{
@@ -219,9 +276,7 @@ const EnviosList = ({
                     </View>
 
                     <View style={styles.infoContainer}>
-                      <Text style={styles.boldText}>
-                        Dirección de descarga:
-                      </Text>
+                      <Text style={styles.boldText}>Dirección de descarga:</Text>
                       <Text numberOfLines={3} style={styles.descripcion2}>
                         {platillo.descripcion2}
                       </Text>
@@ -231,6 +286,22 @@ const EnviosList = ({
                       <Text style={styles.boldText}>Entrega:</Text>
                       <Text>{formatFechaEntrega(platillo.fecha)}</Text>
                     </View>
+
+                    {/* Botón para descargar PDF */}
+                    {platillo.pdf && (
+                      <View style={styles.pdfContainer}>
+                        <Pressable
+                          onPress={() => descargarPdf(platillo)}
+                          style={styles.downloadButton}
+                        >
+                          {downloadingPlatillos[platillo.id] ? (
+                            <ActivityIndicator color="white" />
+                          ) : (
+                            <Text style={styles.downloadText}>Descargar PDF</Text>
+                          )}
+                        </Pressable>
+                      </View>
+                    )}
                   </View>
                 </View>
 
@@ -239,24 +310,20 @@ const EnviosList = ({
                   style={{
                     flexDirection: "column",
                     alignItems: "center",
-                    marginLeft: "auto" , // Cambia el margen según la plataforma
+                    marginLeft: "auto",
                     marginTop: Platform.OS === "ios" ? -180 : -180,
                     marginRight: Platform.OS === "ios" ? 50 : 35,
                   }}
                 >
-                   <CustomCheckbox
-                   isChecked={!!selectedPlatillos[platillo.id]}
-                   onChange={(isChecked) =>
-                     handleCheckboxChange(platillo.id, isChecked)
-                   }
-                   ariaLabel={`Eliminar ${platillo.nombre}`}
-                 />
-
-                 <Text style={styles.checkboxText}>
-                   Check for Delete
-                 </Text>
-               </View>
-             </List>
+                  <CustomCheckbox
+                    isChecked={!!selectedPlatillos[platillo.id]}
+                    onChange={(isChecked) => handleCheckboxChange(platillo.id, isChecked)}
+                    ariaLabel={`Eliminar ${platillo.nombre}`}
+                  />
+                  <Text style={styles.checkboxText}>Check para Eliminar</Text>
+                </View>
+             
+              </List>
             </Pressable>
           ))}
         </View>
@@ -315,6 +382,20 @@ const styles = StyleSheet.create({
     color: "black",
   },
   eliminarTexto: {
+    color: "white",
+    fontWeight: "bold",
+  },
+  pdfContainer: {
+    marginTop: 10,
+  },
+  downloadButton: {
+    backgroundColor: "#1E90FF",
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  downloadText: {
     color: "white",
     fontWeight: "bold",
   },
