@@ -16,12 +16,14 @@
     "ios": {
       "supportsTablet": true,
       "runtimeVersion": {
-        "policy": "appVersion"
+        "policy": "appVersion",
+        "newArchEnabled": false
       }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#000000"
+        "backgroundColor": "#000000",
+        "newArchEnabled": false
       },
       "package": "com.alkandro.restaurantApp2",
       "runtimeVersion": "1.0.0",
