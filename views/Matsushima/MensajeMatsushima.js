@@ -16,7 +16,7 @@ import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
 import { useContext, useEffect, useState } from "react";
 import { StyleSheet, Alert } from "react-native";
-import firebaseContextMatsushimaMensaje from "../../context/firebase/Matsushima/FirebaseStateMatsushimaMensaje/firebaseContextMatsushimaMensaje";
+import { FirebaseContext } from "../../context/firebase/FirebaseStateUnificado";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import firebase from "../../firebase/firebase";
 import { parseISO, format } from "date-fns";
@@ -47,22 +47,22 @@ const formatFechaEntrega = (fechaEntrega) => {
   }
 };
 
-
 const Matsushima = () => {
-  const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(
-    firebaseContextMatsushimaMensaje
-  );
+  const { obtenerProductos, eliminarProductoFirebase, getMenu } =
+    useContext(FirebaseContext);
+  const menu = getMenu("matsushima", "mensaje");
   const { seleccionarPlatillo } = useContext(PedidoContext);
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    obtenerProductos();
+    const unsub = obtenerProductos("matsushima", "mensaje");
+    return () => unsub();
   }, []);
 
   const categoriaDeseada = "mensaje";
   const platillosFiltrados = menu.filter(
-    (platillo) => platillo.categoria === categoriaDeseada
+    (platillo) => platillo.categoria === categoriaDeseada,
   );
   const categorias = { [categoriaDeseada]: platillosFiltrados };
 
@@ -87,9 +87,12 @@ const Matsushima = () => {
       }));
 
       try {
-        await firebase.db.collection("matsushimaMensaje").doc(platilloId).update({
-          leido: isLeido,
-        });
+        await firebase.db
+          .collection("matsushimaMensaje")
+          .doc(platilloId)
+          .update({
+            leido: isLeido,
+          });
         if (isLeido) {
           setIsSwitchDisabled((prevState) => ({
             ...prevState,
@@ -104,7 +107,7 @@ const Matsushima = () => {
 
   const eliminarProducto = async (platilloId) => {
     try {
-      await eliminarProductoFirebase(platilloId);
+      await eliminarProductoFirebase("matsushima", "mensaje", platilloId);
       obtenerProductos();
     } catch (error) {
       console.error("Error eliminando producto:", error);
@@ -116,7 +119,7 @@ const Matsushima = () => {
     if (platillosIds.length === 0) {
       Alert.alert(
         "No hay nada seleccionado",
-        "Por favor, selecciona al menos uno."
+        "Por favor, selecciona al menos uno.",
       );
       return;
     }
@@ -131,7 +134,7 @@ const Matsushima = () => {
             setIsLoading(true); // Mostrar el spinner de carga
             try {
               const idsAEliminar = Object.keys(selectedPlatillos).filter(
-                (id) => selectedPlatillos[id]
+                (id) => selectedPlatillos[id],
               );
               await Promise.all(idsAEliminar.map((id) => eliminarProducto(id)));
               setSelectedPlatillos({});
@@ -143,7 +146,7 @@ const Matsushima = () => {
           },
         },
         { text: "Cancelar", style: "cancel" },
-      ]
+      ],
     );
   };
 
@@ -414,5 +417,3 @@ const styles = StyleSheet.create({
 });
 
 export default Matsushima;
-
-

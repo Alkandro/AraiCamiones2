@@ -1,3 +1,420 @@
+// import { useNavigation } from "@react-navigation/native";
+// import {
+//   NativeBaseProvider,
+//   View,
+//   Image,
+//   Text,
+//   List,
+//   Icon,
+//   ScrollView,
+//   Pressable,
+//   Checkbox,
+//   Switch,
+// } from "native-base";
+// import { FontAwesome } from "@expo/vector-icons";
+// import globalStyles from "../../styles/global";
+// import { BlurView } from "expo-blur";
+// import { useContext, useEffect, useState } from "react";
+// import { StyleSheet, Alert } from "react-native";
+// import firebaseContextHoshinoMensaje from "../../context/firebase/Hoshino/FirebaseStateHoshinoMensaje/firebaseContextHoshinoMensaje";
+// import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
+// import firebase from "../../firebase/firebase";
+// import { parseISO, format } from "date-fns";
+
+// const formatFechaEntrega = (fechaEntrega) => {
+//   try {
+//     if (!fechaEntrega) {
+//       return "NG";
+//     }
+//     if (typeof fechaEntrega === "string") {
+//       const parsedDate = Date.parse(fechaEntrega);
+//       if (!isNaN(parsedDate)) {
+//         fechaEntrega = new Date(parsedDate);
+//       } else {
+//         return "Fecha no válida";
+//       }
+//     }
+//     if (!(fechaEntrega instanceof Date) || isNaN(fechaEntrega.getTime())) {
+//       return "Fecha no válida";
+//     }
+//     if (fechaEntrega.seconds) {
+//       fechaEntrega = new Date(fechaEntrega.seconds * 1000);
+//     }
+//     return format(fechaEntrega, "dd/MM/yyyy");
+//   } catch (error) {
+//     console.error("Error al formatear la fecha:", error);
+//     return "Fecha no válida";
+//   }
+// };
+
+// const Hoshino = () => {
+//   const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(
+//     firebaseContextHoshinoMensaje
+//   );
+//   const { seleccionarPlatillo } = useContext(PedidoContext);
+//   const navigation = useNavigation();
+//   const [isLoading, setIsLoading] = useState(false);
+
+//   useEffect(() => {
+//     obtenerProductos();
+//   }, []);
+
+//   const categoriaDeseada = "mensaje";
+//   const platillosFiltrados = menu.filter(
+//     (platillo) => platillo.categoria === categoriaDeseada
+//   );
+//   const categorias = { [categoriaDeseada]: platillosFiltrados };
+
+//   const [selectedPlatillos, setSelectedPlatillos] = useState({});
+//   const [leidoStatus, setLeidoStatus] = useState({});
+//   const [isSwitchDisabled, setIsSwitchDisabled] = useState({});
+//   const [expandedMessages, setExpandedMessages] = useState({}); // Estado para manejar mensajes expandidos
+
+//   const handleCheckboxChange = (platilloId, isChecked) => {
+//     setSelectedPlatillos((prevState) => ({
+//       ...prevState,
+//       [platilloId]: isChecked,
+//     }));
+//   };
+
+//   const handleSwitchChange = async (platilloId, value) => {
+//     if (!isSwitchDisabled[platilloId]) {
+//       const isLeido = value;
+//       setLeidoStatus((prevState) => ({
+//         ...prevState,
+//         [platilloId]: isLeido,
+//       }));
+
+//       try {
+//         await firebase.db.collection("hoshinoMensaje").doc(platilloId).update({
+//           leido: isLeido,
+//         });
+//         if (isLeido) {
+//           setIsSwitchDisabled((prevState) => ({
+//             ...prevState,
+//             [platilloId]: true,
+//           }));
+//         }
+//       } catch (error) {
+//         console.error("Error actualizando el estado leído:", error);
+//       }
+//     }
+//   };
+
+//   const eliminarProducto = async (platilloId) => {
+//     try {
+//       await eliminarProductoFirebase(platilloId);
+//       obtenerProductos();
+//     } catch (error) {
+//       console.error("Error eliminando producto:", error);
+//     }
+//   };
+
+//   const eliminarSeleccionados = () => {
+//     const platillosIds = Object.keys(selectedPlatillos);
+//     if (platillosIds.length === 0) {
+//       Alert.alert(
+//         "No hay nada seleccionado",
+//         "Por favor, selecciona al menos uno."
+//       );
+//       return;
+//     }
+
+//     Alert.alert(
+//       "Si confirmas la entrega se eliminará",
+//       "Una vez eliminados no se pueden recuperar",
+//       [
+//         {
+//           text: "Confirmar",
+//           onPress: async () => {
+//             setIsLoading(true); // Mostrar el spinner de carga
+//             try {
+//               const idsAEliminar = Object.keys(selectedPlatillos).filter(
+//                 (id) => selectedPlatillos[id]
+//               );
+//               await Promise.all(idsAEliminar.map((id) => eliminarProducto(id)));
+//               setSelectedPlatillos({});
+//             } catch (error) {
+//               console.error("Error eliminando productos:", error);
+//             } finally {
+//               setIsLoading(false); // Ocultar el spinner de carga
+//             }
+//           },
+//         },
+//         { text: "Cancelar", style: "cancel" },
+//       ]
+//     );
+//   };
+
+//   const CustomCheckbox = ({ isChecked, onChange, ariaLabel }) => (
+//     <Checkbox
+//       boxSize={8}
+//       borderColor="black"
+//       shadow={9}
+//       marginRight={-7}
+//       isChecked={isChecked}
+//       onChange={onChange}
+//       accessibilityLabel={ariaLabel}
+//       _checked={{
+//         bg: "green.500",
+//         borderColor: "blue.500",
+//         _icon: {
+//           color: "white",
+//         },
+//       }}
+//       _unchecked={{
+//         bg: "transparent",
+//         borderColor: "black",
+//       }}
+//     >
+//       <Text color="white">✓</Text>
+//     </Checkbox>
+//   );
+
+//   const toggleMessageExpansion = (platilloId) => {
+//     setExpandedMessages((prevState) => ({
+//       ...prevState,
+//       [platilloId]: !prevState[platilloId],
+//     }));
+//   };
+
+//   return (
+//     <NativeBaseProvider style={globalStyles.contenedor}>
+//       <View flex={1} backgroundColor="white">
+//         <ScrollView
+//           style={{
+//             backgroundColor: "black",
+//             shadow: 9,
+//             borderColor: "black",
+//           }}
+//         >
+//           <View>
+//             {Object.keys(categorias).map((categoria) => (
+//               <View key={categoria}>
+//                 <View style={styles.separador}>
+//                   <Text style={styles.separadorTexto}>{categoria}</Text>
+//                 </View>
+//                 {categorias[categoria].map((platillo) => (
+//                   <Pressable
+//                     key={platillo.id}
+//                     onPress={() => {
+//                       const { existencia, ...platillo2 } = platillo;
+//                       seleccionarPlatillo(platillo2);
+//                       navigation.navigate("DetalleMensaje");
+//                     }}
+//                     style={{ flex: 1 }}
+//                   >
+//                     <List
+//                       style={{
+//                         flexDirection: "row",
+//                         alignItems: "flex-start", // Cambia a flex-start para alinear arriba
+//                         justifyContent: "space-between",
+//                         backgroundColor: "white",
+//                         borderRadius: 15,
+//                         marginBottom: 10,
+//                         borderWidth: 4,
+//                         borderColor: "black",
+//                         minHeight: 250,
+//                       }}
+//                     >
+//                       <View
+//                         mx={3}
+//                         style={{
+//                           flexDirection: "row",
+//                           alignItems: "flex-start",
+//                         }}
+//                       >
+//                         <Image
+//                           source={
+//                             platillo.imagen
+//                               ? { uri: platillo.imagen }
+//                               : require("../../assets/fotos/autos.jpeg")
+//                           }
+//                           alt="desde firebase"
+//                           size={70}
+//                           borderRadius={16}
+//                         />
+//                       </View>
+
+//                       {/* Contenedor para la fecha y el mensaje */}
+//                       <View style={styles.fechaYMensajeContainer}>
+//                         <View
+//                           marginRight={1}
+//                           margin={1}
+//                           style={styles.fechaBox}
+//                         >
+//                           <Text>
+//                             <Text style={{ fontWeight: "bold" }}>Fecha:</Text>
+//                             {""} {formatFechaEntrega(platillo.fecha)}
+//                           </Text>
+//                         </View>
+
+//                         <View style={styles.mensajeCentrado}>
+//                           {/* Mensaje centrado */}
+//                           <Text>
+//                             <Text
+//                               numberOfLines={2}
+//                               fontWeight="bold"
+//                               style={styles.descripcion}
+//                             >
+//                               Mensaje:
+//                             </Text>
+//                             {/* Mensaje truncado */}
+//                             {expandedMessages[platillo.id] ? (
+//                               platillo.descripcion
+//                             ) : (
+//                               <Text>
+//                                 {platillo.descripcion.length > 100
+//                                   ? platillo.descripcion.slice(0, 100) + "..."
+//                                   : platillo.descripcion}
+//                               </Text>
+//                             )}
+
+//                             <Text
+//                               onPress={() =>
+//                                 toggleMessageExpansion(platillo.id)
+//                               }
+//                               style={styles.leerMas}
+//                             >
+//                               {expandedMessages[platillo.id]
+//                                 ? " Leer menos"
+//                                 : " Leer más..."}
+//                             </Text>
+//                           </Text>
+//                         </View>
+//                       </View>
+//                       {/* Contenedor de Checkbox y Switch en columna */}
+//                       <View
+//                         style={{
+//                           flexDirection: "column",
+//                           marginLeft: "auto",
+//                           marginRight: 10,
+//                         }}
+//                       >
+//                         <View style={{ marginBottom: 80 }}>
+//                           <CustomCheckbox
+//                             isChecked={!!selectedPlatillos[platillo.id]}
+//                             onChange={(isChecked) =>
+//                               handleCheckboxChange(platillo.id, isChecked)
+//                             }
+//                             ariaLabel={`Eliminar ${platillo.nombre}`}
+//                           />
+//                         </View>
+
+//                         <View marginTop={9}>
+//                           <View pointerEvents="auto">
+//                             <Switch
+//                               isChecked={!!leidoStatus[platillo.id]}
+//                               onToggle={(value) =>
+//                                 handleSwitchChange(platillo.id, value)
+//                               }
+//                               isDisabled={!!isSwitchDisabled[platillo.id]}
+//                             />
+//                             <Text
+//                               style={{
+//                                 color: platillo.leido ? "green" : "red",
+//                                 fontWeight: "bold",
+//                                 marginTop: 8,
+//                               }}
+//                             >
+//                               {platillo.leido ? "Leído" : ""}
+//                             </Text>
+//                           </View>
+//                         </View>
+//                       </View>
+//                     </List>
+//                   </Pressable>
+//                 ))}
+//               </View>
+//             ))}
+//           </View>
+//         </ScrollView>
+//         <BlurView intensity={90}>
+//           <View
+//             paddingY={4}
+//             alignItems="center"
+//             safeAreaBottom
+//             height={20}
+//             marginBottom={0}
+//             backgroundColor="black"
+//           >
+//             <Pressable onPress={isLoading ? null : eliminarSeleccionados}>
+//               {isLoading ? (
+//                 <Text style={styles.eliminarTexto}>Eliminando...</Text>
+//               ) : (
+//                 <Icon
+//                   as={FontAwesome}
+//                   name="trash"
+//                   size="lg" // Tamaño del ícono
+//                   color="white" // Color del ícono
+//                 />
+//               )}
+//             </Pressable>
+//           </View>
+//         </BlurView>
+//       </View>
+//     </NativeBaseProvider>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   separador: {
+//     backgroundColor: "#000",
+//   },
+//   fechaYMensajeContainer: {
+//     flex: 1, // Para que ocupe el espacio disponible
+//     flexDirection: "column", // Apila la fecha y el mensaje
+//     justifyContent: "flex-start", // Alinea al inicio
+//     paddingHorizontal: 3, // Espacio interno
+//     overflow: "hidden", // Evita el desbordamiento
+//   },
+//   descripcion: {
+//     maxWidth: 140,
+//     lineHeight: 20,
+//     fontWeight: "bold",
+//     textAlign: "left", // Asegura que el texto quede a la izquierda
+//   },
+//   separadorTexto: {
+//     marginLeft: 10,
+//     color: "#FFDA00",
+//     fontWeight: "bold",
+//     textTransform: "uppercase",
+//   },
+//   eliminarTexto: {
+//     color: "white",
+//     fontWeight: "bold",
+//   },
+//   fechaContainer: {
+//     marginTop: -150,
+//     marginLeft: 5,
+//     height: 20, // Altura fija para evitar que se mueva
+//     justifyContent: "center", // Centra verticalmente
+//   },
+//   fechaBox: {
+//     padding: 2,
+//     borderWidth: 2,
+//     borderColor: "green",
+//     justifyContent: "center",
+//     alignItems: "center", // Asegúrate de que el contenedor pueda centrar su contenido
+//     borderRadius: 6,
+//     maxWidth: 140, // Limita el ancho máximo
+//   },
+//   mensajeCentrado: {
+//     alignItems: "flex-start", // Alinea el contenido a la izquierda
+//     maxWidth: 350, // Controla el ancho máximo del contenedor
+//     marginTop: 37,
+//   },
+//   leerMas: {
+//     color: "blue",
+//     fontSize: 12,
+//     marginTop: 5,
+//     textAlign: "left", // Alinea el texto a la izquierda
+//   },
+// });
+
+// export default Hoshino;
+
+// MensajeHoshino.js
 import { useNavigation } from "@react-navigation/native";
 import {
   NativeBaseProvider,
@@ -16,98 +433,82 @@ import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
 import { useContext, useEffect, useState } from "react";
 import { StyleSheet, Alert } from "react-native";
-import firebaseContextHoshinoMensaje from "../../context/firebase/Hoshino/FirebaseStateHoshinoMensaje/firebaseContextHoshinoMensaje";
+import { FirebaseContext } from "../../context/firebase/FirebaseStateUnificado"; // ← CAMBIO
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import firebase from "../../firebase/firebase";
-import { parseISO, format } from "date-fns";
+import { format } from "date-fns";
+
+const CHOFER = "hoshino"; // ← única línea que cambia entre choferes
 
 const formatFechaEntrega = (fechaEntrega) => {
   try {
-    if (!fechaEntrega) {
-      return "NG";
-    }
+    if (!fechaEntrega) return "NG";
     if (typeof fechaEntrega === "string") {
       const parsedDate = Date.parse(fechaEntrega);
-      if (!isNaN(parsedDate)) {
-        fechaEntrega = new Date(parsedDate);
-      } else {
-        return "Fecha no válida";
-      }
+      if (!isNaN(parsedDate)) fechaEntrega = new Date(parsedDate);
+      else return "Fecha no válida";
     }
-    if (!(fechaEntrega instanceof Date) || isNaN(fechaEntrega.getTime())) {
+    if (!(fechaEntrega instanceof Date) || isNaN(fechaEntrega.getTime()))
       return "Fecha no válida";
-    }
-    if (fechaEntrega.seconds) {
+    if (fechaEntrega.seconds)
       fechaEntrega = new Date(fechaEntrega.seconds * 1000);
-    }
     return format(fechaEntrega, "dd/MM/yyyy");
   } catch (error) {
-    console.error("Error al formatear la fecha:", error);
     return "Fecha no válida";
   }
 };
 
-
-const Hoshino = () => {
-  const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(
-    firebaseContextHoshinoMensaje
-  );
+const MensajeHoshino = () => {
+  const { obtenerProductos, eliminarProductoFirebase, getMenu } =
+    useContext(FirebaseContext); // ← CAMBIO
   const { seleccionarPlatillo } = useContext(PedidoContext);
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedPlatillos, setSelectedPlatillos] = useState({});
+  const [leidoStatus, setLeidoStatus] = useState({});
+  const [isSwitchDisabled, setIsSwitchDisabled] = useState({});
+  const [expandedMessages, setExpandedMessages] = useState({});
+
+  // ← CAMBIO: usa el contexto unificado
+  const menu = getMenu(CHOFER, "mensaje");
 
   useEffect(() => {
-    obtenerProductos();
+    const unsub = obtenerProductos(CHOFER, "mensaje");
+    return () => unsub();
   }, []);
 
   const categoriaDeseada = "mensaje";
   const platillosFiltrados = menu.filter(
-    (platillo) => platillo.categoria === categoriaDeseada
+    (p) => p.categoria === categoriaDeseada,
   );
   const categorias = { [categoriaDeseada]: platillosFiltrados };
 
-  const [selectedPlatillos, setSelectedPlatillos] = useState({});
-  const [leidoStatus, setLeidoStatus] = useState({});
-  const [isSwitchDisabled, setIsSwitchDisabled] = useState({});
-  const [expandedMessages, setExpandedMessages] = useState({}); // Estado para manejar mensajes expandidos
-
   const handleCheckboxChange = (platilloId, isChecked) => {
-    setSelectedPlatillos((prevState) => ({
-      ...prevState,
-      [platilloId]: isChecked,
-    }));
+    setSelectedPlatillos((prev) => ({ ...prev, [platilloId]: isChecked }));
   };
 
   const handleSwitchChange = async (platilloId, value) => {
     if (!isSwitchDisabled[platilloId]) {
-      const isLeido = value;
-      setLeidoStatus((prevState) => ({
-        ...prevState,
-        [platilloId]: isLeido,
-      }));
-
+      setLeidoStatus((prev) => ({ ...prev, [platilloId]: value }));
       try {
-        await firebase.db.collection("hoshinoMensaje").doc(platilloId).update({
-          leido: isLeido,
-        });
-        if (isLeido) {
-          setIsSwitchDisabled((prevState) => ({
-            ...prevState,
-            [platilloId]: true,
-          }));
-        }
+        await firebase.db
+          .collection(`${CHOFER}Mensaje`)
+          .doc(platilloId)
+          .update({ leido: value });
+        if (value)
+          setIsSwitchDisabled((prev) => ({ ...prev, [platilloId]: true }));
       } catch (error) {
-        console.error("Error actualizando el estado leído:", error);
+        console.error("Error actualizando leído:", error);
       }
     }
   };
 
   const eliminarProducto = async (platilloId) => {
     try {
-      await eliminarProductoFirebase(platilloId);
-      obtenerProductos();
+      await eliminarProductoFirebase(CHOFER, "mensaje", platilloId);
+      obtenerProductos(CHOFER, "mensaje");
     } catch (error) {
-      console.error("Error eliminando producto:", error);
+      console.error("Error eliminando:", error);
     }
   };
 
@@ -116,11 +517,10 @@ const Hoshino = () => {
     if (platillosIds.length === 0) {
       Alert.alert(
         "No hay nada seleccionado",
-        "Por favor, selecciona al menos uno."
+        "Por favor, selecciona al menos uno.",
       );
       return;
     }
-
     Alert.alert(
       "Si confirmas la entrega se eliminará",
       "Una vez eliminados no se pueden recuperar",
@@ -128,23 +528,30 @@ const Hoshino = () => {
         {
           text: "Confirmar",
           onPress: async () => {
-            setIsLoading(true); // Mostrar el spinner de carga
+            setIsLoading(true);
             try {
               const idsAEliminar = Object.keys(selectedPlatillos).filter(
-                (id) => selectedPlatillos[id]
+                (id) => selectedPlatillos[id],
               );
               await Promise.all(idsAEliminar.map((id) => eliminarProducto(id)));
               setSelectedPlatillos({});
             } catch (error) {
-              console.error("Error eliminando productos:", error);
+              console.error("Error eliminando:", error);
             } finally {
-              setIsLoading(false); // Ocultar el spinner de carga
+              setIsLoading(false);
             }
           },
         },
         { text: "Cancelar", style: "cancel" },
-      ]
+      ],
     );
+  };
+
+  const toggleMessageExpansion = (platilloId) => {
+    setExpandedMessages((prev) => ({
+      ...prev,
+      [platilloId]: !prev[platilloId],
+    }));
   };
 
   const CustomCheckbox = ({ isChecked, onChange, ariaLabel }) => (
@@ -159,35 +566,20 @@ const Hoshino = () => {
       _checked={{
         bg: "green.500",
         borderColor: "blue.500",
-        _icon: {
-          color: "white",
-        },
+        _icon: { color: "white" },
       }}
-      _unchecked={{
-        bg: "transparent",
-        borderColor: "black",
-      }}
+      _unchecked={{ bg: "transparent", borderColor: "black" }}
     >
       <Text color="white">✓</Text>
     </Checkbox>
   );
 
-  const toggleMessageExpansion = (platilloId) => {
-    setExpandedMessages((prevState) => ({
-      ...prevState,
-      [platilloId]: !prevState[platilloId],
-    }));
-  };
-
+  // ── JSX idéntico al tuyo original, sin cambios ──
   return (
     <NativeBaseProvider style={globalStyles.contenedor}>
       <View flex={1} backgroundColor="white">
         <ScrollView
-          style={{
-            backgroundColor: "black",
-            shadow: 9,
-            borderColor: "black",
-          }}
+          style={{ backgroundColor: "black", shadow: 9, borderColor: "black" }}
         >
           <View>
             {Object.keys(categorias).map((categoria) => (
@@ -208,7 +600,7 @@ const Hoshino = () => {
                     <List
                       style={{
                         flexDirection: "row",
-                        alignItems: "flex-start", // Cambia a flex-start para alinear arriba
+                        alignItems: "flex-start",
                         justifyContent: "space-between",
                         backgroundColor: "white",
                         borderRadius: 15,
@@ -236,8 +628,6 @@ const Hoshino = () => {
                           borderRadius={16}
                         />
                       </View>
-
-                      {/* Contenedor para la fecha y el mensaje */}
                       <View style={styles.fechaYMensajeContainer}>
                         <View
                           marginRight={1}
@@ -245,13 +635,11 @@ const Hoshino = () => {
                           style={styles.fechaBox}
                         >
                           <Text>
-                            <Text style={{ fontWeight: "bold" }}>Fecha:</Text>
-                            {""} {formatFechaEntrega(platillo.fecha)}
+                            <Text style={{ fontWeight: "bold" }}>Fecha:</Text>{" "}
+                            {formatFechaEntrega(platillo.fecha)}
                           </Text>
                         </View>
-
                         <View style={styles.mensajeCentrado}>
-                          {/* Mensaje centrado */}
                           <Text>
                             <Text
                               numberOfLines={2}
@@ -260,7 +648,6 @@ const Hoshino = () => {
                             >
                               Mensaje:
                             </Text>
-                            {/* Mensaje truncado */}
                             {expandedMessages[platillo.id] ? (
                               platillo.descripcion
                             ) : (
@@ -270,7 +657,6 @@ const Hoshino = () => {
                                   : platillo.descripcion}
                               </Text>
                             )}
-
                             <Text
                               onPress={() =>
                                 toggleMessageExpansion(platillo.id)
@@ -284,7 +670,6 @@ const Hoshino = () => {
                           </Text>
                         </View>
                       </View>
-                      {/* Contenedor de Checkbox y Switch en columna */}
                       <View
                         style={{
                           flexDirection: "column",
@@ -301,7 +686,6 @@ const Hoshino = () => {
                             ariaLabel={`Eliminar ${platillo.nombre}`}
                           />
                         </View>
-
                         <View marginTop={9}>
                           <View pointerEvents="auto">
                             <Switch
@@ -343,12 +727,7 @@ const Hoshino = () => {
               {isLoading ? (
                 <Text style={styles.eliminarTexto}>Eliminando...</Text>
               ) : (
-                <Icon
-                  as={FontAwesome}
-                  name="trash"
-                  size="lg" // Tamaño del ícono
-                  color="white" // Color del ícono
-                />
+                <Icon as={FontAwesome} name="trash" size="lg" color="white" />
               )}
             </Pressable>
           </View>
@@ -359,21 +738,19 @@ const Hoshino = () => {
 };
 
 const styles = StyleSheet.create({
-  separador: {
-    backgroundColor: "#000",
-  },
+  separador: { backgroundColor: "#000" },
   fechaYMensajeContainer: {
-    flex: 1, // Para que ocupe el espacio disponible
-    flexDirection: "column", // Apila la fecha y el mensaje
-    justifyContent: "flex-start", // Alinea al inicio
-    paddingHorizontal: 3, // Espacio interno
-    overflow: "hidden", // Evita el desbordamiento
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    paddingHorizontal: 3,
+    overflow: "hidden",
   },
   descripcion: {
     maxWidth: 140,
     lineHeight: 20,
     fontWeight: "bold",
-    textAlign: "left", // Asegura que el texto quede a la izquierda
+    textAlign: "left",
   },
   separadorTexto: {
     marginLeft: 10,
@@ -381,38 +758,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textTransform: "uppercase",
   },
-  eliminarTexto: {
-    color: "white",
-    fontWeight: "bold",
-  },
-  fechaContainer: {
-    marginTop: -150,
-    marginLeft: 5,
-    height: 20, // Altura fija para evitar que se mueva
-    justifyContent: "center", // Centra verticalmente
-  },
+  eliminarTexto: { color: "white", fontWeight: "bold" },
   fechaBox: {
     padding: 2,
     borderWidth: 2,
     borderColor: "green",
     justifyContent: "center",
-    alignItems: "center", // Asegúrate de que el contenedor pueda centrar su contenido
+    alignItems: "center",
     borderRadius: 6,
-    maxWidth: 140, // Limita el ancho máximo
+    maxWidth: 140,
   },
-  mensajeCentrado: {
-    alignItems: "flex-start", // Alinea el contenido a la izquierda
-    maxWidth: 350, // Controla el ancho máximo del contenedor
-    marginTop: 37,
-  },
-  leerMas: {
-    color: "blue",
-    fontSize: 12,
-    marginTop: 5,
-    textAlign: "left", // Alinea el texto a la izquierda
-  },
+  mensajeCentrado: { alignItems: "flex-start", maxWidth: 350, marginTop: 37 },
+  leerMas: { color: "blue", fontSize: 12, marginTop: 5, textAlign: "left" },
 });
 
-export default Hoshino;
-
-
+export default MensajeHoshino;

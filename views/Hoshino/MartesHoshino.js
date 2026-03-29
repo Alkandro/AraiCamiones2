@@ -2,15 +2,18 @@ import React, { useContext, useEffect } from "react";
 import { NativeBaseProvider } from "native-base";
 import EnviosList from "../../components/EnviosList";
 import { useNavigation } from "@react-navigation/native";
-import firebaseContextHoshinoMartes from "../../context/firebase/FirebaseStateHoshinoMartes/firebaseContextHoshinoMartes";
+import { FirebaseContext } from "../../context/firebase/FirebaseStateUnificado";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 
 const Martes = () => {
-  const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(firebaseContextHoshinoMartes);
+  const { obtenerProductos, eliminarProductoFirebase, getMenu } =
+    useContext(FirebaseContext);
   const { seleccionarPlatillo } = useContext(PedidoContext);
+  const menu = getMenu("hoshino", "martes");
 
   useEffect(() => {
-    obtenerProductos();
+    const unsub = obtenerProductos("hoshino", "martes");
+    return () => unsub();
   }, []);
 
   return (
@@ -19,8 +22,10 @@ const Martes = () => {
         categoria="martes"
         menu={menu}
         seleccionarPlatillo={seleccionarPlatillo}
-        eliminarProductoFirebase={eliminarProductoFirebase}
-        obtenerProductos={obtenerProductos}
+        eliminarProductoFirebase={(id) =>
+          eliminarProductoFirebase("hoshino", "martes", id)
+        }
+        obtenerProductos={() => obtenerProductos("hoshino", "martes")}
         navigation={useNavigation()}
       />
     </NativeBaseProvider>

@@ -2,15 +2,18 @@ import React, { useContext, useEffect } from "react";
 import { NativeBaseProvider } from "native-base";
 import EnviosList from "../../components/EnviosList";
 import { useNavigation } from "@react-navigation/native";
-import firebaseContextMatsushimaViernes from "../../context/firebase/Matsushima/FirebaseStateMatsushimaViernes/firebaseContextMatsushimaViernes";
+import { FirebaseContext } from "../../context/firebase/FirebaseStateUnificado";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 
-const Viernes = () => {
-  const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(firebaseContextMatsushimaViernes);
+const ViernesMatsushima = () => {
+  const { obtenerProductos, eliminarProductoFirebase, getMenu } =
+    useContext(FirebaseContext);
   const { seleccionarPlatillo } = useContext(PedidoContext);
+  const menu = getMenu("matsushima", "viernes");
 
   useEffect(() => {
-    obtenerProductos();
+    const unsub = obtenerProductos("matsushima", "viernes");
+    return () => unsub(); // limpia el listener al salir de la pantalla
   }, []);
 
   return (
@@ -19,13 +22,14 @@ const Viernes = () => {
         categoria="viernes"
         menu={menu}
         seleccionarPlatillo={seleccionarPlatillo}
-        eliminarProductoFirebase={eliminarProductoFirebase}
-        obtenerProductos={obtenerProductos}
+        eliminarProductoFirebase={(id) =>
+          eliminarProductoFirebase("matsushima", "viernes", id)
+        }
+        obtenerProductos={() => obtenerProductos("matsushima", "viernes")}
         navigation={useNavigation()}
       />
     </NativeBaseProvider>
   );
 };
 
-export default Viernes;
-
+export default ViernesMatsushima;
