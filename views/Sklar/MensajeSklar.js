@@ -16,7 +16,7 @@ import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
 import { useContext, useEffect, useState } from "react";
 import { StyleSheet, Alert } from "react-native";
-import firebaseContextSklarMensaje from "../../context/firebase/SklarState/FirebaseStateSklarMensaje/firebaseContextSklarMensaje";
+import { FirebaseContext } from "../../context/firebase/FirebaseStateUnificado";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import firebase from "../../firebase/firebase";
 import { parseISO, format } from "date-fns";
@@ -48,20 +48,21 @@ const formatFechaEntrega = (fechaEntrega) => {
 };
 
 const Sklar = () => {
-  const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(
-    firebaseContextSklarMensaje
-  );
+  const { obtenerProductos, eliminarProductoFirebase, getMenu } =
+    useContext(FirebaseContext);
+  const menu = getMenu("sklar", "mensaje");
   const { seleccionarPlatillo } = useContext(PedidoContext);
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    obtenerProductos();
+    const unsub = obtenerProductos("sklar", "mensaje");
+    return () => unsub();
   }, []);
 
   const categoriaDeseada = "mensaje";
   const platillosFiltrados = menu.filter(
-    (platillo) => platillo.categoria === categoriaDeseada
+    (platillo) => platillo.categoria === categoriaDeseada,
   );
   const categorias = { [categoriaDeseada]: platillosFiltrados };
 
@@ -103,7 +104,7 @@ const Sklar = () => {
 
   const eliminarProducto = async (platilloId) => {
     try {
-      await eliminarProductoFirebase(platilloId);
+      await eliminarProductoFirebase("sklar", "mensaje", platilloId);
       obtenerProductos();
     } catch (error) {
       console.error("Error eliminando producto:", error);
@@ -115,7 +116,7 @@ const Sklar = () => {
     if (platillosIds.length === 0) {
       Alert.alert(
         "No hay nada seleccionado",
-        "Por favor, selecciona al menos uno."
+        "Por favor, selecciona al menos uno.",
       );
       return;
     }
@@ -130,7 +131,7 @@ const Sklar = () => {
             setIsLoading(true); // Mostrar el spinner de carga
             try {
               const idsAEliminar = Object.keys(selectedPlatillos).filter(
-                (id) => selectedPlatillos[id]
+                (id) => selectedPlatillos[id],
               );
               await Promise.all(idsAEliminar.map((id) => eliminarProducto(id)));
               setSelectedPlatillos({});
@@ -142,7 +143,7 @@ const Sklar = () => {
           },
         },
         { text: "Cancelar", style: "cancel" },
-      ]
+      ],
     );
   };
 

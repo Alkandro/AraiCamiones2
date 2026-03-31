@@ -16,7 +16,7 @@ import globalStyles from "../../styles/global";
 import { BlurView } from "expo-blur";
 import { useContext, useEffect, useState } from "react";
 import { StyleSheet, Alert } from "react-native";
-import firebaseContextOkamotoMensaje from "../../context/firebase/OkamotoState/FirebaseStateOkamotoMensaje/firebaseContextOkamotoMensaje";
+import { FirebaseContext } from "../../context/firebase/FirebaseStateUnificado";
 import PedidoContext from "../../context/firebase/pedidos/pedidosContext";
 import firebase from "../../firebase/firebase";
 import { parseISO, format } from "date-fns";
@@ -47,23 +47,22 @@ const formatFechaEntrega = (fechaEntrega) => {
   }
 };
 
-
-
 const Okamoto = () => {
-  const { menu, obtenerProductos, eliminarProductoFirebase } = useContext(
-    firebaseContextOkamotoMensaje
-  );
+  const { obtenerProductos, eliminarProductoFirebase, getMenu } =
+    useContext(FirebaseContext);
+  const menu = getMenu("okamoto", "mensaje");
   const { seleccionarPlatillo } = useContext(PedidoContext);
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    obtenerProductos();
+    const unsub = obtenerProductos("okamoto", "mensaje");
+    return () => unsub();
   }, []);
 
   const categoriaDeseada = "mensaje";
   const platillosFiltrados = menu.filter(
-    (platillo) => platillo.categoria === categoriaDeseada
+    (platillo) => platillo.categoria === categoriaDeseada,
   );
   const categorias = { [categoriaDeseada]: platillosFiltrados };
 
@@ -105,7 +104,7 @@ const Okamoto = () => {
 
   const eliminarProducto = async (platilloId) => {
     try {
-      await eliminarProductoFirebase(platilloId);
+      await eliminarProductoFirebase("okamoto", "mensaje", platilloId);
       obtenerProductos();
     } catch (error) {
       console.error("Error eliminando producto:", error);
@@ -117,7 +116,7 @@ const Okamoto = () => {
     if (platillosIds.length === 0) {
       Alert.alert(
         "No hay nada seleccionado",
-        "Por favor, selecciona al menos uno."
+        "Por favor, selecciona al menos uno.",
       );
       return;
     }
@@ -132,7 +131,7 @@ const Okamoto = () => {
             setIsLoading(true); // Mostrar el spinner de carga
             try {
               const idsAEliminar = Object.keys(selectedPlatillos).filter(
-                (id) => selectedPlatillos[id]
+                (id) => selectedPlatillos[id],
               );
               await Promise.all(idsAEliminar.map((id) => eliminarProducto(id)));
               setSelectedPlatillos({});
@@ -144,7 +143,7 @@ const Okamoto = () => {
           },
         },
         { text: "Cancelar", style: "cancel" },
-      ]
+      ],
     );
   };
 
@@ -415,5 +414,3 @@ const styles = StyleSheet.create({
 });
 
 export default Okamoto;
-
-
